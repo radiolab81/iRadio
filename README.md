@@ -7,9 +7,10 @@ Ein Softwarebaukasten für den Aufbau neuer Radios oder dem Umbau alter Radios z
   
 ## Steuerung des iRadio durch:
 
-Programmumschaltung / Lauststärkeänderung mit (Micro-)Taster, Inkrementaldrehgeber, Drehimpulsgeber, Fernsteuerbar über HTML-Bedienoberfläche http://IP_des_Radios:8080 oder über TCP/IP Sockets. 
+Programmumschaltung / Lautstärkeänderung mit (Micro-)Taster, Inkrementaldrehgeber, Drehimpulsgeber, fernsteuerbar über HTML-Bedienoberfläche http://IP_des_Radios:8080 oder 
+über TCP/IP Sockets. 
 
-Die Steuerung wird als Daemon "gpiod" realisiert.
+Die Steuerung wird als Daemon/Prozess "gpiod" realisiert.
 
 ## Unterstützte Displays für Nutzerschnittstelle:
 
@@ -120,7 +121,7 @@ der aktuell eingestellten Radiostation oder des aktuell gespielten Titels.
 ![lcd](https://www.radio-bastler.de/forum/attachment.php?thumbnail=56759)
 
 
-Die Ansteurerung des Displays übernimmt der Prozess displayd im iRadio. 
+Die Ansteuerung des Displays übernimmt der Prozess displayd im iRadio. 
 Um einen solchen displayd für ein LCD-Modul zu bauen, geben wir folgende Befehle ein.
 
 `cd /home/pi/iRadio`
@@ -224,6 +225,6 @@ Weiterer Support im Radio-Bastler-Forum unter: https://www.radio-bastler.de
 Bitte beachtet auch den Blog von meinem Bastlerkollegen Franz-Josef Haffner: https://radiobasteleien.blogspot.com/search/label/iRadio
 Der Franz zeigt auf seinen Seiten unzählige Umbauten und Modernisierungen alter Radios, nicht nur mit dem iRadio! Er hat für 
 das iRadio auch eine sehr umfangreiche FAQ angelegt!
+Seine Werke sieht man hier: https://radiobasteleien.blogspot.com/search/label/Internetradio
 
-
-
+Bei Fragen meldet Euch einfach im Radio-Bastler-Forum oder im Wumpus-Gollum-Forum an.

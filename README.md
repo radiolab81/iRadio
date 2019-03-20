@@ -184,3 +184,28 @@ Als besonderes Highlight, sogar die Simulation photorealistischer Nachbildungen 
 Umbau eines alten Metz-Baby zum iRadio-Internetradio.
 
 [![](http://img.youtube.com/vi/cSQKa7eCEfE/0.jpg)](http://www.youtube.com/watch?v=cSQKa7eCEfE "")
+
+Über spezielle "Stretch-HDMI/LVDS-Panels" lassen sich so auch richtig große Dampfradios zu modernen Internetradios umbauen! Eigene Skalen lassen sich als PNG-Datei mit Transparenz erstellen. Der Code für die Beispielsimulationen liegt in /home/pi/iRadio/display/x11 . Auch hier kann und soll ausdrücklich jeder Nutzer seine eigene Kreativität ausleben! Ziel ist was Spaß macht und das iRadio gibt nur den Grundrahmen vor.
+
+
+## Zusatzfunktion:
+
+Wie oben geschrieben kann man mit dem iRadio nicht nur Internetradios aufbauen. Beim Einsatz von Raspberry Pi mit Bluetooth-Schnittstelle ist auch die Möglichkeit gegeben, das iRadio als Funklautsprecher zu nutzen. 
+
+Zur Installation der Bluetoothfunktionalität gibt man folgendes ein:
+
+`cd /home/pi/iRadio/bt-speaker`
+
+`sudo ./install.sh`
+
+`sudo reboot`
+
+Nach dem Neustart des Raspberry präsentiert sich der Kleinrechner mit seinem vergebenen Hostnamen in der Bluetooth-Suche 
+von Mediengeräten.
+
+![bluetooth](https://www.radio-bastler.de/forum/attachment.php?thumbnail=59874)
+
+Koppelt man sich mit dem iRadio, dann wird die Wiedergabe des Internetradios automatisch unterbrochen und das iRadio wird zum Funklautsprecher. Entkoppelt man die Bluetoothverbindung, so beginnt das iRadio mit der Wiedergabe der zuletzt eingestellten Internetradiostation.
+
+
+Weiterer Support, siehe Radio-Bastler-Forum: https://www.radio-bastler.de

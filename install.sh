@@ -8,6 +8,7 @@ fi
 
 apt-get update
 apt-get install vlc-nox
+apt-get install autoconf
 
 if [ $? -ne 0 ] # apt-get return an error
 then

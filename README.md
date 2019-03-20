@@ -208,4 +208,14 @@ von Mediengeräten.
 Koppelt man sich mit dem iRadio, dann wird die Wiedergabe des Internetradios automatisch unterbrochen und das iRadio wird zum Funklautsprecher. Entkoppelt man die Bluetoothverbindung, so beginnt das iRadio mit der Wiedergabe der zuletzt eingestellten Internetradiostation.
 
 
-Weiterer Support, siehe Radio-Bastler-Forum: https://www.radio-bastler.de
+## Änderung der WiFi-Zugangsdaten und der Senderliste:
+
+WiFi: Es kann eine neue wpa_supplicant.conf oder wlan.txt (mit gleichem Inhalt wie wpa_supplicant.conf)
+in /boot oder im Rootverzeichnis eines mit FAT32-formatierten USB-Sticks abgelegt werden. Nach einem Neustart werden die WiFi-Zugangsdaten automatisch aktualisiert.
+
+Neue Senderliste:
+
+Es wird eine Datei playlist.m3u in /boot oder im Rootverzeichnis eines mit FAT32-formatierten USB-Sticks abgelegt. 
+Nach einem Neustart wird die Senderliste des Internetradios automatisch aktualisiert.
+Achtung: In der playlist.m3u darf pro Zeile nur die URL einer Internetradiostation stehen. Keine M3U-Metadaten verwenden!
+Bei der Verwendung einer Skalensimulation oder Servo-PWM sind Internetradiostationen mit URL-Umleitung zu vermeiden und durch fixe URLs zu ersetzen. Weiterer Support im Radio-Bastler-Forum unter: https://www.radio-bastler.de

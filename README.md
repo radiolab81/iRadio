@@ -136,3 +136,18 @@ der Datei /home/odroid/Downloads/iRadio/display/lcd/displayd.cpp vornehmen.
 
 Nach einem erneuten Aufruf von `sudo ./install_I2CDisplay20x4.sh` und einem Neustart des Raspberry sind die Änderungen aktiv.
 
+
+Weitere Displaytypen werden im iRadio direkt unterstützt, für Sie gibt es bereits unterschiedliche Installer in /home/pi/iRadio . 
+
+Hier ein SSD1306-OLED:
+
+![ssd1306](https://www.radio-bastler.de/forum/attachment.php?thumbnail=56780)
+
+oder ein ST7335-TFT: 
+
+![st7335](https://www.radio-bastler.de/forum/attachment.php?thumbnail=56840)
+
+Die passenden Installer erkennt man leicht am entsprechenden Namen. Der passende Code für diese Displaytypen bzw. für den Prozess displayd liegt in `/home/pi/iRadio/display` . Hier darf und soll(!) der Nutzer ausdrücklich seine eigenen Anpassungen vornehmen, um so zu einer individuellen Lösung zu kommen! Das iRadio hier soll nur grob den Rahmen für eigenen Konstruktionen vorgeben.
+
+
+

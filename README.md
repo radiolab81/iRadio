@@ -71,3 +71,20 @@ In /home/pi wird das Repository geklont.
 `git clone https://github.com/BM45/iRadio`
 
 Wird das Repository als zip-Datei heruntergeladen, dann wird das heruntergeladene zip-Archiv mit `unzip` in /home/pi entpackt.
+
+Die Basisinstallation des iRadios erfolgt durch Aufruf von install.sh mit Root-Rechten. Zur Basisinstallation wird eine Internetverbindung benötigt, da noch weitere Programmpakete installiert werden müssen.
+
+`cd /home/pi/iRadio`
+
+`sudo ./install.sh`
+
+Nach dem Durchlauf des Installers und anschließendem Reboot des Raspberry, ist die Basisinstallation des Internetradios abgeschlossen. Zu diesem Zeitpunkt wird bereits die erste Internetradiostation der inkludierten Standardsenderliste abgespielt. Die Programmumschaltung kann durch Taster gegen Masse an den Pins 11 (GPIO17) und 12 (GPIO18) erfolgen.
+
+Die Änderung der Pinbelegung oder Erweiterung der Tastensteuerung kann durch editieren von /home/pi/iRadio/gpiod.c erfolgen. Die Änderungen werden durch folgende Befehle übernommen.
+
+`cd /home/pi/iRadio`
+
+`sudo ./install_Tastensteuerung.sh`
+
+`sudo reboot`
+

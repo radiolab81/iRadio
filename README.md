@@ -70,7 +70,7 @@ In /home/pi wird das Repository geklont.
 
 `git clone https://github.com/BM45/iRadio`
 
-Wird das Repository als zip-Datei heruntergeladen, dann wird das heruntergeladene zip-Archiv mit `unzip` in /home/pi entpackt.
+Wird das Repository als zip-Datei heruntergeladen, dann wird das heruntergeladene zip-Archiv mit `unzip` in /home/pi entpackt, so dass es in /home/pi/iRadio zu liegen kommt.
 
 Die Basisinstallation des iRadios erfolgt durch Aufruf von install.sh mit Root-Rechten. Zur Basisinstallation wird eine Internetverbindung benötigt, da noch weitere Programmpakete installiert werden müssen.
 

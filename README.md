@@ -175,4 +175,12 @@ Mit der "Highlevel-Unterstützung" durch X11/Framebuffer sind natürlich auch an
 
 ![fltk](https://www.radio-bastler.de/forum/attachment.php?thumbnail=55538)
 
+Als besonderes Highlight, sogar die Simulation photorealistischer Nachbildungen von Senderskalen alter Radios.
 
+![sim1](https://www.radio-bastler.de/forum/attachment.php?thumbnail=58390)
+![sim2](https://www.radio-bastler.de/forum/attachment.php?thumbnail=58393)
+![sim3](https://www.radio-bastler.de/forum/attachment.php?thumbnail=58950)
+
+Umbau eines alten Metz-Baby zum iRadio-Internetradio.
+
+[![](http://img.youtube.com/vi/cSQKa7eCEfE/0.jpg)](http://www.youtube.com/watch?v=cSQKa7eCEfE "")

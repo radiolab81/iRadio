@@ -61,3 +61,13 @@ Die Steuerung wird als Daemon "gpiod" realisiert.
 ## Zusatzfunktion:
 
 Bei Raspberrys mit integrierter Bluetooth-Konnektivität, kann das iRadio als Bluetooth-Funklautsprecher arbeiten. Medieninhalte können über Bluetooth direkt zum iRadio gestreamt werden. Die Wiedergabe des Internetradioprogramms wird bei Verbindungsaufnahme über Bluetooth automatisch pausiert.
+
+# Installation:
+
+In /home/pi wird das Repository geklont.
+
+`cd /home/pi/`
+
+`git clone https://github.com/BM45/iRadio`
+
+Wird das Repository als zip-Datei heruntergeladen, dann wird das heruntergeladene zip-Archiv mit `unzip` in /home/pi entpackt.

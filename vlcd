@@ -18,6 +18,14 @@ if [ -f /boot/wpa_supplicant.conf ]; then
   sudo mv -f /boot/wpa_supplicant.conf /etc/wpa_supplicant/wpa_supplicant.conf
 fi
 
+if [ -f /boot/wlan.txt ]; then
+  sudo mv -f /boot/wlan.txt /etc/wpa_supplicant/wpa_supplicant.conf
+fi
+
+if [ -f /boot/WLAN.txt ]; then
+  sudo mv -f /boot/WLAN.txt /etc/wpa_supplicant/wpa_supplicant.conf
+fi
+
 # Updates on usb flash /dev/sda1
 sudo mount /dev/sda1 /mnt
 
@@ -32,6 +40,18 @@ if [ -f /mnt/wpa_supplicant.conf ]; then
   sudo mv -f /mnt/wpa_supplicant.conf /etc/wpa_supplicant/wpa_supplicant.conf
   sudo reboot
 fi
+
+if [ -f /mnt/wlan.txt ]; then
+  sudo mv -f /mnt/wlan.txt /etc/wpa_supplicant/wpa_supplicant.conf
+  sudo reboot
+fi
+
+if [ -f /mnt/WLAN.txt ]; then
+  sudo mv -f /mnt/WLAN.txt /etc/wpa_supplicant/wpa_supplicant.conf
+  sudo reboot
+fi
+
+
 
 if [ -f /home/pi/.config/vlc/playlist.m3u ]; then
        playlist="/home/pi/.config/vlc/playlist.m3u"

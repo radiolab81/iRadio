@@ -7,11 +7,13 @@ Ein Softwarebaukasten für den Aufbau neuer Radios oder dem Umbau alter Radios z
   
 ## Steuerung des iRadio durch:
 
-Programmumschaltung / Lauststärkeänderung mit (Micro-)Taster, Inkrementaldrehgeber, Drehimpulsgeber, Fernsteuerbar über HTML-Bedienoberfläche http://IP_des_Radios:8080 oder über TCP/IP Sockets.
+Programmumschaltung / Lauststärkeänderung mit (Micro-)Taster, Inkrementaldrehgeber, Drehimpulsgeber, Fernsteuerbar über HTML-Bedienoberfläche http://IP_des_Radios:8080 oder über TCP/IP Sockets. 
+
+Die Steuerung wird als Daemon "gpiod" realisiert.
 
 ## Unterstützte Displays für Nutzerschnittstelle:
 
-### direkt über Lowlevel-GPIO (eigener Displaydaemon):
+### direkt über Lowlevel-GPIO (eigener Displaydaemon "displayd"):
 
 - I²C LCD Module 16x2 und 20x4
 - SSD1306 OLEDs

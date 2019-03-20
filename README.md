@@ -103,7 +103,7 @@ Hierzu muss ein neuer Steuerdaemon (gpiod) gebaut werden. Dies geht automatisch 
 
 Nach dem Reboot des Raspberry kann man die Internetradioprogramme durch einen Drehimpulsgeber an den Pins 11 (GPIO17) und 12 (GPIO18) umschalten.
 
-Eine Änderung der Pinbelegung oder Erweiterung der Drehimpulssteuerung (zum Beispiel für die Verstellung der Lautstärke über einen zweiten Drehimpulsgeber) kann durch editieren von /home/pi/iRadio/rotary.c erreicht werden. Die Änderungen werden durch folgende Befehle übernommen.
+Eine Änderung der Pinbelegung oder Erweiterung der Drehimpulsgebersteuerung (zum Beispiel für die Verstellung der Lautstärke über einen zweiten Drehimpulsgeber) kann durch editieren von /home/pi/iRadio/rotary.c erreicht werden. Die Änderungen werden durch folgende Befehle übernommen.
 
 
 `cd /home/pi/iRadio`
@@ -147,7 +147,7 @@ oder ein ST7335-TFT:
 
 ![st7335](https://www.radio-bastler.de/forum/attachment.php?thumbnail=56840)
 
-Die passenden Installer erkennt man leicht am entsprechenden Namen. Der passende Code für diese Displaytypen bzw. für den Prozess displayd liegt in `/home/pi/iRadio/display` . Hier darf und soll(!) der Nutzer ausdrücklich seine eigenen Anpassungen vornehmen, um so zu einer individuellen Lösung zu kommen! Das iRadio hier soll nur grob den Rahmen für eigenen Konstruktionen vorgeben.
+Die passenden Installer erkennt man leicht am entsprechenden Namen. Der passende Code für diese Displaytypen bzw. für den Prozess displayd liegt in `/home/pi/iRadio/display` . Hier darf und soll(!) der Nutzer ausdrücklich seine eigenen Anpassungen vornehmen, um so zu einer individuellen Lösung zu kommen! Das iRadio soll hier nur grob den Rahmen für eigenen Konstruktionen skizzieren.
 
 Ein ganz besonderer "Displaytyp" ist der PWM-Servo. Der Code dafür ist in `/home/pi/iRadio/display/servo` zu finden. Installiert wird er mit:
 
@@ -157,10 +157,10 @@ Ein ganz besonderer "Displaytyp" ist der PWM-Servo. Der Code dafür ist in `/hom
 
 `sudo reboot`
 
-Das iRadio ist mit einem PWM-Servo in der Lage, bestimmte Zustände, zum Beispiel Programmspeicherplätze oder Lautstärkeeinstellungen mit einem richtigen Zeiger oder einer richtigen Skale darzustellen. 
+Das iRadio mit einem PWM-Servo ist in der Lage, bestimmte Zustände, zum Beispiel Programmspeicherplätze oder Lautstärkeeinstellungen mit einem richtigen Zeiger oder einer richtigen Skale darzustellen. 
 
-Ein von mir sehr geschätzter Radio(um-)bauer aus dem Radio-Bastler-Forum, hat mit dem iRadio einen Volksempfänger zum Internetradio umgebaut. Die alte Frequenzskale, nun angetrieben von einem Servo, zeigt den aktuell eingestellten 
-Programmplatz dar.
+Ein von mir sehr geschätzter Radiobauer aus dem Radio-Bastler-Forum, hat mit dem iRadio einen Volksempfänger zum Internetradio umgebaut. Die alte Frequenzskale, nun angetrieben von einem Servo, zeigt den aktuell eingestellten 
+Programmplatz.
 
 ![servo1](https://www.radio-bastler.de/forum/attachment.php?thumbnail=60455)
 ![servo2](https://www.radio-bastler.de/forum/attachment.php?thumbnail=61100)
@@ -171,11 +171,11 @@ In Aktion: (Klick führt zu Youtube)
 [![servovideo](http://img.youtube.com/vi/fL3GbyHzpOE/0.jpg)](http://www.youtube.com/watch?v=fL3GbyHzpOE "")
 
 
-Mit der "Highlevel-Unterstützung" durch X11/Framebuffer sind natürlich auch andere Benutzerschnittstellen mit dem iRadio möglich, so zum Beispiel eine touchsensitive Bedienung über eine FLTK-GUI.
+Mit der "Highlevel-Unterstützung" durch X11/Framebuffer sind natürlich auch andere Benutzerschnittstellen mit dem iRadio möglich, so zum Beispiel eine touch-sensitive Bedienung über eine FLTK-GUI.
 
 ![fltk](https://www.radio-bastler.de/forum/attachment.php?thumbnail=55538)
 
-Als besonderes Highlight, sogar die Simulation photorealistischer Nachbildungen von Senderskalen alter Radios.
+Ein besonderes Highlight ist die Simulation photorealistischer Nachbildungen von Senderskalen alter Radios.
 
 ![sim1](https://www.radio-bastler.de/forum/attachment.php?thumbnail=58390)
 ![sim2](https://www.radio-bastler.de/forum/attachment.php?thumbnail=58393)
@@ -185,12 +185,12 @@ Umbau eines alten Metz-Baby zum iRadio-Internetradio.
 
 [![](http://img.youtube.com/vi/cSQKa7eCEfE/0.jpg)](http://www.youtube.com/watch?v=cSQKa7eCEfE "")
 
-Über spezielle "Stretch-HDMI/LVDS-Panels" lassen sich so auch richtig große Dampfradios zu modernen Internetradios umbauen! Eigene Skalen lassen sich als PNG-Datei mit Transparenz erstellen. Der Code für die Beispielsimulationen liegt in /home/pi/iRadio/display/x11 . Auch hier kann und soll ausdrücklich jeder Nutzer seine eigene Kreativität ausleben! Ziel ist was Spaß macht und das iRadio gibt nur den Grundrahmen vor.
+Über spezielle "Stretch-HDMI/LVDS-Panels" lassen sich auch richtig große Dampfradios zu modernen Internetradios umbauen! Eigene Skalen lassen sich als PNG-Datei mit Transparenz erstellen. Der Code für die Skalensimulationen liegt in /home/pi/iRadio/display/x11 . Auch hier kann und soll ausdrücklich jeder Nutzer seine eigene Kreativität ausleben! Ziel ist was Spaß macht und das iRadio gibt nur den Grundrahmen vor.
 
 
 ## Zusatzfunktion:
 
-Wie oben geschrieben kann man mit dem iRadio nicht nur Internetradios aufbauen. Beim Einsatz von Raspberry Pi mit Bluetooth-Schnittstelle ist auch die Möglichkeit gegeben, das iRadio als Funklautsprecher zu nutzen. 
+Wie oben geschrieben kann man mit dem iRadio nicht nur Internetradios aufbauen. Beim Einsatz von Raspberry Pi's mit Bluetooth-Schnittstelle ist auch die Möglichkeit gegeben, das iRadio als Funklautsprecher zu nutzen. 
 
 Zur Installation der Bluetoothfunktionalität gibt man folgendes ein:
 

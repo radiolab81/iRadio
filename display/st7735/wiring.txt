@@ -1,0 +1,17 @@
+Wiring of the TFT1.8-Display and the Raspberry Pi
+
+
+Display                Raspberry Pi
+
+VCC ------------------ 5V Power      (Pin 2)
+GND ------------------ Ground        (Pin 6)
+SCL ------------------ GPIO11 (SCLK) (Pin 23)
+SDA ------------------ GPIO10 (MOSI) (Pin 19)
+RS/DC/A0 ---------------- GPIO24     (Pin 18)
+RES ------------------ GPIO25        (Pin 22)
+CS ------------------- GPIO8 (CE0)   (Pin 24)
+LED_BACKGR ------------ 3.3 V
+MISO  not connected (for SD-Card)
+SCLK  not connected (for SD-Card)
+MOSI  not connected (for SD-Card)
+CS    not connected (for SD-Card)                               

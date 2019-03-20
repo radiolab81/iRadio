@@ -1,0 +1,13 @@
+CFLAGS=-c -Wall -O2
+LIBS = -loled96 -lm -lpthread -lbcm2835
+
+all: displayd
+
+displayd: displayd.o
+	$(CC) displayd.o $(LIBS) -o displayd
+
+displayd.o: displayd.c
+	$(CC) $(CFLAGS) displayd.c
+
+clean:
+	rm -rf *.o displayd

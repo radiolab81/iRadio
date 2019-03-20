@@ -132,7 +132,7 @@ Um einen solchen displayd für ein LCD-Modul zu bauen, geben wir folgende Befehl
 Ist nun ein LCD-Modul (mit Adresse 0x27) am I2C-Bus des Raspberry angeschlossen, sollte sich nach dem Neustart oben gezeigtes Szenario darstellen.
 
 Sollte Ihr LCD-Modul eine andere I2C-Adresse besitzen oder ein anderes Format haben, so können Sie Anpassungen in 
-der Datei /home/odroid/Downloads/iRadio/display/lcd/displayd.cpp vornehmen. 
+der Datei /home/pi/iRadio/display/lcd/displayd.cpp vornehmen. 
 
 Nach einem erneuten Aufruf von `sudo ./install_I2CDisplay20x4.sh` und einem Neustart des Raspberry sind die Änderungen aktiv.
 
@@ -218,4 +218,12 @@ Neue Senderliste:
 Es wird eine Datei playlist.m3u in /boot oder im Rootverzeichnis eines mit FAT32-formatierten USB-Sticks abgelegt. 
 Nach einem Neustart wird die Senderliste des Internetradios automatisch aktualisiert.
 Achtung: In der playlist.m3u darf pro Zeile nur die URL einer Internetradiostation stehen. Keine M3U-Metadaten verwenden!
-Bei der Verwendung einer Skalensimulation oder Servo-PWM sind Internetradiostationen mit URL-Umleitung zu vermeiden und durch fixe URLs zu ersetzen. Weiterer Support im Radio-Bastler-Forum unter: https://www.radio-bastler.de
+Bei der Verwendung einer Skalensimulation oder Servo-PWM sind Internetradiostationen mit URL-Umleitung zu vermeiden und durch fixe URLs zu ersetzen. 
+
+Weiterer Support im Radio-Bastler-Forum unter: https://www.radio-bastler.de 
+Bitte beachtet auch den Blog von meinem Bastlerkollegen Franz-Josef Haffner: https://radiobasteleien.blogspot.com/search/label/iRadio
+Der Franz zeigt auf seinen Seiten unzählige Umbauten und Modernisierungen alter Radios, nicht nur mit dem iRadio! Er hat für 
+das iRadio auch eine sehr umfangreiche FAQ angelegt!
+
+
+

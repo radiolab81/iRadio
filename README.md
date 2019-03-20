@@ -171,4 +171,8 @@ In Aktion: (Klick führt zu Youtube)
 [![servovideo](http://img.youtube.com/vi/fL3GbyHzpOE/0.jpg)](http://www.youtube.com/watch?v=fL3GbyHzpOE "")
 
 
+Mit der "Highlevel-Unterstützung" durch X11/Framebuffer sind natürlich auch andere Benutzerschnittstellen mit dem iRadio möglich, so zum Beispiel eine touchsensitive Bedienung über eine FLTK-GUI.
+
+![fltk](https://www.radio-bastler.de/forum/attachment.php?thumbnail=55538)
+
 

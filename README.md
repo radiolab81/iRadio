@@ -166,9 +166,9 @@ Programmplatz dar.
 ![servo2](https://www.radio-bastler.de/forum/attachment.php?thumbnail=61100)
 ![servo3](https://www.radio-bastler.de/forum/attachment.php?thumbnail=61097)
 
-In Aktion: 
+In Aktion: (Klick führt zu Youtube)
 
-[![](http://img.youtube.com/vi/fL3GbyHzpOE/0.jpg)](http://www.youtube.com/watch?v=fL3GbyHzpOE "")
+[![servovideo](http://img.youtube.com/vi/fL3GbyHzpOE/0.jpg)](http://www.youtube.com/watch?v=fL3GbyHzpOE "")
 
 
 

@@ -112,4 +112,27 @@ Eine Änderung der Pinbelegung oder Erweiterung der Drehimpulssteuerung (zum Bei
 
 `sudo reboot`
 
-![myimage-alt-tag](https://www.radio-bastler.de/forum/attachment.php?thumbnail=56759)
+
+An das iRadio kann man verschiedene Displays anschließen (siehe oben). Diese dienen u.a. zur Darstellung des Sendernamens
+der aktuell eingestellten Radiostation oder des aktuell gespielten Titels. 
+
+
+![lcd](https://www.radio-bastler.de/forum/attachment.php?thumbnail=56759)
+
+
+Die Ansteurerung des Displays übernimmt der Prozess displayd im iRadio. 
+Um einen solchen displayd für ein LCD-Modul zu bauen, geben wir folgende Befehle ein.
+
+`cd /home/pi/iRadio`
+
+`sudo ./install_I2CDisplay20x4.sh`
+
+`sudo reboot`
+
+Ist nun ein LCD-Modul (mit Adresse 0x27) am I2C-Bus des Raspberry angeschlossen, sollte sich nach dem Neustart oben gezeigtes Szenario darstellen.
+
+Sollte Ihr LCD-Modul eine andere I2C-Adresse besitzen oder ein anderes Format haben, so können Sie Anpassungen in 
+der Datei /home/odroid/Downloads/iRadio/display/lcd/displayd.cpp vornehmen. 
+
+Nach einem erneuten Aufruf von `sudo ./install_I2CDisplay20x4.sh` und einem Neustart des Raspberry sind die Änderungen aktiv.
+

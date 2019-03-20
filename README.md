@@ -88,3 +88,28 @@ Die Änderung der Pinbelegung oder Erweiterung der Tastensteuerung kann durch ed
 
 `sudo reboot`
 
+Anstelle von Tastern, kann auch ein Drehimpulsgeber zur Programmumschaltung genutzt werden.
+
+![rotary](https://www.radio-bastler.de/forum/attachment.php?thumbnail=56549)
+
+Hierzu muss ein neuer Steuerdaemon (gpiod) gebaut werden. Dies geht automatisch durch folgende Befehle.
+
+
+`cd /home/pi/iRadio`
+
+`sudo ./install_Drehencoder.sh`
+
+`sudo reboot`
+
+Nach dem Reboot des Raspberry kann man die Internetradioprogramme durch einen Drehimpulsgeber an den Pins 11 (GPIO17) und 12 (GPIO18) umschalten.
+
+Eine Änderung der Pinbelegung oder Erweiterung der Drehimpulssteuerung (zum Beispiel für die Verstellung der Lautstärke über einen zweiten Drehimpulsgeber) kann durch editieren von /home/pi/iRadio/rotary.c erreicht werden. Die Änderungen werden durch folgende Befehle übernommen.
+
+
+`cd /home/pi/iRadio`
+
+`sudo ./install_Drehencoder.sh`
+
+`sudo reboot`
+
+![myimage-alt-tag](https://www.radio-bastler.de/forum/attachment.php?thumbnail=56759)

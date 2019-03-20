@@ -149,5 +149,26 @@ oder ein ST7335-TFT:
 
 Die passenden Installer erkennt man leicht am entsprechenden Namen. Der passende Code für diese Displaytypen bzw. für den Prozess displayd liegt in `/home/pi/iRadio/display` . Hier darf und soll(!) der Nutzer ausdrücklich seine eigenen Anpassungen vornehmen, um so zu einer individuellen Lösung zu kommen! Das iRadio hier soll nur grob den Rahmen für eigenen Konstruktionen vorgeben.
 
+Ein ganz besonderer "Displaytyp" ist der PWM-Servo. Der Code dafür ist in `/home/pi/iRadio/display/servo` zu finden. Installiert wird er mit:
+
+`cd /home/pi/iRadio`
+
+`sudo ./install_ServoD.sh`
+
+`sudo reboot`
+
+Das iRadio ist mit einem PWM-Servo in der Lage, bestimmte Zustände, zum Beispiel Programmspeicherplätze oder Lautstärkeeinstellungen mit einem richtigen Zeiger oder einer richtigen Skale darzustellen. 
+
+Ein von mir sehr geschätzter Radio(um-)bauer aus dem Radio-Bastler-Forum, hat mit dem iRadio einen Volksempfänger zum Internetradio umgebaut. Die alte Frequenzskale, nun angetrieben von einem Servo, zeigt den aktuell eingestellten 
+Programmplatz dar.
+
+![servo1](https://www.radio-bastler.de/forum/attachment.php?thumbnail=60455)
+![servo2](https://www.radio-bastler.de/forum/attachment.php?thumbnail=61100)
+![servo3](https://www.radio-bastler.de/forum/attachment.php?thumbnail=61097)
+
+In Aktion: 
+
+[![](http://img.youtube.com/vi/fL3GbyHzpOE/0.jpg)](http://www.youtube.com/watch?v=fL3GbyHzpOE "")
+
 
 

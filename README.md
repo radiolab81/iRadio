@@ -1,6 +1,11 @@
 # iRadio
 Ein Softwarebaukasten für den Aufbau neuer Radios oder dem Umbau alter Radios zu einem Internetradio auf Raspberry Pi Basis.
 
+![viola](https://www.radio-bastler.de/forum/attachment.php?thumbnail=54713)
+![viola2](https://www.radio-bastler.de/forum/attachment.php?thumbnail=54563)
+![oldie2](https://www.radio-bastler.de/forum/attachment.php?thumbnail=55132)
+![oldie3](https://www.radio-bastler.de/forum/attachment.php?thumbnail=55229)
+
 ## Unterstützte Rechner:
 
  Raspberry 1A(+), 1B(+), 2B, 3A+, 3B(+) direkt mit Raspbian OS oder jedes andere Linux-OS mit APT-Paketverwaltungssystem. 

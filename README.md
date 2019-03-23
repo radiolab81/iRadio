@@ -1,8 +1,12 @@
 # iRadio
 Ein Softwarebaukasten für den Aufbau neuer Radios oder dem Umbau alter Radios zu einem Internetradio auf Raspberry Pi Basis.
 
-![viola](https://www.radio-bastler.de/forum/attachment.php?thumbnail=54713)
+ITT Viola 350 wird zum Digialradio.
+![viola0](https://www.radio-bastler.de/forum/attachment.php?thumbnail=54713)
+![viola1](https://www.radio-bastler.de/forum/attachment.php?thumbnail=54715)
 ![viola2](https://www.radio-bastler.de/forum/attachment.php?thumbnail=54563)
+
+Philips 634 "Digital"
 ![oldie2](https://www.radio-bastler.de/forum/attachment.php?thumbnail=55132)
 ![oldie3](https://www.radio-bastler.de/forum/attachment.php?thumbnail=55229)
 

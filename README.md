@@ -233,6 +233,31 @@ Nach einem Neustart wird die Senderliste des Internetradios automatisch aktualis
 Achtung: In der playlist.m3u darf pro Zeile nur die URL einer Internetradiostation stehen. Keine M3U-Metadaten verwenden!
 Bei der Verwendung einer Skalensimulation oder Servo-PWM sind Internetradiostationen mit URL-Umleitung zu vermeiden und durch fixe URLs zu ersetzen. 
 
+
+## Unterstützung des Rebroadcast einer Rundfunkstation mit dem iRadio:
+Mit iRadio-Version vom 20.05.2019, wird das FM-Transmittermodul MMR-70 zur Aussendung des empfangenen Internetradioprogramms oder Bluetoothstreams unterstützt. Vielen Dank an Tobias Mädel (https://github.com/Manawyrm) für die Bereitstellung des passenden Treibers. 
+
+Wie richtet man eine "Internetradio-UKW-Relaisstation" mit dem iRadio ein?
+
+Nach der Grundinstallation des iRadios und des Anschlusses des Sendemoduls (Achtung: es sind ggf. GPIO-Ressourcenkonflikte zwischen Drehencoder/Tastensteuerung und MMR70 aufzulösen!), wechselt man in das Verzeichnis /home/pi/iRadio/Transmitter/MMR70
+
+`cd /home/pi/iRadio/Transmitter/MMR70`
+
+Die Treiberunterstützung wird mit 
+
+`make`
+
+`sudo make install` 
+
+gebaut und installiert. Danach muss der iRadio-interne VLCD-Daemon noch aktualisiert werden. Man kopiert die Datei vlcd
+aus dem MMR70-Verzeichnis nach /usr/bin/ . 
+
+`sudo cp ./vlcd /usr/bin/`
+
+Ist das erfolgt, startet das iRadio beim nächsten Neustart mit der Unterstützung für den MMR70-Sender. Die Konfiguration des Senders (Frequenz, Sendeleistung und weitere Parameter) kann über eine Datei mit dem Namen FM.txt erfolgen. Eine Beispieldatei befindet sich im MMR70-Verzeichnis des iRadio. Diese Datei muss sich beim Neustart des iRadios entweder in /boot auf der SD-Karte oder im Wurzelverzeichnes eines FAT32-formatierten USB-Sticks befinden. 
+
+
+
 Weiterer Support im Radio-Bastler-Forum unter: https://www.radio-bastler.de 
 Bitte beachtet auch den Blog von meinem Bastlerkollegen Franz-Josef Haffner: https://radiobasteleien.blogspot.com/search/label/iRadio
 Der Franz zeigt auf seinen Seiten unzählige Umbauten und Modernisierungen alter Radios, nicht nur mit dem iRadio! Er hat für 

@@ -2,10 +2,12 @@
 2. MMR70-Senderhardware entsprechend der Datei FMBerry_HARDWARE.pdf bzw.
    HARDWARE.md anschließen, ggf. Hardwarekonflikt mit #GPIO17 - RDSINT auflösen
 3. Treiberdaemon für MMR70-Hardware bauen:
+
+       sudo apt-get install libconfuse-dev
        cd /home/pi/iRadio/Transmitter/MMR70/
        make
        sudo make install
-       cp ./vlcd /usr/bin/	
+       sudo cp ./vlcd /usr/bin/	
        sudo reboot
 
 4. Auf einen FAT32-formatierten USB-Stick die Konfigurationsdatei FM.txt kopieren und

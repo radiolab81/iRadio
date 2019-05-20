@@ -1,0 +1,25 @@
+1. iRadio Grundinstallation ausführen
+2. MMR70-Senderhardware entsprechend der Datei FMBerry_HARDWARE.pdf bzw.
+   HARDWARE.md anschließen, ggf. Hardwarekonflikt mit #GPIO17 - RDSINT auflösen
+3. Treiberdaemon für MMR70-Hardware bauen:
+       cd /home/pi/iRadio/Transmitter/MMR70/
+       make
+       sudo make install
+       cp ./vlcd /usr/bin/	
+       sudo reboot
+
+4. Auf einen FAT32-formatierten USB-Stick die Konfigurationsdatei FM.txt kopieren und
+   ggf. anpassen.
+
+Beispielkonfiguration in FM.txt
+
+TRANSMITTER=ON
+FREQUENCY=100000
+POWER=3
+STEREO=ON
+VOLUME=3
+RDSID=iRadio 
+
+Neustart des iRadios mit gestecktem USB-Stick! Das iRadio aktualisiert sich 
+automatisch und der Sender wird entsprechend der in FM.txt angegebenen Konfiguration
+arbeiten.

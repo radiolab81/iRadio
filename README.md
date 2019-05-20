@@ -234,7 +234,7 @@ Achtung: In der playlist.m3u darf pro Zeile nur die URL einer Internetradiostati
 Bei der Verwendung einer Skalensimulation oder Servo-PWM sind Internetradiostationen mit URL-Umleitung zu vermeiden und durch fixe URLs zu ersetzen. 
 
 
-## Unterstützung des Rebroadcast einer Rundfunkstation mit dem iRadio:
+## Unterstützung des UKW-Rebroadcast einer Internetradiostation mit dem iRadio:
 Mit iRadio-Version vom 20.05.2019, wird das FM-Transmittermodul MMR-70 zur Aussendung des empfangenen Internetradioprogramms oder Bluetoothstreams unterstützt. Vielen Dank an Tobias Mädel (https://github.com/Manawyrm) für die Bereitstellung des passenden Treibers. 
 
 Wie richtet man eine "Internetradio-UKW-Relaisstation" mit dem iRadio ein?

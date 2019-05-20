@@ -245,6 +245,8 @@ Nach der Grundinstallation des iRadios und des Anschlusses des Sendemoduls (Acht
 
 Die Treiberunterstützung wird mit 
 
+`sudo apt-get install libconfuse-dev`
+
 `make`
 
 `sudo make install` 

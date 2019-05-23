@@ -84,7 +84,8 @@ ctlfmberry set freq $FREQUENCY
 ctlfmberry set txpwr $POWER
 ctlfmberry stereo $STEREO
 ctlfmberry set volume $VOLUME
-ctlfmberry set $RDSID
+ctlfmberry set rdsid $RDSID
+ctlfmberry set rdstext $RDSTEXT
 ctlfmberry gainoff
 
 

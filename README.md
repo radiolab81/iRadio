@@ -259,7 +259,26 @@ aus dem MMR70-Verzeichnis nach /usr/bin/ .
 Ist das erfolgt, startet das iRadio beim nächsten Neustart mit der Unterstützung für den MMR70-Sender. Die Konfiguration des Senders (Frequenz, Sendeleistung und weitere Parameter) kann über eine Datei mit dem Namen FM.txt erfolgen. Eine Beispieldatei befindet sich im MMR70-Verzeichnis des iRadio. Diese Datei muss sich beim Neustart des iRadios entweder in /boot auf der SD-Karte oder im Wurzelverzeichnes eines FAT32-formatierten USB-Sticks befinden. 
 
 
+## Update vom 25.07.2019: Unterstützung des UKW-Rebroadcast einer Internetradiostation mit dem Raspberry als Sendehardware:
+Mit dem Update vom 25.07.19. wird zur Aussendung im UKW-Bereich kein MMR70-Sender mehr benötigt (dieser wird aber weiter unterstützt!). Der Raspberry erzeugt das UKW-Signal direkt über seine GPIO-Hardware an GPIO4 (Pin 7). An diesen Pin muss ein Reko-/Bandpassfilter geschaltet werden, damit die ebenfalls vorhandenen Oberwellen keine anderen Funkdienste beeinträchtigen! Ebenso muss beim Anschluß einer Antenne auf die im Betriebsland maximal zulässige Sendeleistung geachtet werden. Bei voller Leistung sind bis zu 75 mW(!) an Sendeleistung zu erwarten. 
 
+### Installation:
+
+1. iRadio Grundinstallation ausführen
+2. Rekonstruktions/Ausgangsfilter an GPIO4 (Pin 7) anschließen!
+3. Sendedaemon installieren
+
+       cd /home/pi/iRadio/Transmitter/PiFmAdv/
+       sudo ./install.sh
+
+4. Auf einen FAT32-formatierten USB-Stick die Konfigurationsdatei FM.txt kopieren und
+   ggf. anpassen.
+
+Neustart des iRadios mit gestecktem USB-Stick! Das iRadio aktualisiert sich 
+automatisch und der Sender wird entsprechend der in FM.txt angegebenen Konfiguration
+arbeiten.
+
+_____________________________________________________________________________________
 Weiterer Support im Radio-Bastler-Forum unter: https://www.radio-bastler.de 
 Bitte beachtet auch den Blog von meinem Bastlerkollegen Franz-Josef Haffner: https://radiobasteleien.blogspot.com/search/label/iRadio
 Der Franz zeigt auf seinen Seiten unzählige Umbauten und Modernisierungen alter Radios, nicht nur mit dem iRadio! Er hat für 

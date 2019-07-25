@@ -1,0 +1,123 @@
+#!/usr/bin/env bash
+
+sed -i 's/geteuid/getppid/' /usr/bin/vlc
+sudo mkdir -p /var/run/vlcd
+
+# Updates on sdcard /boot
+if [ -n $(cat /etc/passwd | grep -w "pi:") ]; then
+   sudo chown pi:pi /var/run/vlcd
+   if [ -f /boot/playlist.m3u ]; then
+       mkdir -p /home/pi/.config/vlc
+       sudo mv -f /boot/playlist.m3u /home/pi/.config/vlc/
+	   # entkommentieren wenn automatisch eine Liste mit den Sendernamen angelegt werden soll
+	   # sudo /usr/bin/autoStation  
+   fi
+fi
+
+if [ -f /boot/wpa_supplicant.conf ]; then
+  sudo mv -f /boot/wpa_supplicant.conf /etc/wpa_supplicant/wpa_supplicant.conf
+fi
+
+if [ -f /boot/wlan.txt ]; then
+  sudo mv -f /boot/wlan.txt /etc/wpa_supplicant/wpa_supplicant.conf
+fi
+
+if [ -f /boot/WLAN.txt ]; then
+  sudo mv -f /boot/WLAN.txt /etc/wpa_supplicant/wpa_supplicant.conf
+fi
+
+if [ -f /boot/FM.txt ]; then
+  mkdir  /home/pi/.config/vlc
+  sudo mv -f /boot/FM.txt /home/pi/.config/vlc/
+fi
+
+
+# Updates on usb flash /dev/sda1
+sudo mount /dev/sda1 /mnt
+
+if [ -f /mnt/playlist.m3u ]; then
+        mkdir -p /home/pi/.config/vlc
+        sudo mv -f /mnt/playlist.m3u /home/pi/.config/vlc/
+ 	    # entkommentieren wenn automatisch eine Liste mit den Sendernamen angelegt werden soll
+	    # sudo /usr/bin/autoStation
+fi
+
+if [ -f /mnt/wpa_supplicant.conf ]; then
+  sudo mv -f /mnt/wpa_supplicant.conf /etc/wpa_supplicant/wpa_supplicant.conf
+  sudo reboot
+fi
+
+if [ -f /mnt/wlan.txt ]; then
+  sudo mv -f /mnt/wlan.txt /etc/wpa_supplicant/wpa_supplicant.conf
+  sudo reboot
+fi
+
+if [ -f /mnt/WLAN.txt ]; then
+  sudo mv -f /mnt/WLAN.txt /etc/wpa_supplicant/wpa_supplicant.conf
+  sudo reboot
+fi
+
+if [ -f /mnt/FM.txt ]; then
+  mkdir  /home/pi/.config/vlc
+  sudo mv -f /mnt/FM.txt /home/pi/.config/vlc/
+fi
+
+
+if [ -f /home/pi/.config/vlc/playlist.m3u ]; then
+       playlist="/home/pi/.config/vlc/playlist.m3u"
+else
+       playlist="/etc/vlcd/default.m3u"
+fi
+
+# Startup FMBerry
+source /home/pi/.config/vlc/FM.txt
+
+if [ $TRANSMITTER == "ON" ]; then
+
+sudo modprobe snd_aloop
+
+/usr/bin/vlc \
+--alsa-audio-device="plughw:1,DEV=0" \
+--intf dummy \
+--extraintf rc:http \
+--rc-host 0.0.0.0:9294 --rc-fake-tty \
+--http-host 0.0.0.0 --http-port 8080 --http-password raspberry \
+--no-quiet \
+--daemon \
+--pidfile /var/run/vlcd/vlcd.pid \
+$playlist &
+
+sudo arecord -fS16_LE -r 44100 -Dplughw:1,1 -c 2 -  | sudo pi_fm_adv --ps $RDSID --power $POWER --freq $FREQUENCY --audio -
+
+else
+   
+# Startup vlc
+volpref=$(grep "^alsa-gain" ~/.config/vlc/vlcrc)
+
+if [ -z $volpref ]; then
+   volpref="alsa-gain 0.065"
+fi
+
+/usr/bin/vlc \
+--$volpref \
+--audio-filter compressor,volnorm \
+--norm-buff-size 10 \
+--norm-max-level 80.0 \
+--norm-max-level -3 \
+--compressor-attack 50.0 \
+--compressor-release 200.0 \
+--compressor-ratio 20.0 \
+--compressor-threshold 0.0 \
+--compressor-rms-peak 0.0 \
+--compressor-knee 1.0 \
+--compressor-makeup-gain 0.0 \
+--intf dummy \
+--extraintf rc:http \
+--rc-host 0.0.0.0:9294 --rc-fake-tty \
+--http-host 0.0.0.0 --http-port 8080 --http-password raspberry \
+--no-quiet \
+--daemon \
+--pidfile /var/run/vlcd/vlcd.pid \
+$playlist
+
+fi

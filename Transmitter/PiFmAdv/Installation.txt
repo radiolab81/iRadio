@@ -1,0 +1,20 @@
+1. iRadio Grundinstallation ausführen
+2. Rekonstruktions/Ausgangsfilter an GPIO4 (Pin 7) anschließen!
+3. Sendedaemon installieren
+
+       cd /home/pi/iRadio/Transmitter/PiFmAdv/
+       sudo ./install.sh
+
+4. Auf einen FAT32-formatierten USB-Stick die Konfigurationsdatei FM.txt kopieren und
+   ggf. anpassen.
+
+Beispielkonfiguration in FM.txt
+
+TRANSMITTER=ON
+FREQUENCY=100000
+POWER=7
+RDSID=iRadio 
+
+Neustart des iRadios mit gestecktem USB-Stick! Das iRadio aktualisiert sich 
+automatisch und der Sender wird entsprechend der in FM.txt angegebenen Konfiguration
+arbeiten.

@@ -41,6 +41,7 @@ Die Steuerung wird als Daemon/Prozess "gpiod" realisiert.
 - 8bit Parallel R61505U   
 - 16bit Parallel ILI9341
 - PWM-Servo getriebene Analogskale zum Beispiel für Programmplatz und Lautstärke
+- eInk-Displays verschiedener Größen (1.5inch - 7.5inch) in Monochrom oder Tri-Color
 
 ### Highlevel über Framebuffer/X11 (Displaydaemon oder Skalensimulation)
 

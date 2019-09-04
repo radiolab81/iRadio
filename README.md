@@ -279,6 +279,13 @@ Neustart des iRadios mit gestecktem USB-Stick! Das iRadio aktualisiert sich
 automatisch und der Sender wird entsprechend der in FM.txt angegebenen Konfiguration
 arbeiten.
 
+## Update vom 04.09.2019: Unterstützung mehrerer e-Paper / e-Ink Displays
+Mit der heutigen Version wird die Unterstützung mehrer e-Ink Display in das iRadio aufgenommen. 
+
+![eink1](https://www.radio-bastler.de/forum/attachment.php?thumbnail=66672)
+![eink1](https://www.radio-bastler.de/forum/attachment.php?thumbnail=66673)
+
+
 _____________________________________________________________________________________
 Weiterer Support im Radio-Bastler-Forum unter: https://www.radio-bastler.de 
 Bitte beachtet auch den Blog von meinem Bastlerkollegen Franz-Josef Haffner: https://radiobasteleien.blogspot.com/search/label/iRadio

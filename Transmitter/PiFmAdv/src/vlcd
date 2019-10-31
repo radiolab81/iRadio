@@ -87,7 +87,7 @@ sudo modprobe snd_aloop
 --pidfile /var/run/vlcd/vlcd.pid \
 $playlist &
 
-sudo arecord -fS16_LE -r 44100 -Dplughw:1,1 -c 2 -  | sudo pi_fm_adv --ps $RDSID --power $POWER --freq $FREQUENCY --audio -
+sudo arecord -fS16_LE -r 44100 -Dplughw:1,1 -c 2 -  | sudo pi_fm_adv --ps $RDSID --power $POWER --freq $FREQUENCY --audio - &
 
 else
    

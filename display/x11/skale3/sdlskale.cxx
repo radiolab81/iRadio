@@ -196,18 +196,18 @@ int main(void) {
    	// welcher Sender wird von vlc gerade wiedergeben ?
     	string str = streamURL;
 
-		i_alt = i;
+	i_alt = i;
     	i = aktueller_Sender(Senderliste,str);
 
-		// URL wegen URL Redirection nicht in Senderliste? Dann belasse Zeiger an Stelle.
-		if (i == -1)
-			i = i_alt;
+	// URL wegen URL Redirection nicht in Senderliste? Dann belasse Zeiger an Stelle.
+	if (i == -1)
+	   i = i_alt;
 
     	// Zeichen Skalenhintergrund ... oder Texture fuer Hintergrundbeleuchtung
     	SDL_SetRenderDrawColor(renderer, 0, 0, 0,255);
     	SDL_RenderClear(renderer);
 
-	if (abs(ZeigerRect.x - ((SENDERABSTAND*i) + ZEIGERANSCHLAG_LINKS)) > delta)
+	if (labs(ZeigerRect.x - ((SENDERABSTAND*i) + ZEIGERANSCHLAG_LINKS)) > delta)
 		delta = SCHRITTWEITE;
 	else
 		delta = 1;

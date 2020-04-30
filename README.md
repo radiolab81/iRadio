@@ -295,7 +295,7 @@ Die Verwendung des noised ist nicht(!) an eine Skalensimulation gebunden, eignet
 
 (Klick führt zu Youtube)
 
-[![](https://i9.ytimg.com/vi/XSdv0t-ksyM/mq1.jpg?sqp=CIDrrPUF&rs=AOn4CLCSTFvaBg3scu_x6ZkzKT1ORTavNg)](https://youtu.be/XSdv0t-ksyM "")
+[![](https://i9.ytimg.com/vi/XSdv0t-ksyM/mq1.jpg)](https://youtu.be/XSdv0t-ksyM "")
 
 
 

@@ -285,6 +285,19 @@ Mit der heutigen Version wird die Unterstützung mehrer e-Ink Displays in das iR
 ![eink1](https://www.radio-bastler.de/forum/attachment.php?thumbnail=66672)
 ![eink1](https://www.radio-bastler.de/forum/attachment.php?thumbnail=66673)
 
+## Update vom 30.04.2020: Simulation eines Abstimmgeräusches
+Mit dem Update vom 30.04.2020 ist es möglich, zwischen dem Umschalten zweier Internetradiosender ein Abstimmgeräusch einzuspielen. Damit kann das Verhalten eines echten Radios noch besser simuliert werden. Um das zu ermöglichen, wurde ein neuer Daemon/Prozess im iRadio eingeführt, den noised .
+Der Soucecode für diesen Prozess liegt im Verzeichnis "noise_generator" in der Datei noised.cxx . Über das Buildscript build.sh im gleichen Ordner kann der Daemon gebaut werden. Der weitere Installationsweg des noised steht in der install.txt .
+
+Es werden zwei vorbereitete Abstimmgeräusche in den Dateien noise.mp3 und tuning.wav mitgeliefert. Eigene Abstimmgeräusche sind natürlich ebenso möglich, siehe install.txt
+
+Die Verwendung des noised ist nicht(!) an eine Skalensimulation gebunden, eignet sich für diese aber besonders gut, siehe nachfolgendes Demovideo:
+
+(Klick führt zu Youtube)
+
+[![noisedvideo](https://i9.ytimg.com/vi/XSdv0t-ksyM/mq1.jpg)](https://youtu.be/XSdv0t-ksyM "")
+
+
 
 _____________________________________________________________________________________
 Weiterer Support im Radio-Bastler-Forum unter: https://www.radio-bastler.de 

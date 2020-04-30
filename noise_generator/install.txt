@@ -1,0 +1,24 @@
+Installation eines Rauschgenerators (Noise-Daemon) zur Simulation eines Abstimmgeräusches zwischen den Sendern.
+
+1. Im Quelltext des Noise-Daemonen noised.cxx die passende im Dateisystem hinterlegte Rauschaufnahme angeben.
+Und zwar an der Stelle:
+
+...
+if (!bRadioAn) {
+ 	if (aplay_started == 0) {   system("aplay --channels=2 --rate=44100 /home/pi/iRadio/noise_generator/noise.mp3 &");
+ 	aplay_started = 1;
+}
+....
+
+
+   Danach Quelltext speichern.
+
+2. Noise-Daemonen noised mit dem Buildscript build.sh bauen.
+
+3. Erzeugten noised nach /usr/bin kopieren.
+
+4. Start von noided in /etc/rc.local eintragen.
+
+5. Fertig, sobald vlc mit der Wiedergabe einer Internetradiostation pausiert, wird die Rauschdatei abgespielt.
+
+

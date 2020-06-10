@@ -7,8 +7,9 @@ if [ "$(id -u)" != 0 ]; then
 fi
 
 apt-get update
-apt-get install vlc-nox
+apt-get install vlc-nox vlc-bin
 apt-get install autoconf
+apt-get install automake-1.15
 
 if [ $? -ne 0 ] # apt-get return an error
 then

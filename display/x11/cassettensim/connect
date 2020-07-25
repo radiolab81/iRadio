@@ -1,0 +1,9 @@
+#!/bin/bash -x
+
+ogg123 /usr/share/sounds/freedesktop/stereo/service-login.oga
+
+echo "stop" | nc 127.0.0.1 9294 -w 0
+echo "blth" | nc -u 127.0.0.1 6030 -w 0
+
+# disconnect wifi to prevent dropouts - TODO: check what permissions bt-speaker might need for this (netdev group?)
+# ifconfig wlan0 down &

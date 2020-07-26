@@ -18,7 +18,7 @@ if [ "$_IP" ]; then
 fi
 
 #amixer -M set PCM 85%   # volume setting for RaspbianOS and similar
-#amixer cset numid=1 300 # volume setting for RaspberryOS and later
+#amixer cset numid=n m   # volume setting for RaspberryOS and later where n ist device-id and m is the value for volume
 
 /usr/bin/vlcd
 /usr/bin/displayd &

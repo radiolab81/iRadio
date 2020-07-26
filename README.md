@@ -297,7 +297,7 @@ Die Verwendung des noised ist nicht(!) an eine Skalensimulation gebunden, eignet
 
 [![](https://i9.ytimg.com/vi/XSdv0t-ksyM/mq1.jpg?sqp=CIDrrPUF&rs=AOn4CLCSTFvaBg3scu_x6ZkzKT1ORTavNg)](https://youtu.be/XSdv0t-ksyM "")
 
-## Update vom 26.07.2020: Weitere SDL2-Skalensimulationen als Beispiele aufgenommen
+## Update vom 26.07.2020: Weitere SDL2-Skalensimulationen als Beispielcode aufgenommen
 
 Hier wird ein alter Kassettenrecoder zu einem Internetradio. In das Kassettenfach wurde ein Display eingebaut, auf dem diesmal eine besondere Skalensimulation läuft, nämlich eine in Form einer alten Musikkassette.
 

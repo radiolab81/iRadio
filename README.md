@@ -297,8 +297,29 @@ Die Verwendung des noised ist nicht(!) an eine Skalensimulation gebunden, eignet
 
 [![](https://i9.ytimg.com/vi/XSdv0t-ksyM/mq1.jpg?sqp=CIDrrPUF&rs=AOn4CLCSTFvaBg3scu_x6ZkzKT1ORTavNg)](https://youtu.be/XSdv0t-ksyM "")
 
+## Update vom 26.07.2020: Weitere SDL2-Skalensimulationen als Beispiele aufgenommen
 
+Hier wird ein alter Kassettenrecoder zu einem Internetradio. In das Kassettenfach wurde ein Display eingebaut, auf dem diesmal eine besondere Skalensimulation läuft, nämlich eine in Form einer alten Musikkassette.
 
+![cass1](https://github.com/BM45/iRadio/blob/master/pics4www/Cassettensimulation.jpg)
+
+Während des Internetradiobetriebs drehen sich die animierten Cassettenspulen und der Sendername und Interpret werden in das Namensfeld der Kassette eingetragen.
+
+![cass2](https://github.com/BM45/iRadio/blob/master/pics4www/Cassettensimulation2.jpg)
+
+Danke Hans für diese tolle Zuarbeit zum iRadio. Sein Projekt zu diesem Radio kann man hier nachlesen: https://www.radio-bastler.de/forum/showthread.php?tid=15127
+
+Als weitere Skalensimulation haben wir eine Skale eines Lorenz C2 aufgebaut!
+
+![lorenz1](https://github.com/BM45/iRadio/blob/master/pics4www/lorenzc2_3.jpg)
+
+Im Internetradiobetrieb wird beim Umschalten ganz normal die Frequenznadel entsprechend der eingelesenen Senderliste bewegt, zusätzlich wird der Stationsname eingeblendet.
+
+![lorenz2](https://github.com/BM45/iRadio/blob/master/pics4www/lorenzc2_1.jpg)
+
+Wird das Radio aber in den Standbymodus versetzt, so zeigt die Frequenznadel die aktuelle Uhrzeit an. Zusätzlich lässt sich eine Weckzeit programmieren (roter Zeiger) an dem das Radio automatisch in den Internetradiobetrieb geht! Natürlich lassen sich auch andere Nachtdesigns implementieren, denn wie immer ist das iRadio nur eine Ideensammlung und ein Rahmen für Euer eigenes Internetradio. 
+
+![lorenz3](https://github.com/BM45/iRadio/blob/master/pics4www/lorenzc2_2.jpg)
 _____________________________________________________________________________________
 Weiterer Support im Radio-Bastler-Forum unter: https://www.radio-bastler.de 
 Bitte beachtet auch den Blog von meinem Bastlerkollegen Franz-Josef Haffner: https://radiobasteleien.blogspot.com/search/label/iRadio

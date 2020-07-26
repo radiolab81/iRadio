@@ -17,7 +17,7 @@ if [ "$_IP" ]; then
   printf "My IP address is %s\n" "$_IP"
 fi
 
-amixer -M set PCM 85%
+#amixer -M set PCM 85%
 
 /usr/bin/vlcd
 /usr/bin/displayd &

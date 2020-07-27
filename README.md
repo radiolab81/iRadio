@@ -15,7 +15,7 @@ Ein Softwarebaukasten für den Aufbau neuer Radios oder dem Umbau alter Radios z
 
 ## Unterstützte Rechner:
 
- Raspberry 1A(+), 1B(+), 2B, 3A+, 3B(+) direkt mit Raspbian OS oder jedes andere Linux-OS mit APT-Paketverwaltungssystem. 
+ Raspberry 1A(+), 1B(+), 2B, 3A+, 3B(+) direkt mit Raspbian OS (https://downloads.raspberrypi.org/raspbian/images/) oder jedes andere Linux-OS mit APT-Paketverwaltungssystem. 
   
 ## Steuerung des iRadio durch:
 

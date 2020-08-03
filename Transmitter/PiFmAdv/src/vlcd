@@ -77,7 +77,7 @@ if [ $TRANSMITTER == "ON" ]; then
 sudo modprobe snd_aloop
 
 /usr/bin/vlc \
---alsa-audio-device="plughw:1,DEV=0" \
+--alsa-audio-device="plughw:2,DEV=0" \
 --intf dummy \
 --extraintf rc:http \
 --rc-host 0.0.0.0:9294 --rc-fake-tty \
@@ -87,7 +87,7 @@ sudo modprobe snd_aloop
 --pidfile /var/run/vlcd/vlcd.pid \
 $playlist &
 
-sudo arecord -fS16_LE -r 44100 -Dplughw:1,1 -c 2 -  | sudo pi_fm_adv --ps $RDSID --power $POWER --freq $FREQUENCY --audio - &
+sudo arecord -fS16_LE -r 44100 -Dplughw:2,1 -c 2 -  | sudo pi_fm_adv --ps $RDSID --power $POWER --freq $FREQUENCY --audio - &
 
 else
    

@@ -322,6 +322,32 @@ Im Internetradiobetrieb wird beim Umschalten ganz normal die Frequenznadel entsp
 Wird das Radio aber in den Standbymodus versetzt, so zeigt die Frequenznadel die aktuelle Uhrzeit an. Zusätzlich lässt sich eine Weckzeit programmieren (roter Zeiger) an dem das Radio automatisch in den Internetradiobetrieb geht! Natürlich lassen sich auch andere Nachtdesigns implementieren, denn wie immer ist das iRadio nur eine Ideensammlung und ein Rahmen für Euer eigenes Internetradio. 
 
 ![lorenz3](https://github.com/BM45/iRadio/blob/master/pics4www/lorenzc2_2.jpg)
+
+## Update vom 31.08.2020: Bedienung des iRadios mittels Gestenerkennung mit dem PAJ7620U2-Sensor
+
+![geste1](https://github.com/BM45/iRadio/blob/master/pics4www/Gesetenerkennung.jpeg)
+
+Neben der iRadio-Bedienung über Tasten/Drehencoder (gpiod) ist nun auch die berührungslose Bedienung mittels Gestensensor möglich!
+Mit dem PAJ7620U2-Sensor versteht das iRadio 9 verschiedene Gesten und kann darauf mit bestimmten Aktionen (Programmumschaltung, Lautstärkeänderung, An/Aus, ...) reagieren. Mit dem PAJ7620U2 werden folgende Gesten erkannt:
+
+- Hand nach links
+- Hand nach rechts
+- Hand nach oben
+- Hand nach unten 
+- Hand auf Sensor zubewegen
+- Hand von Sensor wegbewegen
+- Hand vor Sensor im Uhrzeigersinn
+- Hand vor Sensor gegen Uhrzeigersinn
+- Wellenförmige Bewegung vor dem Sensor
+
+Die Erkennungsreichweite des Sensors beträgt zwischen 5 und 20 cm, hinter Skalenglas oder abgedunkelter Rauchglasskale wird die Reichweite etwas gedämpft. Die Erkennung erfolgt mittels IR-Licht und einem Sensorarray (ähnlich einer kleinen Kamera). Der Erfassungsbereich liegt bei 60°, die erkannte Geste wird per I2C-Bus vom Sensor ausgelesen. 
+
+### Anschluß des PAJ7620U2.
+
+Der PAJ7620U2 wird wie alle I2C-Komponenten des Radios an den I2C-Bus (SDA, SCL) des Raspberry gehangen. Vcc = 3.3 V und GND, die Internruptleitung kann freibleiben, Sie wird im Democode nicht benötigt.
+
+Der Sensor kann neben der herkömmlichen Bedienung über Tasten, Drehencoder oder Touchscreen benutzt werden, die Funktionalität ist in einem eigenen Daemon (gestured) implementiert. Der Quellcode liegt in iRadio/Gesture/PAJ7620U2 und dort in der Datei PAJ7620U2.c . In der Switch-Anweisung können nach dem Vorbild der dortigen Beispielaktionen auch eigene Reaktionen codiert werden. Gebaut und im Radiosystem installiert wird die Gestenerkennung durch das Installationsscript install_gestenerkennung.sh im iRadio-Projektverzeichnis. Bitte den Ausgaben des Installationsscriptes folgen!
+
 _____________________________________________________________________________________
 Weiterer Support im Radio-Bastler-Forum unter: https://www.radio-bastler.de 
 Bitte beachtet auch den Blog von meinem Bastlerkollegen Franz-Josef Haffner: https://radiobasteleien.blogspot.com/search/label/iRadio

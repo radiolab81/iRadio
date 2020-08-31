@@ -26,4 +26,5 @@ fi
 sleep 10
 echo "play" | nc 127.0.0.1 9294 -N
 echo "goto 0" | nc 127.0.0.1 9294 -N
+#/usr/bin/gestured &  # Gestenerkennung starten
 exit 0

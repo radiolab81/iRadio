@@ -325,7 +325,7 @@ Wird das Radio aber in den Standbymodus versetzt, so zeigt die Frequenznadel die
 
 ## Update vom 31.08.2020: Bedienung des iRadios mittels Gestenerkennung mit dem PAJ7620U2-Sensor
 
-![geste1](https://github.com/BM45/iRadio/pics4www/Gesetenerkennung.jpeg)
+![geste1](https://github.com/BM45/iRadio/blob/master/pics4www/Gestenerkennung.jpeg)
 
 Neben der iRadio-Bedienung über Tasten/Drehencoder (gpiod) ist nun auch die berührungslose Bedienung mittels Gestensensor möglich!
 Mit dem PAJ7620U2-Sensor versteht das iRadio 9 verschiedene Gesten und kann darauf mit bestimmten Aktionen (Programmumschaltung, Lautstärkeänderung, An/Aus, ...) reagieren. Mit dem PAJ7620U2 werden folgende Gesten erkannt:

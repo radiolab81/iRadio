@@ -348,6 +348,14 @@ Der PAJ7620U2 wird wie alle I2C-Komponenten des Radios an den I2C-Bus (SDA, SCL)
 
 Der Sensor kann neben der herkömmlichen Bedienung über Tasten, Drehencoder oder Touchscreen benutzt werden, die Funktionalität ist in einem eigenen Daemon (gestured) implementiert. Der Quellcode liegt in iRadio/Gesture/PAJ7620U2 und dort in der Datei PAJ7620U2.c . In der Switch-Anweisung können nach dem Vorbild der dortigen Beispielaktionen auch eigene Reaktionen codiert werden. Gebaut und im Radiosystem installiert wird die Gestenerkennung durch das Installationsscript install_gestenerkennung.sh im iRadio-Projektverzeichnis. Bitte den Ausgaben des Installationsscriptes folgen!
 
+## Update vom 09.09.2020: Das bisherige Projekt "WorldRadio" wurde ins iRadio integriert.
+
+![rtlsdr](https://github.com/BM45/iRadio/blob/master/pics4www/iRadio_rtlsdr.jpg)
+
+Mit diesem Funktionsupdate wollen wir unserem Internetradio neue Empfangswege beibringen. Ein mit iRadio umgebautes/neu aufgebautes Internetradio kann ab sofort auch richtigen Rundfunk empfangen. Zunächst können RTLSDR USB-Sticks aus dem Osmocom rtl-sdr Projekt (https://osmocom.org/projects/rtl-sdr/wiki/Rtl-sdr) genutzt werden, um zum Beispiel UKW-Rundfunk, Flugfunk, (SSB-) Amateurfunk und vieles mehr zu empfangen. Der experimentelle Beispielcode für eine FLTK-Benutzeroberfläche, die Internetradio und UKW-Radio/AM-Flugfunk unter einen Hut bringt, liegt in iRadio/Tuner/rtlsdr. Dieser Beispielcode kann und soll wie beim iRadio üblich, eine Vorlage. Schablone oder Denkanstoß für eigene Umsetzungen sein. Die Installation der rtlsdr-Unterstützung kann über das Installscript install.sh in iRadio/Tuner/rtlsdr/ erfolgen. 
+
+Die FLTK-GUI wird mit dem Script build_gui.sh compiliert. Die übersetzte GUI ist danach wie eine Skalensimuation in den Systemstart einzubinden. Natürlich ist man nicht auf eine Bedienung per Touchscreen beschränkt! Es lassen sich auch Bedienkonzepte mit allen mitgelieferten Displayarten und gpiod-Steuerdaemonen realisieren.
+
 _____________________________________________________________________________________
 Weiterer Support im Radio-Bastler-Forum unter: https://www.radio-bastler.de 
 Bitte beachtet auch den Blog von meinem Bastlerkollegen Franz-Josef Haffner: https://radiobasteleien.blogspot.com/search/label/iRadio

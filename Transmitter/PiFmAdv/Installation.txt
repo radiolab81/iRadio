@@ -11,7 +11,7 @@
 Beispielkonfiguration in FM.txt
 
 TRANSMITTER=ON
-FREQUENCY=100000
+FREQUENCY=100.0
 POWER=7
 RDSID=iRadio 
 

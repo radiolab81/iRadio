@@ -356,6 +356,32 @@ Mit diesem Funktionsupdate wollen wir unserem Internetradio neue Empfangswege be
 
 Die FLTK-GUI wird mit dem Script build_gui.sh compiliert. Die übersetzte GUI ist danach wie eine Skalensimuation in den Systemstart einzubinden. Natürlich ist man nicht auf eine Bedienung per Touchscreen beschränkt! Es lassen sich auch Bedienkonzepte mit allen mitgelieferten Displayarten und gpiod-Steuerdaemonen realisieren.
 
+## Update vom 17.09.2020: Unterstützung für UKW-Radio-IC RDA5807 integriert.
+
+Mit diesem Funktionsupdate wird es möglich neben Internetradio auch UKW-Radio über den IC RDA5807 anzubieten. Der RDA5807 ist ein ungefähr 3x3mm großer Chip in dem ein komplettes Software-Defined-Radio (SDR) für 50-108 MHz steckt. Er kann somit das europäische/amerikanische UKW-Band genauso abdecken wie das japanische oder russische Frequenzband. 
+
+![RDA5807a](https://github.com/BM45/iRadio/blob/master/pics4www/RDA5807_System.JPG)
+
+Zusätzlich zu diesem breiten Frequenzband ist auch die Möglichkeit des RDS-Empfang gegeben. Die komplette MPX-Dekodierung wird rein in Software auf dem im Chip integrierten Basisband-Signalprozessor erledigt.
+
+Den RDA5807 gibt es im deutschen Handel in der Regel in Form eines Breakoutboards, die Pinbelegung ist nachfolgend zu sehen:
+
+![RDA5807b](https://github.com/BM45/iRadio/blob/master/pics4www/Pinout.jpg)
+
+Im iRadio gibt es zwei Möglichkeiten der Installation der RDA5807-Unterstützung.
+
+1. Über den Installer build_rda5807_support_only.sh wird allein der Steuerdaemon für den RDA5807 compiliert und nach /usr/bin kopiert.
+
+Die Steuerung des RDA5807-Chips erfolgt dann direkt über diesen Daemon:
+
+![RDA5807c](https://github.com/BM45/iRadio/blob/master/pics4www/rda5807daemon.jpg)
+
+2. Über das Installscript build_rda5807_st7735demo.sh wird neben dem Steuerdaemon für den RDA5807 auch eine Demoskale (displayd) für ST7735-Displays und ein passender gpiod für einen Rotaryencoder compiliert und installiert.
+
+![RDA5807d](https://github.com/BM45/iRadio/blob/master/pics4www/RDA5807_Menues.JPG)
+
+In dieser Demonstration ist der Betrieb von Internetradio und UKW-Radio über einen(!) Drehregler mit Drucktaster möglich. Die Umschaltung des Empfangsmodus erfolgt durch kurzen Druck, Wechsel von und in den Standbybetrieb ist durch einen langen Druck auf den Taster möglich. Der Quellcode für RDA5807-Steuerdaemon, sowie Demo-displayd und gpiod liegt im Ordner Tuner/RDA5807 des iRadio-Basisordners. Dieser Beispielcode kann und soll wie beim iRadio üblich, eine Vorlage, Schablone oder Denkanstoß für eigene Umsetzungen sein und natürlich sind die dort gezeigten Ansteuerungswege auch auf andere Displays und Bedienkonzepte übertragbar.
+
 _____________________________________________________________________________________
 Weiterer Support im Radio-Bastler-Forum unter: https://www.radio-bastler.de 
 Bitte beachtet auch den Blog von meinem Bastlerkollegen Franz-Josef Haffner: https://radiobasteleien.blogspot.com/search/label/iRadio

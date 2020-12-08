@@ -77,6 +77,8 @@ Die Steuerung wird als Daemon/Prozess "gpiod" realisiert.
 - TLS8204
 - UPD161704
 
+#### ACHTUNG: fbtft (Linux Framebuffer drivers for small TFT LCD display modules) zur Zeit nur bis Kernelversion 5.3, siehe https://github.com/notro/fbtft/wiki , benötigen Sie diese Art der Displayansteuerung, nehmen Sie Rasbian Versionen vor 02/2020 als Betriebssystemgrundlage https://downloads.raspberrypi.org/raspbian/images/ .
+
 ## Zusatzfunktion:
 
 Bei Raspberrys mit integrierter Bluetooth-Konnektivität, kann das iRadio als Bluetooth-Funklautsprecher arbeiten. Medieninhalte können über Bluetooth direkt zum iRadio gestreamt werden. Die Wiedergabe des Internetradioprogramms wird bei Verbindungsaufnahme über Bluetooth automatisch pausiert.

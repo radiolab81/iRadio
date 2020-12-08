@@ -18,7 +18,7 @@ Ein Softwarebaukasten für den Aufbau neuer Radios oder dem Umbau alter Radios z
  Raspberry 1A(+), 1B(+), 2B, 3A+, 3B(+), 4 direkt mit Raspbian OS (https://downloads.raspberrypi.org/raspbian/images/). Raspberry Pi OS wird zur Zeit möglicherweise nicht vollständig out-of-box unterstützt. Das iRadio setzt eine funktionierende Audiokonfiguration auf dem Raspberry voraus!
 
 ***************************************************************************************************************************************
-### Neu: iRL - iRadio on Linux, eine Linuxdistribution mit vorinstallierten und vorkonfiguriertem iRadio: https://github.com/BM45/iRL
+### Neu: iRL - iRadio on Linux, eine Linuxdistribution mit vorinstallierten und vorkonfiguriertem iRadio. + Als Image für eine SD-Karte hier downloadbar: https://github.com/BM45/iRL
 
 ***************************************************************************************************************************************
   

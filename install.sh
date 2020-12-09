@@ -30,8 +30,9 @@ make install
 
 gcc /home/pi/iRadio/gpiod.c -o /home/pi/iRadio/gpiod -lbcm2835
 
-cd /home/pi/iRadio/wiringPi
-./build
+#cd /home/pi/iRadio/wiringPi
+#./build
+sudo dpkg -i /home/pi/iRadio/wiringpi-latest.deb
 
 cd /home/pi/iRadio/autoStation
 ./build.sh

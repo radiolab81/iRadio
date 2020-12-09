@@ -15,7 +15,7 @@ Ein Softwarebaukasten für den Aufbau neuer Radios oder dem Umbau alter Radios z
 
 ## Unterstützte Rechner:
 
- Raspberry 1A(+), 1B(+), 2B, 3A+, 3B(+), 4 direkt mit Raspbian OS (https://downloads.raspberrypi.org/raspbian/images/). Raspberry Pi OS wird zur Zeit möglicherweise nicht vollständig out-of-box unterstützt. Das iRadio setzt eine funktionierende Audiokonfiguration auf dem Raspberry voraus!
+ Raspberry 1A(+), 1B(+), 2B, 3A+, 3B(+), 4 direkt mit Raspbian OS (https://downloads.raspberrypi.org/raspbian/images/). Das neue Raspberry Pi OS wird zur Zeit möglicherweise nicht vollständig out-of-box unterstützt. Das iRadio setzt eine funktionierende Audiokonfiguration auf dem Raspberry voraus!
 
 ***************************************************************************************************************************************
 ### Neu: iRL - iRadio on Linux, eine Linuxdistribution mit vorinstallierten und vorkonfiguriertem iRadio. Als Image für eine SD-Karte hier downloadbar: https://github.com/BM45/iRL
@@ -386,6 +386,8 @@ Die Steuerung des RDA5807-Chips erfolgt dann direkt über diesen Daemon:
 ![RDA5807d](https://github.com/BM45/iRadio/blob/master/pics4www/RDA5807_Menues.JPG)
 
 In dieser Demonstration ist der Betrieb von Internetradio und UKW-Radio über einen(!) Drehregler mit Drucktaster möglich. Die Umschaltung des Empfangsmodus erfolgt durch kurzen Druck, Wechsel von und in den Standbybetrieb ist durch einen langen Druck auf den Taster möglich. Der Quellcode für RDA5807-Steuerdaemon, sowie Demo-displayd und gpiod liegt im Ordner Tuner/RDA5807 des iRadio-Basisordners. Dieser Beispielcode kann und soll wie beim iRadio üblich, eine Vorlage, Schablone oder Denkanstoß für eigene Umsetzungen sein und natürlich sind die dort gezeigten Ansteuerungswege auch auf andere Displays und Bedienkonzepte übertragbar.
+
+## Update vom 09.12.2020: Update der bcm2835- und wiringpi- Bibliotheken auf Version 1.68 bzw. 2.52 zur Verbesserung der lowlevel-Unterstützung des Raspberry 4 
 
 _____________________________________________________________________________________
 Weiterer Support im Radio-Bastler-Forum unter: https://www.radio-bastler.de 

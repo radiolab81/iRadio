@@ -389,7 +389,7 @@ In dieser Demonstration ist der Betrieb von Internetradio und UKW-Radio über ei
 
 ## Update vom 09.12.2020: Update der bcm2835- und wiringpi- Bibliotheken auf Version 1.68 bzw. 2.52 zur Verbesserung der lowlevel-Unterstützung des Raspberry 4 
 
-## Update vom 13.12.2020: Simulation von Anzeigeröhren (magische Augen,Bänder)
+## Update vom 13.01.2021: Simulation von Anzeigeröhren (magische Augen,Bänder)
 
 ### Demoanwendung - Internetradio mit Skalensimulation und Anzeigenröhre über zwei HDMI-Displays
 ![magicEye1](https://github.com/BM45/iRadio/blob/master/pics4www/simmagiceyes.jpg)

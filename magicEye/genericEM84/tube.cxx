@@ -79,8 +79,8 @@ int main(void) {
 	return 3;
     }
 
-    textur_tube = IMG_LoadTexture(renderer, "tube.png");
-    textur_tubemitte = IMG_LoadTexture(renderer, "tube2.png");
+    textur_tube = IMG_LoadTexture(renderer, "/home/pi/iRadio/magicEye/genericEM84/tube.png");
+    textur_tubemitte = IMG_LoadTexture(renderer, "/home/pi/iRadio/magicEye/genericEM84/tube2.png");
 
     if (textur_tube == NULL) {
 	SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Fehler beim Laden der Texturen: %s", IMG_GetError());

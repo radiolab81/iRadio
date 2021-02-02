@@ -1,5 +1,5 @@
 # iRadio
-Ein Softwarebaukasten für den Aufbau neuer Radios oder dem Umbau alter Radios zu einem Internetradio auf Raspberry Pi Basis.
+Ein Softwarebaukasten für den Aufbau neuer Radios oder dem Umbau alter Radios zu einem Digitalradio (Internet und/oder DAB+) auf Raspberry Pi Basis.
 
 
 #### ITT Viola 350 wird zum Digialradio...

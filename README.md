@@ -401,7 +401,7 @@ Auf Basis von SDL2/X11 können nun Anzeigeröhren simuliert werden. Im Ordner "m
 Mit dem Funktionsupdate vom 02.02.2021 wird das iRadio zu einem modularen Softwarebaukasten für den Neuaufbau von Digitalradios (früher nur Internetradio) oder zum Umbau alter Radios in ein Internet- und/oder DAB+ Radio. 
 ![dab1](https://github.com/BM45/iRadio/blob/master/pics4www/iRadioDAB.jpg)
 
-Als Empfänger für DAB+ kann beim iRadio eine Vielzahl verschiedener Hardware dienen. Angefangen vom einfachen RTLSDR-USB-Stick für 10 Euro über Mittelklasse-SDRs wie dem AIRSpy (R2/mini) oder HackRF One bis zu hochwertige RFspace-SDRs. Die Empfangshardware kann dabei zentral am Raspberry, also im Radiogehäuse untergebracht sein, als auch über eine TCP/IP Verbindung dezentral angeschlossen werden. Ein solcher dezentraler SDR-Empfänger kann an empfangsgünstigen Orten (Dachboden, Radioshack, Tower) untergebracht sein und mehrere iRadio-Instanzen mit DAB+ Empfang versorgen.
+Als Empfänger für DAB+ kann beim iRadio eine Vielzahl verschiedener Hardware dienen. Angefangen vom einfachen RTLSDR-USB-Stick für 10 Euro, über Mittelklasse-SDRs wie dem AIRSpy (R2/mini) oder HackRF One, bis zu hochwertige RFspace-SDRs. Die Empfangshardware kann dabei zentral am Raspberry, also im Radiogehäuse untergebracht sein, als auch über eine TCP/IP Verbindung dezentral angeschlossen werden. Ein solcher dezentraler SDR-Empfänger kann an empfangsgünstigen Orten (Dachboden, Radioshack, Tower) untergebracht sein und mehrere iRadio-Instanzen mit DAB+ Empfang versorgen.
 
 ![dab1](https://github.com/BM45/iRadio/blob/master/pics4www/iRadioDABHardware.jpg)
 

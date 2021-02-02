@@ -442,7 +442,10 @@ Da zur Audiowiedergabe von DAB+ Stationen, dass bereits im Internetradiomodus be
 
 ![dab1](https://github.com/BM45/iRadio/blob/master/pics4www/iRadioDABSkalensim.jpg)
 
-Das sowohl Skalensimulation, wie auch SDR/DAB+ Empfang rechenintensive Prozesse sind, sollten solche Neu-/Umbauen modernen Raspberry Pi 4 (oder wenigstens späteren 3er Modellen) vorbehalten sein, wobei 1/2 GB RAM-Systeme vollkommend ausreichend sind.
+Da sowohl Skalensimulation, wie auch SDR/DAB+ Empfang rechenintensive Prozesse sind, sollten solche Neu-/Umbauen modernen Raspberry Pi 4 (oder wenigstens späteren 3er Modellen) vorbehalten sein um gute Systemantwortzeiten zu erreichen, wobei 1/2 GB RAM-Systeme vollkommend ausreichend sind.
+
+Ebenso ist es möglich, wie auch schon beim Internetradio, die empfangene DAB+ Station direkt über UKW (via Sony MMR70, GPIO-TX) wieder auszusenden. 
+
 
 _____________________________________________________________________________________
 Weiterer Support im Radio-Bastler-Forum unter: https://www.radio-bastler.de 

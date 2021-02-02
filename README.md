@@ -394,7 +394,55 @@ In dieser Demonstration ist der Betrieb von Internetradio und UKW-Radio über ei
 ### Demoanwendung - Internetradio mit Skalensimulation und Anzeigenröhre über zwei HDMI-Displays
 ![magicEye1](https://github.com/BM45/iRadio/blob/master/pics4www/simmagiceyes.jpg)
 
-Auf Basis von SDL2/X11 können nun Anzeigeröhren simuliert werden. Im Ordner "magicEye" gibt es dazu zwei generische Simulationen vom Typ EM34 und EM84, die zur Anzeige der WLAN-Signalstärke dienen. Der eigentliche Simulationscode der Anzeigenröhre ist in der Datei tube.cxx enthalten, die Ermittlung der WLAN-Signalstärke wird in der Datei signal.cxx umgesetzt. Die PNG-Dateien enthalten Fotografien richtiger Röhren und dienen als Ebenen der fotorealistischen Darstellung der Simulation. Durch Codeänderungen können durch die Anzeigenröhren auch andere numerische Werte repräsentiert werden, das iRadio soll hier wie immer nur einen Rahmen vorgeben und zu eigenen Umsetzungen anregen! Die Simulation der Anzeigenröhre auf Basis von SDL2 orientieren sich stark an der Skalensimulation, entsprechend ähnlich ist die Installation vorzunehmen. Zunächst wird durch das build-Script build.sh die Simulation der Anzeigenröhre gebaut, wodurch ein neuer Daemon namens magicEyed entsteht. Für den Autostart ist dieser Deamon wie bei den Skalensimulationen in /etc/rc.local aufzunehmen. Das darstellende Display für diese Simulationen kann ein HDMI oder GPIO-Display sein. Mischbetrieb ist zulässig, ebenso Dual-Displaybetrieb zur Anzeige von Senderinfo/Skalensimulation und(!) Simulation der Anzeigenröhre und beschränkt sich nicht nur auf die beiden HDMI-Ausgänge eines Raspberry PI 4. Wie bei fotorealistischen Simulationen im iRadio üblich, sollten wenn immer möglich beschleunigte Grafiktreiber eingesetzt werden. 
+Auf Basis von SDL2/X11 können nun Anzeigeröhren simuliert werden. Im Ordner "magicEye" gibt es dazu zwei generische Simulationen vom Typ EM34 und EM84, die zur Anzeige der WLAN-Signalstärke dienen. Der eigentliche Simulationscode der Anzeigenröhre ist in der Datei tube.cxx enthalten, die Ermittlung der WLAN-Signalstärke wird in der Datei signal.cxx umgesetzt. Die PNG-Dateien enthalten Fotografien richtiger Röhren und dienen als Ebenen der fotorealistischen Darstellung der Simulation. Durch Codeänderungen können durch die Anzeigenröhren auch andere numerische Werte repräsentiert werden, das iRadio soll hier wie immer nur einen Rahmen vorgeben und zu eigenen Umsetzungen anregen! Die Simulation der Anzeigenröhre auf Basis von SDL2 orientieren sich stark an der Skalensimulation, entsprechend ähnlich ist die Installation vorzunehmen. Zunächst wird durch das build-Script build.sh die Simulation der Anzeigenröhre gebaut, wodurch ein neuer Daemon namens magicEyed entsteht. Für den Autostart ist dieser Deamon wie bei den Skalensimulationen in /etc/rc.local aufzunehmen. Das darstellende Display für diese Simulationen kann ein HDMI oder GPIO-Display sein. Mischbetrieb ist zulässig, ebenso Dual-Displaybetrieb zur Anzeige von Senderinfo/Skalensimulation und(!) Simulation der Anzeigenröhre und beschränkt sich nicht nur auf die beiden HDMI-Ausgänge eines Raspberry PI 4. Wie bei fotorealistischen Simulationen im iRadio üblich, sollten wenn immer möglich beschleunigte Grafiktreiber eingesetzt werden.
+
+## Update vom 02.02.2021: Das iRadio erhält vollumfängliche DAB+ Unterstützung (RPi3/4+)
+
+Mit dem Funktionsupdate vom 02.02.2021 wird das iRadio zu einem modularen Softwarebaukasten für den Neuaufbau von Digitalradios (früher nur Internetradio) oder zum Umbau alter Radios in ein Internet- und/oder DAB+ Radio. 
+![dab1](https://github.com/BM45/iRadio/blob/master/pics4www/iRadioDAB.jpg)
+
+Als Empfänger für DAB+ kann beim iRadio eine Vielzahl verschiedener Hardware dienen. Angefangen vom einfachen RTLSDR-USB-Stick für 10 Euro über Mittelklasse-SDRs wie dem AIRSpy (R2/mini) oder HackRF One bis zu hochwertige RFspace-SDRs. Die Empfangshardware kann dabei zentral am Raspberry, also im Radiogehäuse untergebracht sein, als auch über eine TCP/IP Verbindung dezentral angeschlossen werden. Ein solcher dezentraler SDR-Empfänger kann an empfangsgünstigen Orten (Dachboden, Radioshack, Tower) untergebracht sein und mehrere iRadio-Instanzen mit DAB+ Empfang versorgen.
+
+![dab1](https://github.com/BM45/iRadio/blob/master/pics4www/iRadioDABHardware.jpg)
+
+Zur Installation der DAB+ Unterstützung gibt man folgendes ein:
+
+`cd /home/pi/iRadio/Tuner/DABplus`
+
+`sudo ./install_dabservices.sh`
+
+`./build.sh`
+
+Durch das Installerscript werden noch benötigte Softwarekomponenten nachinstalliert und die DAB+ Basisunterstützung compiliert und im System installiert.
+Detailierte Installationsinformationen sind in der Datei README.txt im DABplus-Ordner zu finden!
+Nachdem die SDR-Empfängerhardware mit dem Raspberry verbunden wurde, kann mit dem Script  
+
+`./dabscan.sh` 
+
+ein Sendersuchlauf über den DAB+ Frequenzbereich VHF-BAND 3 (174 - 230 MHz, bzw. Kanal 5A-13F) durchgeführt werden. Dieser Suchlauf kann einige Minuten in Anspruch nehmen, hierbei werden auch alle Senderlisten für den DAB-Steuerdaemon dabd generiert. Die gefunde Anzahl an Sendern wird auf der Konsole ausgegeben. 
+Sind die Senderlisten erstellt, kann der DAB-Steuerdaemon dabd mittels
+
+`./dabd &`  
+
+gestartet werden. 
+Der DAB-Steuerdaemon hört auf 127.0.0.1 den Port 9914/UDP nach Kommandos von der Benutzeroberfläche (gpiod/displayd) ab. Folgende Kommandos sind zur Zeit implementiert:
+
+#### Kommando - Bedeutung
+ 
+dab0	 - schaltet den DAB-Empfang ab
+
+dab1  - schaltet den DAB-Empfang ein
+
+next	 - wechselt zum nächsten Programm in den Senderlisten
+
+prev	 - wechselt zum vorherigen Programm in den Senderlisten
+
+
+Da zur Audiowiedergabe von DAB+ Stationen, dass bereits im Internetradiomodus bekannte vlc genutzt wird, können Rückinformationen wie Programmtitel weiterhin über UDP/9294 empfangen werden. Somit sind die bereits vorhandenen Displaydaemonen (displayd) schnell und meist ohne komplexe Codeänderungen bereit für den DAB+ Empfang. Nachfolgend ein Bild einer im iRadio als Demo vorhanden Skalensimulation beim DAB+ Empfang.
+
+![dab1](https://github.com/BM45/iRadio/blob/master/pics4www/iRadioDABSkalensim.jpg)
+
+Das sowohl Skalensimulation, wie auch SDR/DAB+ Empfang rechenintensive Prozesse sind, sollten solche Neu-/Umbauen modernen Raspberry Pi 4 (oder wenigstens späteren 3er Modellen) vorbehalten sein, wobei 1/2 GB RAM-Systeme vollkommend ausreichend sind.
 
 _____________________________________________________________________________________
 Weiterer Support im Radio-Bastler-Forum unter: https://www.radio-bastler.de 

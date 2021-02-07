@@ -22,9 +22,9 @@
 
 using namespace std;
 
-#define MUXFILE "./mux.list"
-#define LABELFILE "./label.list"
-#define URLFILE "./url.list"
+#define MUXFILE "/home/pi/iRadio/Tuner/DABplus/mux.list"
+#define LABELFILE "/home/pi/iRadio/Tuner/DABplus/label.list"
+#define URLFILE "/home/pi/iRadio/Tuner/DABplus/url.list"
 
 vector<string> used_mux;
 vector<string> used_label;

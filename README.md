@@ -446,6 +446,11 @@ Da sowohl Skalensimulation, wie auch SDR/DAB+ Empfang rechenintensive Prozesse s
 
 Ebenso ist es möglich, wie auch schon beim Internetradio, die empfangene DAB+ Station direkt über UKW (via Sony MMR70, GPIO-TX) wieder auszusenden. 
 
+## Update vom 08.02.2021: X11-Benutzeroberfläche für moderne Internet-/DAB+ -Radios hinzugefügt
+
+![dab2](https://github.com/BM45/iRadio/blob/master/pics4www/DABGui.jpg)
+
+Mit dem Update vom 08.02.2021 wird Democode (displayd und gpiod) für eine Benutzeroberfläche für moderne Multinormradios (Internet/DAB+) hinzugefügt. Der Code befindet sich in display/x11/DABgui, die beiden nötigen Daemonen werden über das Buildscript compiliert. Die Installation der GUI erfolgt dann analog einer fotorealistischen Skalensimulation. Weitere Infos dazu findet man in der im DABgui-Ordner befindlichen README.txt . Der SDL2-Democode kann und soll beliebig für eigene Radios und Displays angepasst werden, wie immer soll das iRadio hier nur ein Rahmenwerk für eigene Umsetzungen sein. Der gpiod nutzt hier einen Drehencoder/Taster zur Ansteuerung des displayd. Für reine Touchbedienung stellt die SDL2-Bibliothek auch eine entsprechende Eventbehandlung bereit, auch das Hinzufügen einer dritten Empfangsart wie UKW ist durch die bereits im iRadio integrierte Unterstützung (zum Beispiel aus der Integration des WorldRadio-Projekts vom 09.09.2020) einfach möglich.
 
 _____________________________________________________________________________________
 Weiterer Support im Radio-Bastler-Forum unter: https://www.radio-bastler.de 
@@ -454,4 +459,4 @@ Der Franz zeigt auf seinen Seiten unzählige Umbauten und Modernisierungen alter
 das iRadio auch eine sehr umfangreiche FAQ angelegt!
 Seine Werke sieht man hier: https://radiobasteleien.blogspot.com/search/label/Internetradio
 
-Bei Fragen meldet Euch einfach im Radio-Bastler-Forum oder im Wumpus-Gollum-Forum an.
+Bei Fragen meldet Euch einfach im Radio-Bastler-Forum an.

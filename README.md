@@ -452,6 +452,22 @@ Ebenso ist es möglich, wie auch schon beim Internetradio, die empfangene DAB+ S
 
 Mit dem Update vom 08.02.2021 wird Democode (displayd und gpiod) für eine Benutzeroberfläche für moderne Multinormradios (Internet/DAB+) hinzugefügt. Der Code befindet sich in display/x11/DABgui, die beiden nötigen Daemonen werden über das Buildscript compiliert. Die Installation der GUI erfolgt dann analog einer fotorealistischen Skalensimulation. Weitere Infos dazu findet man in der im DABgui-Ordner befindlichen README.txt . Der SDL2-Democode kann und soll beliebig für eigene Radios und Displays angepasst werden, wie immer soll das iRadio hier nur ein Rahmenwerk für eigene Umsetzungen sein. Der gpiod nutzt hier einen Drehencoder/Taster zur Ansteuerung des displayd. Für reine Touchbedienung stellt die SDL2-Bibliothek auch eine entsprechende Eventbehandlung bereit, auch das Hinzufügen einer dritten Empfangsart wie UKW ist durch die bereits im iRadio integrierte Unterstützung (zum Beispiel aus der Integration des WorldRadio-Projekts vom 09.09.2020) einfach möglich.
 
+
+## Update vom 13.02.2021: iRadio als DAB(+) Sender, Wiederaussenden einer Internetradiostation im DAB(+) Format 
+
+![dab3](https://github.com/BM45/iRadio/blob/master/pics4www/iRadioDABTx.jpg)
+
+Mit dem Funktionsupdate vom 13.02.2021 ist es möglich, eine aus dem Internet empfangenen Radiostation über einen eigenen DAB oder DAB+ Sender áuszusenden. Von dieser Funktion profitieren vor allem alte Digitalradios, die nur über DAB verfügen und somit praktisch wertlos sind. Mit dem iRadio können diese Radios nun ohne Eingriff zu einem Internetradio umgerüstet werden. Zusätzlich ist es möglich mit dem iRadio das bereits bestehende DAB+ Senderangebot um Internetradiostationen zu erweitern.
+
+Zur Generierung eines DAB(+)-konformen Signals, werden im iRadio drei Prozesse benötigt: ein Audioencoder, ein Multiplexer und ein Modulator. 
+
+![dab4](https://github.com/BM45/iRadio/blob/master/pics4www/iRadioDABTx2.jpg)
+
+Diese drei Prozesse findet man im Ordner /Transmitter/ODR des iRadios. Sie müssen nacheinander aus den Quellen compiliert werden. Informationen zum Compilieren dieser Programme findet man in den Dateien README.md und INSTALL.md in den jeweiligen Unterordnern. In der Datei mmbtools.pdf wird der Aufbau der DAB(+) Sendekette und das Zusammenspiel aller drei Prozesse detailiert beschrieben. Eine Muster-vlcd kann entsprechend der gewählten Interprozesskommunikation aufgebaut  und nach /usr/bin kopiert werden. Dadurch kann das iRadio fallweise (mittels DAB.txt Datei auf USB-Stick) in den DAB(+) Sendemodus versetzt werden, analog der bereits bestehenden UKW-Sendefunktion.
+
+Zusätzlich zur Integration der DAB(+) Sendefunktion, bringt das iRadio nun Unterstützung für weitere SDR-Sendehardware mit. Es wurde Treiberunterstützung für den Adalm Pluto (https://www.analog.com/en/design-center/evaluation-hardware-and-software/evaluation-boards-kits/adalm-pluto.html) und für den preiswerten FL2K SDR-Sender (https://osmocom.org/projects/osmo-fl2k/wiki) integriert.
+
+
 _____________________________________________________________________________________
 Weiterer Support im Radio-Bastler-Forum unter: https://www.radio-bastler.de 
 Bitte beachtet auch den Blog von meinem Bastlerkollegen Franz-Josef Haffner: https://radiobasteleien.blogspot.com/search/label/iRadio

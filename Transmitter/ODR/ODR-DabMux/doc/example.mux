@@ -1,0 +1,299 @@
+; This is an example configuration file that illustrates
+; the structure of the configuration.
+; It doesn't show all possible options. A more detailed example
+; is available in doc/advanced.mux
+;
+; It contains two services, one DAB and one DAB+, and also shows
+; both the file input useful for offline processing, and the
+; EDI input useful in a 24/7 scenario.
+
+; More information about the usage of the tools is available
+; in the guide, which can be found on the
+; www.opendigitalradio.org website.
+;
+; As you can see, comments are defined by semicolons.
+;
+; It consists of six mandatory sections, whose relative order in this
+; file are of no importance.
+
+; The general section defines global multiplex parameters.
+general {
+    ; the DAB Transmission mode (values 1-4 accepted)
+    dabmode 1
+
+    ; the number of ETI frames to generate (set to 0 to get an unlimited number)
+    nbframes 10
+
+    ; boolean fields can accept either false or true as values:
+
+    ; Set to true to enable logging to syslog
+    syslog false
+
+    ; Enable timestamp definition necessary for SFN
+    ; This also enables time encoding using the MNSC.
+    ;
+    ; When TIST is enabled, and either EDI or a ZMQ output with metadata is used,
+    ; ODR-DabMux will download leap-second information from the IETF website,
+    ; and cache it locally in /var/tmp. It will refresh the data by itself
+    ; before it expires.
+    ;
+    ; If it cannot load this information, ODR-DabMux cannot start up!
+    ;
+    ; If your system doesn't have access to internet, you have to take care
+    ; to create the file before ODR-DabMux startup. Get it from
+    ; http://www.ietf.org/timezones/data/leap-seconds.list
+    ; and save it to
+    ; /var/tmp/odr-dabmux-leap-seconds.cache
+    ; Refresh the file before expiry otherwise ODR-DabMux will abort!
+    ;
+    ; Use the RC interface 'get clocktai expiry' command to check how long
+    ; your file is still valid.
+    tist false
+
+    ; The URLs used to fetch the TAI bulletin can be overridden if needed.
+    ; URLs are given as a pipe-separated list, and the default value is:
+    ;tai_clock_bulletins "https://www.ietf.org/timezones/data/leap-seconds.list|https://raw.githubusercontent.com/eggert/tz/master/leap-seconds.list"
+    ;
+    ; You may also use a file:// URL if you take care of updating the file
+    ; yourself and store it locally.
+
+    ; The management server is a simple TCP server that can present
+    ; statistics data (buffers, overruns, underruns, etc)
+    ; which can then be graphed a tool like Munin
+    ; The doc/stats_dabmux_multi.py tool is a suitable
+    ; plugin for that. The data fields are documented in doc/STATS.md
+    ; If the port is zero, or the line commented, the server
+    ; is not started.
+    managementport 12720
+
+    ; At startup, run the command and abort if is it not returning 0.
+    ; This may be a script. Useful for checking if the NTP client on your
+    ; system has had time to setup the clock.
+    ;startupcheck "chronyc waitsync 10 0.01"
+    ;startupcheck "ntp-wait -fv"
+}
+
+remotecontrol {
+    ; enable the telnet remote control server on the given port
+    ; This server allows you to read and define parameters that
+    ; some features export. It is only accessible from localhost.
+    ; Set the port to 0 to disable the server
+    telnetport 12721
+
+    ; The remote control is also accessible through a ZMQ REQ/REP socket,
+    ; and is useful for machine-triggered interactions. It supports the
+    ; same commands as the telnet RC.
+    ; The example code in doc/zmq_remote.py illustrates how to use this rc.
+    ; To disable the zeromq endpoint, remove the zmqendpoint line.
+    ; By specifying "lo" in the URL, we make the server only accessible
+    ; from localhost. You can write tcp://*:12722 to make it accessible
+    ; on all interfaces.
+    zmqendpoint tcp://lo:12722
+
+    ; the remote control server makes use of the unique identifiers
+    ; for the subchannels, services and components. Make sure you
+    ; chose them so that you can identify them.
+}
+
+; Some ensemble parameters
+ensemble {
+    ; A unique 16-bit id is allocated to the ensemble and allows unambiguous
+    ; identification of the ensemble when associated with the ensemble ECC.
+    ; The id normally starts with the coutry id. (See ETSI TS 101 756)
+
+    ; Example for Switzerland, with country id=4 and ECC=E1
+    id 0x4fff ; you can also use decimal if you want
+    ecc 0xe1 ; Extended Country Code
+
+    local-time-offset auto  ; autmatically calculate from system local time
+                            ; or
+    ;local-time-offset 1    ; in hours, supports half-hour offsets
+
+    ; The presence of reconfig-counter enables FIG0/7, which specifies that
+    ; the ensemble is compliant to EN 300 401 version 2.
+    ; You can either set a number which will be used for the Count field in FIG0/7,
+    ;reconfig-counter 23
+    ; or set
+    reconfig-counter hash
+    ; to let ODR-DabMux calculate a hash that depends on your multiplex configuration,
+    ; ensuring that when you change the configuration, the FIG 0/7 Count also changes
+    ;
+    ; Leave the option commented-out if you do not wish to transmit FIG 0/7.
+
+    ; If you want to run your machine in UTC time, but still take advantage of the
+    ; automatic calculation of the local time offset, set the environment variable TZ
+    ; to your timezone (e.g. TZ=Europe/Rome) before you launch ODR-DabMux
+
+    ; FIG1 labels are given with the 'label' and 'shortlabel' keys.
+    ;
+    ; All labels are maximum 16 characters in length.
+    ; Labels that are valid utf-8 will be converted to EBU Latin Character set
+    ; as defined in ETSI TS 101 756, in Annex C. If it's not valid utf-8, the
+    ; label is taken as-is, byte per byte. Characters that cannot be
+    ; represented in EBU Latin will be replaced by a space character.
+    label "OpenDigitalRadio"
+
+    ; The short label is built from the label by erasing letters, and cannot
+    ; be longer than 8 characters. If omitted, it will be truncated from the
+    ; label
+    shortlabel "ODR"
+
+    ; The FIG2 label can be up to 16 characters long, and is in UTF-8.
+    ;fig2_label "ÓpêñÐigıtålRadiō"
+
+    ; FIG2 labels can either be sent with a character field (old spec)
+    ; or with a text control (new draftETSI TS 103 176 v2.2.1).
+    ; If unspecified, defaults to setting the text control with the values
+    ; shown in the example below.
+    ;
+    ;fig2_label_character_flag "0xFF00"
+    ;
+    ;fig2_label_text_control {
+    ; bidi false
+    ; base_direction "LTR"
+    ; contextual false
+    ; combining false
+    ;}
+}
+
+; Definition of DAB services
+services {
+    ; Each service has it's own unique identifier, that is
+    ; used throughout the configuration file and for the RC.
+    srv-fu {
+        id 0x4daa
+        label "Fünk"
+        ; You can define a shortlabel and a fig2_label too.
+    }
+    srv-ri {
+        ; If your ensemble contains a service from another country,
+        ; specify its ECC here. Example is for Italy, country id=5, ECC=E0
+        id 0x5dab
+        ecc 0xe0
+        label "Rick"
+    }
+}
+
+subchannels {
+    sub-fu {
+        ; This is our DAB programme, using a file input
+        type audio
+        bitrate 128
+        id 10
+        protection 3
+
+        inputfile "funk.mp2"
+    }
+    sub-bla {
+        type audio
+        bitrate 96
+        id 1
+        protection 1
+
+        ; for audio and dabplus, EDI input is available. It supports TCP server and UDP
+        inputproto edi
+        ; Accepts connection to port 9001 from any interface
+        inputuri "tcp://0.0.0.0:9001"
+
+        ; Two buffer-management types are available: prebuffering and timestamped.
+        ; prebuffering will accumulate a few frames before it starts streaming, and each
+        ; time there is a buffer underrun (similar to how the ZMQ input works)
+        ;
+        ; timestamped takes into account the TIST inside EDI and inserts the encoded
+        ; audio frame into the ETI frame with the same timestamp
+        buffer-management prebuffering
+
+        ; In an ideal scenario, where the input rate exactly corresponds
+        ; to the rate at which the frames are consumed by dabmux, you
+        ; see the buffer level staying around the prebuffering value.
+        ; Network latency jitter can make it temporarily go lower or higher.
+        ; Encoder clock drift will make the buffer either slowly fill or
+        ; empty, which will create intermittent glitches.
+
+        ; Maximum size of input buffer, in frames (24ms)
+        ; when this buffer size is reached, some frames will be
+        ; discarded to get the size again below this value.
+        buffer 40
+
+        ; At startup or after an underrun, the buffer is filled to this
+        ; amount of frames before streaming starts.
+        prebuffering 20
+    }
+    sub-ri {
+        ; This is our DAB+ programme, using a ZeroMQ input
+        type dabplus
+        bitrate 96
+        id 1
+        protection 3
+
+        ; Accepts connections to port 9000 from any interface.
+        ; Use ODR-AudioEnc as encoder, accepts only connection
+        ; from the local machine.
+        inputproto edi
+        inputuri "tcp://127.0.0.1:9000"
+
+        buffer-management timestamped
+
+        ; When using timestamped, the prebuffering is without effect.
+        ; The buffer setting however still dictates the maximum buffer size, to
+        ; avoid runaway memory usage in case of issues.
+        buffer 500
+        ; 500 * 24ms = 12 seconds
+
+        ; Specify the additional delay in milliseconds to add to the TIST. Positive values
+        ; mean the content will be inserted later.
+        tist-delay 10
+    }
+}
+
+; In our simple example, each component links one service to one subchannel
+components {
+    ; the component unique identifiers are used for the RC.
+    comp-fu {
+        ; According to specification, you should not define component labels if
+        ; the service is only used in one component. The service label is sufficient
+        ; in that case.
+        service srv-fu
+        subchannel sub-fu
+    }
+
+    comp-ri {
+        service srv-ri
+        subchannel sub-ri
+    }
+}
+
+; A list of outputs
+outputs {
+    ; The unique-id can be used by the remote control or the statistics server
+    ; to identify the output
+
+    ; Output RAW ETI NI to standard output
+    stdout "fifo:///dev/stdout?type=raw"
+
+    edi {
+        ; Example EDI-over-TCP output
+        ; If TIST is enabled, requires leap-second information
+        destinations {
+            example_tcp {
+                protocol tcp
+                listenport 13000
+            }
+        }
+    }
+
+    ; Throttle output to real-time (one ETI frame every 24ms)
+    throttle "simul://"
+
+    ; Important! For real-time operation, you need to have exactly one
+    ; output that applies back-pressure to ODR-DabMux, otherwise it will run
+    ; at the highest possible rate on your system!
+    ;
+    ; For an output to a pipe, the data consumer at the other end of the pipe
+    ; will dictate the multiplexing rate to ODR-DabMux.
+    ;
+    ; If you use the EDI output, you must also enable a simul:// output!
+
+    ; More options are given in doc/advanced.mux
+}
+

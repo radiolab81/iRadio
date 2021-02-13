@@ -1,0 +1,32 @@
+Pascal Charest <pascal [dot] charest [at] crc [dot] ca> for
+the Communications Research Centre, Ottawa, Canada, 2003-2010:
+    All files.
+
+Matthias P. Braendli <matthias [at] mpb [dot] li>
+    - Configuration file support
+    - UHD output integration
+    - Timestamping support required for SFN
+    - FIR filter
+    - Improvements in logging (log to file, to syslog)
+    - ZeroMQ ETI input
+    - Telnet remote-control
+    - ZeroMQ I/Q output
+    - I/Q conversion to signed 8-bit
+    - ARM support
+    - GPSDO monitoring on USRPs
+    - TII
+    - SoapySDR integration
+    - CFR
+
+Jörgen Scott
+    - ZeroMQ remote control
+    - Static delay offset
+
+Sergiy
+    - Improvements for TII insertion
+
+Andreas Steger
+    - Digital Predistortion Computation Engine
+
+Evariste F5OEO
+    - LimeSDR integration

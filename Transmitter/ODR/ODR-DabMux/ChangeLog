@@ -1,0 +1,428 @@
+This file contains information about the changes done to
+ODR-DabMux in this repository
+
+2020-05-26: Matthias P. Braendli <matthias@mpb.li>
+	(v3.1.1):
+		Fix FIG2 segment count issue.
+		Handle disconnects better in EDI output.
+		Fix buffering issue with timestamped EDI input.
+
+2020-04-15: Matthias P. Braendli <matthias@mpb.li>
+	(v3.1.0):
+		Initialise TIST on startup rounded to 24ms, as it was done before
+		v2.4.0 (see '5b1dea7').
+		Refresh TAI bulletin before it expires.
+		Set SO_REUSEADDR for TCP listening sockets (avoids some startup failures).
+		Add EDI input TIST delay setting, and improve EDI input stats and error handling.
+		Add FIG 0/7 and Alarm announcement support (Thanks to Mathias Kuntze).
+		Add startupcheck functionality to ODR-DabMux and ODR-ZMQ2EDI.
+		ZMQ2EDI will not quit anymore in case of input issues.
+		Handle FCT discontinuity in ZMQ2EDI, and display better statistics
+		which are usable by the new munin stats script doc/stats_zmq2edi_munin.py.
+
+2019-10-30: Matthias P. Braendli <matthias@mpb.li>
+	(v3.0.1):
+		Fix compilation on older systems (like debian jessie)
+
+2019-10-29: Matthias P. Braendli <matthias@mpb.li>
+	(v3.0.0):
+		Add EDI input with support for timestamps, which requires a change
+		in the configuration file format for the input specification. This
+		marks the beginning of a transition away from the ZMQ contribution
+		protocol towards the standard EDI, including EDI-over-TCP.
+		Move code shared with other mmbTools into a separate `common`
+		repository.
+		Change default TAI clock cache storage location to
+		`/var/tmp/odr-leap-seconds.cache`.
+		Add encoder version and uptime to stats if available (carried over
+		EDI, not ZMQ).
+		Fix nonblocking file input.
+		Modify ODR-zmq2edi and ODR-zmq2farsync timeout behaviour.
+
+2019-12-20: Matthias P. Braendli <matthias@mpb.li>
+	(v2.4.2):
+		Backport the file input nonblock fix to v2.4.1.
+
+2019-06-25: Matthias P. Braendli <matthias@mpb.li>
+	(v2.4.1):
+		Fix bug when odr-zmq2edi is used with more than one destination.
+
+2019-06-07: Matthias P. Braendli <matthias@mpb.li>
+	(v2.4.0):
+		Add timestamp offset setting, and fix bug due to UTCO offset
+		not being properly applied. See doc/TIMESTAMPS.rst for more
+		details.
+		Implement FIG2 labels.
+		Fix bug for DAB MP2 in EEP_A.
+		Fix FIG0/24 for DAB+ services.
+		ODR-ZMQ2EDI: fix MNSC endianness swap bug.
+		Pull some RC changes from ODR-DabMod.
+		Implement EDI-over-TCP output.
+
+2019-01-07: Matthias P. Braendli <matthias@mpb.li>
+	(v2.3.1):
+		Happy new year!
+		Fix TAI bulletin parsing on systems where long is 32 bit.
+		Add configurable URLs to download TAI clock bulletin and
+		rework the download logic.
+		Do not read TAI clock cache file from /tmp anymore, only
+		use /var/tmp.
+
+2018-10-30: Matthias P. Braendli <matthias@mpb.li>
+	(v2.3.0):
+		Correct FIG0/6 output for services with different ECC.
+		Add support for transmitting empty Linkage Sets.
+		Save leap-second cache to /var/tmp, which doesn't get
+		cleared across reboots.
+		Rework audio level measurement in the statistics server to
+		alleviate some timing-related issues.
+		odr-zmq2edi: Add option to drop late packets.
+
+2018-07-31: Matthias P. Braendli <matthias@mpb.li>
+	(v2.2.0):
+		Fix delays and FIG repetition burst on announcement switching.
+		Add support for services with different ECC (Signalled in FIG0/9).
+		Improve ODR-ZMQ2EDI statistics.
+
+2018-05-29: Matthias P. Braendli <matthias@mpb.li>
+	(v2.1.2):
+		A couple of internal changes and fixes for
+		compilation warnings.
+
+2018-03-27: Matthias P. Braendli <matthias@mpb.li>
+	(v2.1.1):
+		Fix segmentation fault in peak audio statistics
+		calculation.
+
+2018-03-23: Matthias P. Braendli <matthias@mpb.li>
+	(v2.1.0):
+		Add version string to management server.
+		Introduce slow audio peak statistic.
+		Avoid doing useless copies in the RAW output.
+
+2018-03-01: Matthias P. Braendli <matthias@mpb.li>
+	(v2.0.0):
+		Configuration file syntax changed for Frequency Information
+		and Other Services settings.
+		Statistics server changes: audio-level peak information is
+		measured over the last second, and not anymore since the last
+		request. Same for buffers, where min/max are measured over
+		thirty seconds.
+		Make nonblock available again for file inputs.
+
+2018-02-09: Matthias P. Braendli <matthias@mpb.li>
+	(v1.3.3):
+		Add dynamic/static PTy setting to configuration.
+		Add UTF-8 to EBU Latin character set converter for labels.
+		Show TAI bulletin expiration in RC.
+		Stop using SUBDIRS in automake, and build the executable in ./ and not
+		in ./src anymore.
+
+2018-01-23: Matthias P. Braendli <matthias@mpb.li>
+	(v1.3.2):
+		Add clock selection to RAW output.
+		zmq2edi: intentionnally crash after timeout.
+		Add command "state" to the monitoring interface and add to Munin
+		script.
+		Fix TAI bulletin download failure handling.
+		Improve portability for non-Linux POSIX systems, and improve
+		autoconf checks.
+		Default international-table to 1.
+
+2017-08-23: Matthias P. Braendli <matthias@mpb.li>
+	(v1.3.1):
+		Add retords.pl script for Xymon monitoring tool.
+		Add odr-zmq2edi tool, and add necessary metadata to
+		the ZMQ output of ODR-DabMux. The configuration file
+		was extended in a backward-compatible way. Handling
+		of the TAI clock subsystem has been adapted too.
+
+2017-06-30: Matthias P. Braendli <matthias@mpb.li>
+	(v1.3.0):
+		Add support for FIG0/24 to announce that a service is present
+		in another ensemble. This completes the implementation of all
+		service linking FIGs according to ETSI TS 103 176 Figure 1.
+		Allow EDI packet lengths up to 1400 bytes.
+		Add local cache for the leap second information downloaded from
+		IETF, remove download from USNO servers, as they don't give validity
+		information.
+
+2017-06-05: Matthias P. Braendli <matthias@mpb.li>
+	(v1.2.2):
+		Add support for FIG0/21 "Frequency Information".
+		Improve EDI fragment interleaver.
+		Avoid stalling the multiplexer when the TCP output is used.
+
+2017-01-29: Matthias P. Braendli <matthias@mpb.li>
+	(v1.2.1):
+		Bugfix for illegal memory access in EDI PFT layer.
+		Add experimental STI-D(PI, X)/RTP input.
+
+2017-01-24: Matthias P. Braendli <matthias@mpb.li>
+	(v1.2.0):
+		Remove the libfec dependency.
+		Adapt several FIGs to EN 300 401 V2.1.1.
+		Add FIG0/6 for service linking information.
+		Big overhaul of all inputs.
+		TCP output improvements, stability and handling of multiple
+		connections.
+		Fix ZeroMQ input encryption for MPEG inputs.
+		Rework PRBS source and describe it better.
+		Remove unused bridge, SLIP, Test and nonfunctional
+		DMB input.
+		Add fragment interleaver for the EDI output.
+		Fix important issue when both EDI and TIST are enabled.
+		Enable syslog logger earlier.
+
+2016-09-02: Matthias P. Braendli <matthias@mpb.li>
+	(v1.1.0):
+		Switch FIG0/10 to long form, the latest draft spec marks the
+		short form as legacy.
+		Add RC support for deferred triggering of announcements, see
+		doc/remote_control.txt
+
+2016-07-30: Matthias P. Braendli <matthias@mpb.li>
+	(v1.0.0):
+		Remove old carousel.
+		Fix FIGs 0/2 and 0/8 when data services present.
+		Fix parsing of TAI-UTC bulletin for EDI TIST.
+		ZeroMQ is now a mandatory dependency because of the ManagementServer.
+		Minor bugfixes and improvements.
+
+2016-03-26: Matthias P. Braendli <matthias@mpb.li>
+	(v0.9.0):
+		Enable new carousel by default.
+		Integrate munin script improvements.
+		EDI bugfix when many CU are used.
+		EDI: add support for PFT with FEC=0 (only fragmentation).
+		EDI: backward-incompatible configuration change.
+		EDI: transmit timestamp with TAI vs UTC correction (experimental).
+		Get compilation working under FreeBSD and OSX.
+		Add ability to specify source and TTL for UDP output.
+		Split example.mux into a simple and a more advanced example.
+
+2015-11-27: Matthias P. Braendli <matthias@mpb.li>
+	(v0.8.1):
+		Fix compilation with test input.
+		Add PTy to remote control.
+		Add EDI options to configuration file for multicast settings.
+
+2015-09-13: Matthias P. Braendli <matthias@mpb.li>
+	(v0.8.0):
+		Pad labels with spaces instead of terminating them with NUL.
+		Modify real-time priority.
+		Refactor big mux loop into separate function.
+		Add ability to read out full configuration tree in JSON.
+		Remove old command-line interface.
+		Fix EDI errors.
+		Replace TCP socket for Statistics and Management server by ZMQ
+		REP/REQ.
+		Start activities on a simple web GUI for monitoring and configuration.
+		Add new FIG carousel, not enabled by default.
+		Add utility to drive a FarSync card from a ZMQ ETI stream.
+		Improve FIG0/13 signalling (DG flag, CAOrg removal)
+		Add announcement support (FIG0/18 and 0/19)
+
+2015-07-27: Matthias P. Braendli <matthias@mpb.li>
+	(v0.7.5):
+		Fix segmentation fault in short label check logic.
+
+2015-07-03: Matthias P. Braendli <matthias@mpb.li>
+	(v0.7.4):
+		Allow empty component labels
+		Fix compilation with ZeroMQ 4.1.x
+
+2015-04-10: Matthias P. Braendli <matthias@mpb.li>
+	(v0.7.3):
+		Security: RC only listens on localhost.
+		Change FIG signalisation handling for User Application Type,
+		which has an impact on Slideshow.
+		-e parameter becomes optional.
+		Improve error messages and documentation.
+		Start some activities for a web-based GUI.
+
+2014-09-26: Matthias P. Braendli <matthias@mpb.li>
+	(v0.7.2):
+		Fix a memory leak with the ZMQ input.
+		Fix handling of timestamps when using ZMQ input.
+		Add the experimental EDI output.
+		Support new ZeroMQ frame format also for toolame-dab.
+		Update FarSync driver to latest version.
+		When used without configuration file, LTO defaults to auto,
+		TM defaults to 1.
+		Add protection profile option to configuration.
+
+2014-05-20: Matthias P. Braendli <matthias@mpb.li>
+	(v0.7.1):
+		This is a bugfix release, with a minor update
+		to the input state server.
+	* odr-dabmux:
+		Fix -r command line option.
+		Correct internal allocation/deallocation mistakes.
+		Add "Silent" state to input states.
+		Little changes in munin graph script.
+
+2014-04-25: Matthias P. Braendli <matthias@mpb.li>
+	(v0.7.0):
+		This version supports a new ZeroMQ frame format. The
+		old format is still used by toolame-dab, and by
+		older versions of fdk-aac-dabplus, and will stay
+		supported.
+	* odr-dabmux:
+		Add local-time-offset to remote control,
+		and support 'auto' setting in configuration file.
+		Update the munin script.
+		Support the new ZeroMQ framing format.
+		Support ZeroMQ CURVE authentication.
+		Make ZeroMQ buffering better configurable.
+		Include peak audio level in munin statistics.
+
+2014-04-04: Matthias P. Braendli <matthias@mpb.li>
+	(v0.6.0):
+		Adds support for MOT Slideshow and DLS,
+		  compatible with mot-encoder from
+		  fdk-aac-dabplus
+	* odr-dabmux:
+		Add FIG0/13 signalling for MOT slideshow
+		Add local-time-offset and intl table options
+		Fix some unseen compilation warnings
+		Change ZMQ output format to guarantee frame
+		  alignment (not backward compatible)
+
+2014-02-14: Matthias P. Braendli <matthias@mpb.li>
+	(v0.5.0):
+	* odr-dabmux:
+		Service and component labels can now be changed on
+		  the fly using the remote control.
+		ZMQ input buffer size can be changed using the RC.
+		Modify the RC 'list' command to simplify usage.
+		Clean up the startup configuration dump.
+		Added fault checking logic to RC that can restart
+		  it in case of a failure.
+		Add doc/remote_control.txt
+
+2014-02-12: Matthias P. Braendli <matthias@mpb.li>
+	(v0.4.3):
+	* odr-dabmux:
+		Add support for hexadecimal IDs in configuration file.
+		Add ZMQ input for toolame-dab.
+
+2014-02-11: Matthias P. Braendli <matthias@mpb.li>
+	(v0.4.2)
+	* odr-dabmux:
+		Actually add zmq.hpp to Makefile.am
+	(v0.4.1)
+	* odr-dabmux:
+		Include zmq.hpp locally and prefer it over the
+		  system one.
+		Fix wrong usage of zmq::socket_t.recv
+
+2014-02-07: Matthias P. Braendli <matthias@mpb.li>
+	(v0.4.0)
+	* odr-dabmux:
+		CRC-DabMux renamed to ODR-DabMux
+		Version bump to 0.4.0
+
+2014-01-31: Matthias P. Braendli <matthias@mpb.li>
+	(tag r12):
+	* crc-dabmux:
+		Create new object-oriented abstraction for the
+		  inputs, with a wrapper for all existing inputs
+		Adapt inputZMQ to the new internal interface
+		Add a telnet Remote Control interface
+
+2014-01-31: Matthias P. Braendli <matthias@mpb.li>
+	(tag r11):
+	* crc-dabmux:
+		Replace TCPLog by Logger that supports syslog
+		Add TCP statistics server
+		Make ZMQ input publish buffer statistics
+		Add Munin helper script to graph ZMQ input stats
+		Fix ZMQ include when inputzmq disabled
+
+2014-01-05: Matthias P. Braendli <matthias@mpb.li>
+	(tag r10):
+	* crc-dabmux:
+		Add ZeroMQ input, compatible with fdk-aac-dabplus-zmq
+		Replace CRC-DabMux-cfg with -e option
+
+2013-12-14: Matthias P. Braendli <matthias@mpb.li>
+	(tag r9):
+	* autotools:
+		Remove autogenerated files and add bootstrap
+		Fix faulty logic for --enable-output-zeromq
+		Update version generation for git
+
+2013-11-10: Matthias P. Braendli <matthias@mpb.li>
+	(tag r8):
+	* crc-dabmux:
+		Some configuration parsing and logging fixes.
+		Replaced the C-style function dispatching for the outputs
+		  by C++ objects with inheritance.
+		Added support for ZeroMQ ETI output.
+		ZeroMQ dependency added in configure.ac
+		Versioning changed to make hg revision visible
+		Completed READMEs and INSTALLs
+
+2012-09-13: Matthias P. Braendli <matthias@mpb.li>
+	(tag r7):
+	* crc-dabmux/src/*:
+		Added shortlabel support to configuration file
+		Added Boost version check into autoconf
+
+2012-08-26: Matthias P. Braendli <matthias@mpb.li>
+	(tag r6):
+	* crc-dabmux/src/DabMux.h:
+		Added missing file DabMux.h
+
+2012-08-23: Matthias P. Braendli <matthias@mpb.li>
+	(tag r5):
+	* crc-dabmux/*:
+		Refactoring command line handling for crc-dabmux,
+		  added configuration file parser including example.
+		When the program is called as CRC-DabMux-cfg, it reads
+		  the Ensemble definition from a file rather than from
+		  the command line. An example file is in doc/
+		DabMux now depends on Boost.
+
+2012-08-17: Matthias P. Braendli <matthias@mpb.li>
+	(tags r4, r3, r2 and r1 were relevant to crc-dabmod in the old repository)
+
+2011-05-24  Pascal Charest  <pascal.charest@crc.ca>
+
+    * src/DabMux.cpp:   Changed for more precise messages.
+    * src/DabMux.cpp:   Added ECC support.
+    * src/dabInputFile.cpp: Removed unused macros, which solved unitialised bug.
+    * src/dabInputPacketFile.cpp:   Removed unused macros, which solved unitialised bug.
+
+2010-08-23  Pascal Charest  <pascal.charest@crc.ca>
+
+    * src/DabMux.cpp:   Added UDP input for data subchannel (bug).
+
+2010-06-24  Pascal Charest  <pascal.charest@crc.ca>
+
+    * src/DabMux.cpp:   Added support for timestamp.
+
+2010-06-17  Pascal Charest  <pascal.charest@crc.ca>
+
+    * src/DabMux.cpp:   Solved FIC date bug.
+
+Copyright (C) 2010,2011 Her Majesty the Queen in Right of Canada
+(Communications Research Center Canada)
+
+Copyright (C) 2013,2014 Matthias P. Braendli, http://mpb.li
+
+This file is part of ODR-DabMux.
+
+ODR-DabMux is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as
+published by the Free Software Foundation, either version 3 of the
+License, or (at your option) any later version.
+
+ODR-DabMux is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with ODR-DabMux.  If not, see <http://www.gnu.org/licenses/>.

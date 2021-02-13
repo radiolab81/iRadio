@@ -1,0 +1,37 @@
+#!/bin/sh -e
+
+if [ "x${COVERITY_SCAN_PROJECT_NAME}" != "x" ] ; then exit 0; fi
+
+. CI/travis/lib.sh
+
+handle_default() {
+	mkdir -p build
+	cd build
+	cmake -DENABLE_PACKAGING=ON -DDEB_DETECT_DEPENDENCIES=ON ..
+	make && make package && make test
+	cd ..
+}
+
+handle_centos() {
+	mkdir -p build
+	cd build
+	cmake -DENABLE_PACKAGING=ON ..
+	make && make package && make test
+	cd ..
+}
+
+handle_ubuntu() {
+	handle_default
+}
+
+handle_debian() {
+	handle_default
+}
+
+handle_generic_docker() {
+	run_docker_script inside_docker.sh
+}
+
+setup_build_type_env_vars
+
+handle_${BUILD_TYPE}

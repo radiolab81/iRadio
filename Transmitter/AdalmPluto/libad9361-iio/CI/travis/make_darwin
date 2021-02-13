@@ -1,0 +1,22 @@
+#!/bin/sh -e
+
+if [ "x${COVERITY_SCAN_PROJECT_NAME}" != "x" ] ; then exit 0; fi
+
+mkdir -p build
+
+cd build
+cmake -DOSX_PACKAGE=ON ..
+make
+ls
+make test
+
+cd ..
+
+mkdir -p build_tar
+
+cd build_tar
+cmake -DOSX_PACKAGE=OFF -DENABLE_PACKAGING=ON ..
+make
+ls
+make package
+make test

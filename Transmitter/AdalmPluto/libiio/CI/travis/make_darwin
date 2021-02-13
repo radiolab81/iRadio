@@ -1,0 +1,31 @@
+#!/bin/sh -e
+
+if [ "x${COVERITY_SCAN_PROJECT_NAME}" != "x" ] ; then exit 0; fi
+
+
+build_osx() {
+	FLAGS=$1
+	echo "### cmake ${FLAGS}"
+	cmake ${FLAGS} ..
+
+	echo "### make"
+	make
+
+	echo "### files are"
+	ls
+}
+
+mkdir -p build
+
+cd build
+build_osx "-DOSX_PACKAGE=ON -DPYTHON_BINDINGS=ON -DWITH_EXAMPLES=ON"
+
+cd ..
+
+mkdir -p build_tar
+cd build_tar
+build_osx "-DOSX_PACKAGE=OFF -DENABLE_PACKAGING=ON -DPYTHON_BINDINGS=ON"
+echo "### make package"
+make package
+echo "### files are"
+ls

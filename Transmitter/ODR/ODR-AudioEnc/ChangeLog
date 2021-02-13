@@ -1,0 +1,265 @@
+2020-09-23: Matthias P. Braendli <matthias@mpb.li>
+	(v3.0.0):
+		Replacement of PAD fifo with a socket, offering bidirectional
+		communication with ODR-PadEnc. This is a breaking change,
+		modifying also the command line options.
+		Update the fdk-aac library to 2.0.1.
+
+2020-05-26: Matthias P. Braendli <matthias@mpb.li>
+	(v2.6.1):
+		Add --version option.
+		Do not build toolame-dab and fdk-aac dynamic libraries,
+		but link those statically into odr-audioenc.
+		Improve silence detection.
+		Minor changes in EDI output.
+
+2020-04-23: Matthias P. Braendli <matthias@mpb.li>
+	(v2.6.0):
+		Add GStreamer-based input.
+		Add --identifier option for EDI output.
+		Handle TCP connection automatically for EDI output and fix
+		multi-output functionality.
+
+2020-02-11: Matthias P. Braendli <matthias@mpb.li>
+	(v2.5.0):
+		Integrate FDK-AAC into this repository. This removes the external
+		dependency, and the issues with differing .so versions depending
+		on the distribution. The included FDK is v2.
+		Add TIST support for EDI output.
+
+2019-07-31: Matthias P. Braendli <matthias@mpb.li>
+	(v2.4.1):
+		Bugfix for regression in v2.4.0: Insertion
+		of audio level metadata was broken.
+
+2019-07-15: Matthias P. Braendli <matthias@mpb.li>
+	(v2.4.0):
+		Add Stats output to Unix DGRAM socket, see
+		`./example_stats_receiver.py`.
+		Internal refactoring, with ongoing EDI output work (not yet complete)
+		Avoid crashes when invalid command line options are given.
+
+2018-10-11: Matthias P. Braendli <matthias@mpb.li>
+	(v2.3.1):
+		Improve internal queue behaviour to avoid dropping data when not using
+		drift compensation.
+		Check for fdk-aac using pkg-config, to fix compilation on systems
+		where both libfdk-aac.so.0 and libfdk-aac.so.1 are present.
+		Set ZMQ socket linger time to 0, to fix some teardown lockups.
+
+2018-03-21: Matthias P. Braendli <matthias@mpb.li>
+	(v2.3.0):
+		Deprecate -R option.
+		Allow usage of zeromq IPC socket.
+		Improve portability.
+		Deprecate autorestart, as it was not a good concept. Autorestart
+		functionality is much better handled by an external supervisor.
+		Improve a few mono scenarios.
+		Fix .wav header write when using --decode option.
+		Make compatible with VLC 3.
+
+2017-11-18: Matthias P. Braendli <matthias@mpb.li>
+	(v2.2.0):
+		Add a decoder option for loopback testing.
+		Add a auto-restart option in case of input fault.
+		PAD improvements for DAB and DAB+.
+		Fix a few issues in mono.
+		Unify internal API for all inputs and simplify implementation.
+		Usage screen clarifications and minor internal fixes.
+
+2017-03-10: Matthias P. Braendli <matthias@mpb.li>
+	(v2.1.0):
+		Improve drift compensation quality, reduce occurrence of microglitches.
+		VLC: Ask float samples to avoid that VLC chooses the ugly_resampler.
+		Print libtoolame debug output to stderr instead of stdout.
+2017-01-27: Matthias P. Braendli <matthias@mpb.li>
+	(v2.0.1):
+		Increase internal VLC input buffers to fix interruptions
+		occurring with some AAC streams.
+		Fix compilation on some systems.
+		Check for the correct version of FDK-AAC in the configure phase.
+2016-09-16: Matthias P. Braendli <matthias@mpb.li>
+	(v2.0.0):
+	The FDK-AAC-DABplus project was split in three repositories:
+	ODR-AudioEnc, ODR-PadEnc and fdk-aac.
+	This is ODR-AudioEnc, containing libtoolame-dab and odr-audioenc.
+	* odr-audioenc:
+		Remove libfec dependency
+2016-09-02: Matthias P. Braendli <matthias@mpb.li>
+	(v1.2.0):
+	* dabplus-enc:
+		VLC input can extract Artist and Title from stream if available, for
+		DL+
+	* mot-encoder:
+		Try compressing slides to PNG if size is smaller than JPG.
+		Fix memory leak in JPG compressor.
+2016-07-30: Matthias P. Braendli <matthias@mpb.li>
+	(v1.1.0):
+	* dabplus-enc:
+		Fix inputs using drift compensation in DAB mode. This includes
+		JACK, ALSA and VLC.
+		Fix mono in DAB mode.
+		Fix SCF-CRC insertion in DAB mode.
+	* mot-encoder:
+		Add DL+ support
+	* developer documentation:
+		Add a Doxygen target for the whole project.
+2016-03-29: Matthias P. Braendli <matthias@mpb.li>
+	(v1.0.1):
+	* dabplus-enc:
+		Fix libtoolame-dab PAD insertion.
+2016-03-26: Matthias P. Braendli <matthias@mpb.li>
+	(v1.0.0):
+	* dabplus-enc:
+		Include libtoolame-dab, add a DAB encoder.
+		Fix issue with VLC input reading OGG streams.
+		Fix pthread autoconfiguration issue on some systems.
+2016-01-10: Matthias P. Braendli <matthias@mpb.li>
+	(v0.8.0):
+	* dabplus-enc:
+		Fix bug in v0.7.4 where the VLC compressor was
+		active even if not enabled with the gain option.
+		Add drift compensation to VLC input.
+2016-01-03: Matthias P. Braendli <matthias@mpb.li>
+	(v0.7.4):
+	* dabplus-enc:
+		Add libvlc cache and gain (from the vlc audio compressor) options.
+		Fix a few minor issues seen by static analysis.
+		Allow input of mono WAV files.
+	* mot-encoder:
+		Do not add black border around images anymore.
+		Ensure JPEGs are not using progressive encoding and
+		strip useless metadata.
+2015-10-01: Matthias P. Braendli <matthias@mpb.li>
+	(v0.7.3):
+	* dabplus-enc:
+		Update zmq support to version 4.1.x.
+		Add ability to connect to several ZMQ outputs.
+		Improve ICY-Text write to file for DLS.
+	* mot-encoder:
+		Refactor datagroup encoding to improve encoding
+		efficiency.
+		Update EBU Latin charset.
+		Add remove-dls option.
+2015-05-09: Matthias P. Braendli <matthias@mpb.li>
+	(v0.7.2):
+	* dabplus-enc:
+		Fix segmentation fault when libVLC 2.1 or older is
+		used.
+		Switch to C++11.
+		Remove Boost dependency.
+2015-05-04: Matthias P. Braendli <matthias@mpb.li>
+	(v0.7.1):
+	* dabplus-enc:
+		Add ICY Text write to file routine (experimental).
+	* mot-encoder:
+		Add support for character set conversion from
+		UTF-8 to EBU Complete Latin Based Repertoire.
+		Fix issue with short X-PAD lengths.
+2015-04-10: Matthias P. Braendli <matthias@mpb.li>
+	(v0.7.0):
+	* dabplus-enc:
+		Merge fix for missing sampling rates.
+		Add libVLC input.
+	* mot-encoder:
+		Merge fixes for mot-encoder issues.
+2014-12-09: Matthias P. Braendli <matthias@mpb.li>
+	(v0.6.0):
+	* dabplus-enc:
+		Fix crashes with high bitrates
+		Improve wav input
+		Add option to quit on silence
+		Enable afterburner by default
+		Fix PAD insertion
+	* mot-encoder:
+		Add support for PNG slides
+2014-09-26: Matthias P. Braendli <matthias@mpb.li>
+	(v0.5.1):
+	* dabplus-enc:
+		Revert change that broke audio decoding on some
+		receivers, at the price of reducing support for PAD.
+		Add JACK example to README.
+	* mot-encoder:
+		Improve slide selection and transmission handling.
+		Add ability to send slides without doing pre-processing.
+2014-07-08: Matthias P. Braendli <matthias@mpb.li>
+	(v0.5.0):
+	* dabplus-enc:
+		Add support for JACK
+		Add EOF fifo silence inserter
+		Minor corrections in the encoder (granule length)
+	* mot-encoder:
+		Can do only DLS, only slideshow or both
+		Can erase slides once transmitted
+		Fixed the memory allocation issues.
+		Removed obsolete dls-encoder
+
+		Known bugs:
+		PAD lengths 23 and 26 don't work.
+		Some older receivers don't like the encoded bitstream
+
+2014-05-16: Matthias P. Braendli <matthias@mpb.li>
+	(v0.4.2):
+		Fix INTERNAL ERROR when the encoder was configured
+		in AAC-LC (bitrates above 80kbps)
+		Add --sbr --aaclc and --ps options to force AOT
+
+2014-05-14: Matthias P. Braendli <matthias@mpb.li>
+	(v0.4.1):
+		Bugfix release for the file output that
+		was non-functional in v0.4.0
+
+2014-04-25: Matthias P. Braendli <matthias@mpb.li>
+	(v0.4.0):
+		Merge of dabplus-enc-file-zmq and dabplus-enc-alsa-zmq
+		into dabplus-enc, that now supports ALSA input,
+		file input and output, and ZeroMQ output.
+		This gets rid of quite some duplicated code.
+	* dabplus-enc:
+		Support for ZeroMQ authentication.
+		Peak audio level indicator with -l option and
+		removal of the little dots.
+		New ZeroMQ message format.
+	* mot-encoder:
+		Acceleration of MOT Slideshow transfer.
+
+2014-03-29: Matthias P. Braendli <matthias@mpb.li>
+	(v0.3.0):
+		MOT Slideshow and DLS support
+	* fdk-aac encoder:
+		Fix insertion of PAD data (must be in first AU)
+	* mot-encoder:
+		Correct X-PAD encoding
+
+2014-03-19: Matthias P. Braendli <matthias@mpb.li>
+	(v0.2.2):
+	* README:
+		Add snd-aloop scenario.
+	* dabplus-enc-alsa-zmq:
+		Support older version of libasound2, so that
+		it compiles with debian stable.
+		Repair 48kHz sample rate.
+	* dabplus-enc-file-zmq:
+		Add support for file output, which make
+		dabplus-enc-file redundant.
+	* dabplus-enc-file:
+		Has been removed
+
+2014-03-10: Matthias P. Braendli <matthias@mpb.li>
+	(v0.2.1):
+		Add -p option to mot-encoder.
+		Add version numbers to each encoder.
+
+2014-03-09: Matthias P. Braendli <matthias@mpb.li>
+	(v0.2.0):
+		Rename all tools in a consistent way and tidy
+		them up.
+		Add the alsa input with optional drift compensation.
+		Add MOT Slideshow and PAD code from CSP.it
+		Add new descriptions and scenarios to the README.
+
+2014-02-11: Matthias P. Braendli <matthias@mpb.li>
+	(v0.1.0):
+		Initial release of fdk-aac-dabplus, based on
+		forked from https://github.com/piratfm/fdk-aac-dabplus
+

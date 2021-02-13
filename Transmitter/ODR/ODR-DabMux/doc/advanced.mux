@@ -1,0 +1,497 @@
+; This is an advanced configuration example for ODR-DabMux,
+; that documents more options that the simple example.mux
+
+; More information about the usage of the tools is available
+; in the guide, which can be found on the
+; www.opendigitalradio.org website.
+;
+; The format is called INFO format, and defined by boost property_tree:
+; http://www.boost.org/doc/libs/1_41_0/doc/html/boost_propertytree/parsers.html#boost_propertytree.parsers.info_parser
+
+; It consists of six mandatory sections, whose relative order in this
+; file are of no importance.
+
+; The general section defines global multiplex parameters.
+general {
+    ; the DAB Transmission mode (values 1-4 accepted)
+    dabmode 1
+
+    ; the number of ETI frames to generate (set to 0 to get an unlimited number)
+    nbframes 10
+
+    ; boolean fileds can accept either false or true as values:
+
+    ; Enable logging to syslog
+    syslog false
+
+    ; Write the SCCA field useful for the Factum ETI analyser
+    writescca false
+
+    ; Enable timestamp definition necessary for SFN
+    ; This also enables time encoding using the MNSC and in EDI.
+    tist false
+
+    ; On startup, the timestamp is initialised to system time. If you want
+    ; to add an offset, uncomment the following line and give a number
+    ; in seconds.
+    ; tist_offset 0
+
+    ; The management server is a simple TCP server that can present
+    ; statistics data (buffers, overruns, underruns, etc)
+    ; which can then be graphed a tool like Munin
+    ; The doc/stats_dabmux_multi.py tool is a suitable
+    ; plugin for that. The data fields are documented in doc/STATS.md
+    ; If the port is zero, or the line commented, the server
+    ; is not started.
+    managementport 12720
+}
+
+remotecontrol {
+    ; enable the telnet remote control server on the given port
+    ; This server allows you to read and define parameters that
+    ; some features export. It is only accessible from localhost.
+    ; Set the port to 0 to disable the server
+    telnetport 12721
+
+    ; the remote control server makes use of the unique identifiers
+    ; for the subchannels, services and components. Make sure you
+    ; chose them so that you can identify them.
+}
+
+; Some ensemble parameters
+ensemble {
+    ; Example for Switzerland, with country id=4 and ECC=E1
+    id 0x4fff ; you can also use decimal if you want
+    ecc 0xe1 ; Extended Country Code
+
+    local-time-offset auto  ; autmatically calculate from system local time
+                            ; or
+    ;local-time-offset 1    ; in hours, supports half-hour offsets
+
+    international-table 1 ; See TS 101 756 clause 5.7
+                          ; 1 corresponds to the PTy used in RDS
+                          ; 2 corresponds to program types used in north america
+
+    ; Enable FIG0/7, which specifies that the ensemble is compliant to EN 300 401 version 2.
+    ; For more options see doc/advanced.mux
+    reconfig-counter hash
+
+    ; all labels are maximum 16 characters in length
+    label "OpenDigitalRadio"
+    ; The short label is built from the label by erasing letters, and cannot
+    ; be longer than 8 characters. If omitted, it will be truncated from the
+    ; label
+    shortlabel "ODR"
+
+    ; Announcement settings for FIG0/19.
+    announcements {
+        test_announcement {
+            cluster 1
+            flags {
+                Traffic true
+            }
+
+            subchannel sub-fu
+        }
+    }
+}
+
+; Definition of DAB services
+services {
+    ; Each service has it's own unique identifier, that is
+    ; used throughout the configuration file and for the RC.
+    srv-fu {
+        id 0x4daa
+        label "Funk"
+        shortlabel "Fu"
+
+        ; Programme Type, according to the chosen international-table above.
+        pty 0
+
+        ; chose between static and dynamic PTy
+        ; static means the PTy represents to overall genre of the programme.
+        ; dynamic means the PTy follows the various items within a programme.
+        ; Use the RC interface to modify at runtime.
+        ; See EN 300 401 Clause 8.1.5
+        pty-sd static
+
+        language 0
+        ; also supports id
+
+        ; List of announcement switching flags signalled in FIG 0/18
+        ; This lists all possible announcements. If one is left out, it is disabled.
+        announcements {
+            Alarm false
+            Traffic true
+            Travel false
+            Warning false
+            News false
+            Weather false
+            Event false
+            Special false
+            ProgrammeInfo false
+            Sports false
+            Finance false
+
+            ; a comma separated list of clusters in which the service belongs to
+            ; cluster id 255 is not specified here and is ignored (for FIG 0/18)
+            clusters "1,2"
+        }
+    }
+    srv-ri {
+        ; If your ensemble contains a service from another country,
+        ; specify its ECC here. Example is for Italy, country id=5, ECC=E0
+        id 0x5dab
+        ecc 0xe0
+        label "rick"
+    }
+    srv-lu {
+        id 0x4dac
+        label "Lu"
+        ; pty, language, shortlabel and id can be omitted, and will take default values
+    }
+}
+
+; The subchannels are defined in the corresponding section.
+; supported types are : audio, data, enhancedpacket,
+;                       dabplus, packet
+;
+; Type 'packet' expects to receive data in the format described
+; in EN 300 401 Clause 5.3.2.
+;
+; 'enhancedpacket' mode will calculate FEC for MSC packet mode
+; as described in EN 300 401 Clause 5.3.5.
+;
+; 'data' will read from the source and write it unmodified into
+; the MSC.
+subchannels {
+    sub-fu {
+        type audio
+        bitrate 128
+        id 10
+
+        ; type audio subchannels automatically use
+        ; UEP, unless the bitrate is 8, 16, 24, 40 or 144kbit/s
+        ; (EN 300 401 Clause 6.2.1)
+        ; this can be overridden with the option protection-profile
+        protection-profile EEP_A
+        ; supported options: UEP (use only for type audio!)
+        ;                    EEP_A (for all bitrates)
+        ;                    EEP_B (bitrates multiple of 32kbit/s)
+
+        ; Set the protection level, possible values depend
+        ; on the protection profile:
+        ; UEP profile: 1 to 5; EEP profiles: 1 to 4
+        protection 4
+
+        ; example file input
+        inputproto file
+        inputuri "funk.mp2"
+        nonblock false
+    }
+    sub-lu {
+        type dabplus
+        bitrate 96
+        id 3
+        protection 3
+        ; EXPERIMENTAL!
+        ; Receive STI-D(LI) carried in STI(PI, X) inside RTP using UDP.
+        ; This is intended to be compatible with AVT audio encoders.
+        ; EXPERIMENTAL!
+        inputproto sti
+        inputuri "rtp://127.0.0.1:32010"
+    }
+    sub-ri {
+        type dabplus
+        bitrate 96
+        id 1
+        protection 1
+        ; example file input
+        ;inputuri "rick.dabp"
+
+        ; example zmq input:
+        ; Accepts connections to port 9000 from any interface.
+        inputproto zmq
+        inputuri "tcp://*:9000"
+
+        ; ZMQ specific options, mandatory:
+
+        ; Maximum size of input buffer, in AAC frames (24ms)
+        ; when this buffer size is reached, some frames will be
+        ; discarded to get the size again below this value.
+        ; As the present implementation discards entire AAC superframes,
+        ; (5 frames = 120ms) the effect will clearly be audible.
+        zmq-buffer 40
+
+        ; At startup or after an underrun, the buffer is filled to this
+        ; amount of AAC frames before streaming starts.
+        zmq-prebuffering 20
+
+        ; In an ideal scenario, where the input rate exactly corresponds
+        ; to the rate at which the frames are consumed by dabmux, you
+        ; see the buffer level staying around the zmq-prebuffering value.
+        ; Network latency jitter can make it temporarily go lower or higher.
+        ; Encoder clock drift will make the buffer either slowly fill or
+        ; empty, which will create intermittent glitches.
+
+
+        ; the ZMQ inputs support encryption using the CURVE method.
+        ; The multiplexer must have a public and a private key, which
+        ; can be shared among several zmq inputs.
+        ;
+        ; each encoder also has a public and private key, and the
+        ; encoder *public* key has to be known to the multiplexer.
+        ; Using this system, the multiplexer can be sure that
+        ; only the encoder possessing the right secret key can
+        ; connect here. This inhibits third parties to hijack the
+        ; input.
+
+        ; by default, it is disabled, set encryption to 1 to enable
+        encryption true
+
+        ; the multiplexer key pair. Keep these secret.
+        secret-key "keys/mux.sec"
+        public-key "keys/mux.pub"
+
+        ; The public key from the encoder. Only the encoder you want
+        ; to accept must know the corresponding secret key.
+        encoder-key "keys/encoder1.pub"
+
+        ; key pairs can be generated using the zmqinput-keygen tool.
+    }
+
+    ; 'prbs' will generate a pseudorandom bit sequence according to
+    ; ETS 300 799 Clause G.2.1. This is useful for testing purposes and
+    ; measurement of bit error rate.
+    sub-prbs {
+       type data
+       bitrate 16
+       id 5
+       protection 3
+
+       ; Use the default PRBS polynomial.
+       inputproto prbs
+       inputuri "prbs://"
+
+       ; To use another polynomial, set it in the url as hexadecimal
+       ; The default polynomial is G(x) = x^20 + x^17 + 1, represented as
+       ; (1 << 20) + (1 << 17) + (1 << 0) = 0x120001
+       ;inputuri "prbs://:0x120001
+   }
+}
+
+; For now, each component links one service to one subchannel
+components {
+    ; the component unique identifiers are used for the RC.
+    comp-fu {
+        ; specifies audio -or- packet type, defaults to zero when not given
+        ; audio: foreground=0, background=1, multi-channel=2
+        ; data: unspecified=0, TMC=1, EWS=2, ITTS=3, paging=4, TDC=5, IP=59, MOT=60, proprietary=61
+        type 0
+
+        ; According to specification, you should not define component labels if
+        ; the service is only used in one component. The service label is sufficient
+        ; in that case.
+        ;label "funk"
+        ;shortlabel "fu"
+        service srv-fu
+        subchannel sub-fu
+
+        ; for audio components, the field
+        figtype 0x2
+        ; defines the User Application Type according to TS 101 756 Table 16:
+        ; 0x2   : MOT Slideshow
+        ; 0x3   : MOT Broadcast Web Site
+        ; 0x4   : TPEG
+        ; 0x5   : DGPS
+        ; 0x6   : TMC
+        ; 0x7   : EPG
+        ; 0x8   : DAB Java
+        ; 0x44a : Journaline
+        ; If not defined, the FIG 0/13 is not transmitted for this component
+
+        ; for packet components, the fields
+        ; "user application type in FIG 0/13 for packet mode"
+        ;figtype
+        ; and the packet address (mandatory)
+        ;address
+        ; are supported, with the same syntax as in the manpage.
+        ; FIG 0/13 is only transmitted when figtype is defined.
+        ; The -d option on the command line is:
+        ;datagroup (true|false)
+        ; and defaults to false. You should normally set
+        ;datagroup true
+        ; if your packet mode subchannel is tranferring an MOT application such
+        ; as EPG or Slideshow.
+    }
+
+    ; If a service is used in more than one component, the primary component has to
+    ; be placed above the secondary component(s) to ensure that the SCIdS field of FIG0/8
+    ; is zero for the primary service component. (New in EN 300 401 V2.1.1)
+
+    comp-lu {
+        service srv-lu
+        subchannel sub-lu
+        figtype 0x2
+    }
+
+    comp-ri {
+        service srv-ri
+        subchannel sub-ri
+        figtype 0x2
+    }
+}
+
+outputs {
+    ; The unique-id can be used by the remote control or the statistics server
+    ; to identify the output
+
+    ; Important! For real-time operation, you need to have exactly one
+    ; output that applies back-pressure to ODR-DabMux, otherwise it will run
+    ; at the highest possible rate on your system!
+    ;
+    ; For an output to a pipe, the data consumer at the other end of the pipe
+    ; will dictate the multiplexing rate to ODR-DabMux.
+    ;
+    ; If you use the zmq or EDI outputs, you must also enable a simul:// output!
+
+    ;supported output types for file and fifo outputs are
+    ; raw, framed and streamed
+    ;
+    ; Please see doc/dab_output_formats.txt
+    ;stdout "fifo:///dev/stdout?type=raw"
+
+    ; Throttle output to real-time (one ETI frame every 24ms)
+    throttle "simul://"
+
+    edi {
+        ; If TIST is enabled, requires leap-second information (see example.mux)
+        destinations {
+            ; The names you give to the destinations have no meaning,
+            ; but have to be unique. You can give them meaningful names to help
+            ; you identify the outputs.
+            example_unicast {
+                ; example for unicast EDI over UDP
+                ; for unicast EDI, do not set source
+                protocol udp
+                destination "192.168.23.23"
+                sourceport  13000
+            }
+            example_multicast {
+                ; example for multicast EDI, the source IP is required
+                ; so that the data is sent on the correct ethernet interface
+                protocol udp
+                destination "232.20.10.1"
+                source      "192.168.0.50"
+                ; The multicast TTL has to be adapted according to your network
+                ttl 1
+
+                sourceport  13000
+            }
+            example_tcp {
+                ; example for EDI TCP server. TCP is reliable, so it is counterproductive to
+                ; use FEC. Using PFT also brings no benefit.
+                protocol tcp
+                listenport 13000
+
+                ; For every connected endpoint, a queue is created. If the queue overflows, we
+                ; assume the endpoint has a problem, and we close the connection. This sets
+                ; the max queue size in number of frames. With PFT disabled, one frame is generated
+                ; every 24ms. With PFT enabled, it depends on fragmentation and FEC settings.
+                ;
+                ; default value: 500 frames, without PFT: 12s worth of EDI data
+                ;max_frames_queued 500
+            }
+        }
+
+        ; The settings below apply to all destinations
+        ; The destination port cannot be set independently for
+        ; different outputs because it is encoded in the transport
+        ; header of the PFT layer.
+        ; Necessary when using UDP, optional when only using TCP.
+        port        12000
+
+        ; Enable the PFT subsystem. If false, AFPackets are sent.
+        ; PFT is not necessary when using TCP.
+        enable_pft  false
+
+        ; How many lost fragments can be recovered by Reed-Solomon.
+        ; Requires enable_pft true.
+        ;
+        ; If set to 0, the PFT subsystem will only do Fragmentation and
+        ; Transport, but no Reed Solomon.
+        ; See ETSI TS 102 821, Clause 7 "PFT Layer", Figure 10. ODR-DabMux
+        ; supports "Fragmentation and Transportation" and "Reed-Solomon and
+        ; Transportation".
+        fec         2
+
+        ; Interleave fragments from several ETI frames so as to reduce the
+        ; probability of errors when several UDP packets are lost in bursts.
+        ; This comes at the cost of larger overall latency between multiplexing
+        ; and modulation. This latency is given in milliseconds, and rounded
+        ; to nearest multiple of 24ms. Set to 0 to disable the interleaver.
+        interleave 0
+
+        ; Length of a RS chunk, can be overridden
+        ;default=207
+        ;chunk_len   207
+
+        ; Save the packets sent over Ethernet to the file ./edi.debug
+        dump        false
+
+        ; show more debugging info
+        verbose     false
+
+        ; (optional) set the kind of alignment to use in TAG Packets
+        ; 0: no padding
+        ; 8: pad to eight bytes (default)
+        ; above 8: insert *dmy TAG Item to pad to given size in bytes
+        ;tagpacket_alignment 8
+    }
+
+    ; Other outputs:
+
+    ; ZeroMQ output example, new configuration format. Several
+    ; zeromq blocks can be added here.
+    ; This output does not back-pressure the multiplexer.
+    ;zeromq {
+        ; Listen on all interfaces, on port 9100
+        ;endpoint "tcp://*:9100"
+
+        ; Transmit backward compatible metadata containing
+        ; EDI time and UTC offset when TIST is enabled.
+        ;
+        ; If TIST is enabled, requires leap-second information (see example.mux)
+        ;
+        ; WARNING! requires ODR-DabMux to be compiled with
+        ; cURL support, and this will enable leap second download
+        ; as for the EDI output!
+        ;allowmetadata true
+    ;}
+
+    ; Legacy format for ZeroMQ output example. See example.mux
+    ; for newer format.
+    ;zmq  "zmq+tcp://*:9100"
+
+    ; Output ETI-over-TCP. This is like piping a RAW ETI NI data stream
+    ; into a TCP socket, except that the output can handle simultaneous
+    ; connections. Not suitable for SFN use because timestamps are incomplete.
+    ; 0.0.0.0 means "listen on all interfaces"
+    ; This output does not back-pressure the multiplexer.
+    ;tcp "tcp://0.0.0.0:9200"
+
+    ; UDP send to host:port, simple example for unicast
+    ;net_udp "udp://host:port"
+    ; example with source and TTL specification for multicast
+    ;net_udp "udp://237.10.0.230:7000?src=10.0.1.125&ttl=1"
+
+    ; RAW for farsync ETI card
+    ;farsync "raw://sync0"
+    ; the output also supports two parameters:
+    ;  clocking=master and clocking=slave
+    ;
+    ; and extsyncclock which enables external clock sync. Its value is the
+    ; external clock frequency in Hz.
+    ; Example:
+    ;farsync "raw://sync0?clocking=master&extsyncclock=10000000"
+}

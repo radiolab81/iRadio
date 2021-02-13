@@ -1,0 +1,2 @@
+odr-dabmod sende.eti -l -g1 -r 2048000 -f odr_dadmod.cf32
+

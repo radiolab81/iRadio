@@ -1,0 +1,356 @@
+This file contains information about the changes done to
+ODR-DabMod in this repository
+
+2020-04-06: Matthias P. Braendli <matthias@mpb.li>
+	(v2.4.1):
+		Fix handling of Ctrl-C.
+		Fix unaligned memory access in ZeroMQ input.
+		Fix incorrect display of "EDI AF Packet sequence error".
+
+2020-03-16: Matthias P. Braendli <matthias@mpb.li>
+	(v2.4.0):
+		Put more code in common with the other ODR-mmbTools.
+		Rework EDI input, which is now always compiled-in and preferred
+		to ZMQ input (for standards compliance).
+		Add native Lime support.
+
+2019-07-08: Matthias P. Braendli <matthias@mpb.li>
+	(v2.3.1):
+		Add analog bandwidth setting for UHD and SoapySDR outputs.
+		Implement 10s check for ZMQ input, resetting the socket if no
+		data arrives.
+		Fix compilation against UHD 3.14.
+		Add EDI-over-TCP input.
+		Other minor fixes for GUI and ODR-DabMod.
+
+2019-01-23: Matthias P. Braendli <matthias@mpb.li>
+	(v2.3.0):
+		Many improvements on GUI and DPDCE: It is now possible
+		to control the predistortion entirely through the web GUI.
+		See `python/README.md` for more.
+		Add SDR temperature to RC and munin.
+		Fix I/Q s16 output format.
+		SoapySDR output: do not set master clock rate if it is 0.
+		Fix warning about feedback server.
+		Fix digital gain being forgotten after an input stream interruption.
+		Handle negative tist offset settings.
+
+2018-08-07: Matthias P. Braendli <matthias@mpb.li>
+	(v2.2.0):
+		Fix bug in CFR implementation that was introduced in v2.1.0.
+		Make the ZeroMQ list command return JSON.
+		Add a few GPSDO stats to munin.
+		Make sure changes applied through RC stay after an internal modulator reset.
+		Remove the boost dependency.
+
+2018-05-29: Matthias P. Braendli <matthias@mpb.li>
+	(v2.1.0):
+		Add s16 output format.
+		Add compilation target for the EasyDABv3, which
+		doesn't have boost and requires constellation points
+		output. This required changing the configuration file parser.
+		Avoid RC crash when setting invalid values.
+
+2018-03-21: Matthias P. Braendli <matthias@mpb.li>
+	(v2.0.0):
+		Big rework of the SDR device handling, putting in common more
+		logic between UHD and SoapySDR. Goal is to enable SoapySDR devices
+		to be used for SFN and for DPD. (Not yet possible)
+		Replace the old timestamp path that went around the process flowgraph
+		by a new metadata path that goes through the flowgraph, to avoid the
+		issues with misalignment of frame and timestamps. Do not mix different
+		versions when using timestamps, and be careful when mixing ODR-DabMod
+		with other transmitters in SFNs, as the timestamp interpretation can
+		change!
+		Fix TII carrier selection.
+		Add OFDM symbol windowing for improved shoulder performance.
+		Add a timeout to the ZeroMQ input to quit on SIGINT (Ctrl-C).
+		Optionally show the flowgraph metadata in the file output for
+		test purposes.
+		Add antenna selection to UHD and SoapySDR outputs.
+		Make EDI input optional (it's not well tested, unfinished and slows
+		compile time)
+		Improve portability for non-Linux POSIX systems.
+		Default to TM 1, do not read from ETI anymore.
+		Add support for UHD 3.11.
+		Implement auto-reconnect for the TCP input.
+
+2017-11-18: Matthias P. Braendli <matthias@mpb.li>
+	(v1.1.0):
+		Fix TII insertion power level.
+		Fix bug in parsing timestamps appearing in rare conditions.
+		Add Crest Factor Reduction prototype.
+		Cleanup console output of flowgraph statistics.
+		Add prototype for Digital Predistortion.
+		Enable some additional compiler warnings.
+		Add some useful UHD statistics to RC.
+		Add configure option to disable march=native.
+
+2017-06-05: Matthias P. Braendli <matthias@mpb.li>
+	(v1.0.1):
+		Move GainControl into a separate thread to make better use
+		of multiprocessor systems.
+		Give explicit names to GainControl modes (fix, max, var) in
+		configuration.
+		Add u8 IQ output format.
+		Add a normalised complexf IQ output format.
+		Make resampler unity-gain, i.e. remove digital_gain - sample rate
+		dependency.
+		Read UHD async messages in separate thread to lessen influence on the
+		time-critical transmit thread.
+		Pre-fill UHD IQ buffer before starting to stream data, to ensure it is
+		properly filled and reduce underruns.
+
+2017-03-03: Matthias P. Braendli <matthias@mpb.li>
+	(v1.0.0):
+	* odr-dabmod:
+		Add ETI-over-TCP input.
+		Add EDI input.
+		Add SoapySDR output, than can drive HackRF, LimeSDR and other boards.
+		Add LO offset to UHD output.
+		Make gainmode VAR the default and improve config syntax.
+		Fix TII insertion.
+		Display FCT and TIST in remote control.
+		Add most commonly used FIRFilter taps into binary and enable the
+		filter by default.
+		Add fast math configure option that can be used to improve performance
+		on ARM platforms as it allows the compiler to use NEON.
+		Improve logging.
+		Refactor internals (flowgraph, main loop, C++11 modernisation and more)
+
+2016-07-30: Matthias P. Braendli <matthias@mpb.li>
+	(v0.6.0):
+	* odr-dabmod:
+		Remove the broken KISS FFT support.
+		Replace FCT discontinuity check by verification of
+		the timestamps.
+		Change DSP thread priorities to realtime.
+		Quite some internal refactoring.
+		Fix segfault on quit due to incorrect teardown of FFTW.
+		Add Travis CI build instructions.
+
+2015-11-27: Matthias P. Braendli <matthias@mpb.li>
+	(v0.5.5):
+	* odr-dabmod:
+		Fix compile errors with recent C++ standard library.
+		Correct command line options when using UHD and ZMQ input.
+		Enable ZeroMQ be default in ./configure
+
+2015-09-18: Matthias P. Braendli <matthias@mpb.li>
+	(v0.5.4)
+	* odr-dabmod:
+		Better GPSDO handling, both for Ettus GPSDO
+		and ODR LEA-M8F board.
+		Add (experimental) TII support.
+		Improve thread priority definition.
+		Simplify handling of TIST offset, and add to RC.
+		Switch project to C++11.
+
+2015-07-24: Matthias P. Braendli <matthias@mpb.li>
+	(v0.5.3)
+	* odr-dabmod:
+		Replace zmq.hpp to support version 4.1.x
+
+2015-04-10: Matthias P. Braendli <matthias@mpb.li>
+	(v0.5.2)
+	* odr-dabmod:
+		Merge static delay parameter and ZeroMQ remote control.
+		Add max_frames_queued option for ZeroMQ input.
+		Restart modulator on FCT discontinuity or ZeroMQ input
+		buffer overrun.
+		Improve error messages and documentation.
+		Add ZeroMQ output REP socket type for interconnection with
+		GNURadio.
+		Fix license text in usage view.
+
+2015-01-24: Matthias P. Braendli <matthias@mpb.li>
+	(v0.5.1)
+	* odr-dabmod:
+		Security: force Telnet RC to listen only on
+		localhost.
+		Add raspine's ZeroMQ RC and UHD staticdelay setting
+		Add I/Q format converter (signed 8-bit)
+
+2014-12-09: Matthias P. Braendli <matthias@mpb.li>
+	(v0.5.0)
+	* odr-dabmod:
+		Add support for ARM processors.
+		Use FFTW instead of KISS FFT by default.
+		Add a ZeroMQ I/Q output.
+		Support more fine-grained UHD TX gain.
+		Make the -C flag optional to simplify the usage.
+2014-09-26: Matthias P. Braendli <matthias@mpb.li>
+	(v0.4.5)
+	* odr-dabmod:
+		Change UHD normalisation to reduce risk of nonlinearities.
+		Add digital gain setting to RC.
+		Fix handling of timestamps when using ZMQ input, for the SFN
+		scenario.
+2014-05-20: Matthias P. Braendli <matthias@mpb.li>
+	(v0.4.4)
+	* odr-dabmod:
+		Merge patch for USRP1 subdevice setting.
+		Merge patch to correct ZMQ input command line
+		  argument.
+	* generate-firfilter.py:
+		Get FIRFilter generator script to work
+		  with newer GNURadio versions.
+2014-04-04: Matthias P. Braendli <matthias@mpb.li>
+	(v0.4.3)
+	* odr-dabmod:
+		Various UHD improvements, esp. related to
+		  external clock input handling.
+		ZeroMQ input protocol format updated to avoid
+		  frame phase alignment errors (not
+		  backward compatible)
+		Various cleanup and fixes
+
+2014-03-07: Matthias P. Braendli <matthias@mpb.li>
+	(v0.4.2)
+	* odr-dabmod:
+		Fix frequency/channel choice
+		Improvements in ZMQ input reliability
+		Use correct syslog identification
+
+2014-02-11: Matthias P. Braendli <matthias@mpb.li>
+	(v0.4.1)
+	* odr-dabmod:
+		Include zmq.hpp and prefer it over the one
+		provided by the system.
+		Add the channel option to the configuration file
+		for the UHD output.
+		Replace fprintf calls by correct usage of the
+		logging subsystem.
+		Fix some compilation warnings.
+
+2014-02-07: Matthias P. Braendli <matthias@mpb.li>
+	(v0.4.0)
+	* odr-dabmod:
+		Renamed CRC-DABMOD to ODR-DabMod
+		Fixed version generation
+		Fixed missing files in tarball
+
+2014-01-31: Matthias P. Braendli <matthias@mpb.li>
+	(tag r11)
+	* crc-dabmod:
+		Minor improvements in logging, remote control,
+		zmq input and autotools
+
+2013-12-14: Matthias P. Braendli <matthias@mpb.li>
+	(tag r10)
+	* autotools:
+		Remove autogenerated files and add bootstrap
+		Fix faulty logic for --enable-input-zeromq
+
+2013-11-21: Matthias P. Braendli <matthias@mpb.li>
+	(tag r9)
+	* crc-dabmod:
+		Make generate-filter compatible with newer GNURadio
+		Add the FIRFilter tap generation tool
+		Remove references to mercurial in ChangeLog
+
+2013-11-10: Matthias P. Braendli <matthias@mpb.li>
+	(tag r8):
+	* crc-dabmod:
+		Added secondary ETI input support.
+		Added ZeroMQ ETI input.
+		Fixed muting issue on missing timestamps, and
+		Added related configuration entry.
+		ZeroMQ dependency added in configure.ac
+		Versioning changed to make hg revision visible
+		Completed READMEs and INSTALLs
+
+2012-09-13: Matthias P. Braendli <matthias@mpb.li>
+	(tag r7):
+	* crc-dabmod/*:
+		Logging implementation cleaned up, and several
+		related bugs have been solved.
+		Added Boost version check into autoconf
+
+	* crc-dabmod/src/OutputUHD.*:
+		Use non-deprecated way of setting clock and time
+		for the USRP.
+
+
+2012-08-26: Matthias P. Braendli <matthias@mpb.li>
+	(tag r6):
+	* crc-dabmod:
+		RemoteControl compatibility issue
+
+2012-08-23: Matthias P. Braendli <matthias@mpb.li>
+	(tag r5):
+	* crc-dabmod/*:
+		Minor fixes to FIRFilter and file configuration
+
+2012-08-17: Matthias P. Braendli <matthias@mpb.li>
+	(tag r4):
+	* crc-dabmod/*:
+		FIRFilter can not be remote-controlled, and supports on-the-fly change
+		of the filter taps.
+
+2012-08-16: Matthias P. Braendli <matthias@mpb.li>
+	(tag r3):
+	* crc-dabmod/*:
+		Implemented basic telnet remote control that can change
+		some UHD settings, and a syslog-compatible logging system.
+
+2012-08-14: Matthias P. Braendli <matthias@mpb.li>
+	(tag r2):
+	* crc-dabmod/*:
+		Added .INI configuration file parser.
+
+2012-08-01: Matthias P. Braendli <matthias@mpb.li>
+	(tag r1):
+	* crc-dabmod/*:
+		It is now possible to run dabmod with OutputUHD even
+		when no external 10MHz reference nor 1PPS are used.
+
+		When using FIRFilter, the TimestampDecoder keeps one delay value
+		to compensate for the increased pipeline latency of the FIRFilter.
+		As a consequence, it should be possible to synchronise two DABMODs,
+		even if only one uses FIRFilter.
+
+2012-06-04  Pascal Charest <pascal [dot] charest [at] crc [dot] ca>
+
+    * BlockPartitioner.cpp BlockPartitioner.h DabModulator.cpp EtiReader.cpp EtiReader.h:
+        Solved CIF count synchronisation bug.
+
+2012-02-07  Pascal Charest <pascal [dot] charest [at] crc [dot] ca>
+
+    * DabMod.cpp DabModulator.cpp DabModulator.h: Added gain factor to support UHD scale.
+        Added manual DAB mode control.
+    * GainControl.cpp GainControl.h: Added gain factor to support UHD scale.
+    * Makefile.am kiss_fft129.tar.gz: Updated Kiss FFT library to 1.2.9.
+
+2011-12-15  Pascal Charest <pascal [dot] charest [at] crc [dot] ca>
+
+    * configure.ac: Added Wall option to debug compilation.
+        Added mm_malloc macro.
+    * src/BlockPartitioner.h: Changed from codec to mux.
+    * src/Buffer.cpp src/Buffer.h: New buffer management class.
+    * src/DabMod.cpp: Changed from mm_malloc to memalign for Efence support.
+        Replaced all fixed memory size with dynamic Buffer class.
+        Removed FFTW api.
+    * src/DabModulator.cpp src/DabModulator.h: Solved integer overflow bug for CicEqualizer initialisation.
+    * src/GainControl.cpp: Added handling of null symbol when gain would be infinity.
+    * src/InputMemory.h: Solved debug wrong file name issue.
+    * src/kiss_fftsimd.c src/kiss_fftsimd.h: Generic function to pack data for SIMD operations (currently not used).
+
+2011-12-09  Pascal Charest <pascal [dot] charest [at] crc [dot] ca>
+
+    * *: Added support for DAB mode I, III and IV.
+
+2010-07-14  Pascal Charest <pascal [dot] charest [at] crc [dot] ca>
+
+    * configure.ac: Added enable-prof and enable-fft-simd options.
+    * src/GainControl.cpp: Changed to system defined variables.
+    * src/Makefile.am: Removed code about FFTW and KISS_FFT the only FFT library.
+    * src/OfdmGenerator.cpp src/OfdmGenerator.h: Added support for KISS_FFT simd operations.
+    * src/PuncturingEncoder.cpp: Solved a bug for last bits (tail) encoding.
+    * src/Resampler.cpp src/Resampler.h: Added support for KISS_FFT simd operations.
+                                         Removed unused code.
+    * src/crc-dwap.py: Adapted to latest Gnuradio version.
+
+2010-02-12  Pascal Charest <pascal [dot] charest [at] crc [dot] ca>
+     
+    * *: Initial public release

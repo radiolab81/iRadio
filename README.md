@@ -479,9 +479,9 @@ Standardmäßig wird auf dem Root-Verzeichnis des USB-Sticks nach Mediendateien 
 
 FILES=(*.mp3 *.mp4 *.aac *.wav)
 
-hinzugefügt werden. Nach einem Neuaufruf des Buildscriptes und einem Neustart wird dann auch nach den neu hinzugefügten Dateiendungen gesucht wenn ein USB-Stick eingesteckt wird. Standardmäßig gibt der mediaplayerd die Dateien in der Reihe des Auffindens wieder. Möchte man eine Zufallswiedergabe, so kann man dies in der Datei mpvlcd durch Hinzufügen der --random Aufrufoption zu vlc bewirken. 
+hinzugefügt werden. Nach einem Neuaufruf des Buildscriptes und einem Neustart wird dann auch nach den neu hinzugefügten Dateiendungen gesucht wenn ein USB-Stick eingesteckt wird. Standardmäßig gibt der mediaplayerd die Mediendateien in der Reihe des Auffindens wieder. Möchte man eine Zufallswiedergabe, so kann man dies in der Datei mpvlcd durch Hinzufügen der --random Aufrufoption zu vlc bewirken. 
 
-Natürlich lässt sich der Mediaplayer durch Anpassung der Quellcodedateien beliebig in der Funktion anpassen und in aufwenigere Benutzerkonpzepte, zum Beispiel bei Skalensimulation mit Umschaltung zwischen mehreren Empfangsarten (Internetradio/TV/DAB/UKW), leicht integrieren.
+Natürlich lässt sich der Mediaplayer durch Anpassung der Quellcodedateien beliebig in der Funktion anpassen und in aufwenigere Benutzerkonpzepte, zum Beispiel bei Skalensimulation mit Umschaltung zwischen mehreren Empfangsarten (Internetradio/DAB/UKW), leicht integrieren.
 
 _____________________________________________________________________________________
 Weiterer Support im Radio-Bastler-Forum unter: https://www.radio-bastler.de 

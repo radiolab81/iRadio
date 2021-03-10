@@ -471,7 +471,7 @@ Zusätzlich zur Integration der DAB(+) Sendefunktion, bringt das iRadio nun Unte
 
 ![dab3](https://github.com/BM45/iRadio/blob/master/pics4www/mediaplayer.jpg)
 
-Wird ein mit Mediendateien gefüllter USB-Stick in das iRadio eingesteckt, so wird dieser automatisch erkannt, die Internetradiowiedergabe gestopt und die Wiedergabe der Musiksammlung von USB gestartet. Zieht man den USB-Stick wieder ab, geht das iRadio danach automatisch wieder in den Internetradiobetrieb über.
+Wird ein mit Mediendateien gefüllter USB-Stick in das iRadio eingesteckt, so wird dieser automatisch erkannt, die Internetradio- oder Internetfernsehwiedergabe gestopt und die Wiedergabe der Musik-/Filmsammlung von USB gestartet. Zieht man den USB-Stick wieder ab, geht das iRadio danach automatisch wieder in den Internetradio- bzw. Internetfernsehbetrieb über.
 
 Um diese automatische Mediaplayerfunktion zu aktivieren, ruft man das Buildscript im Ordner mediaplayerd auf. Der Mediaplayer-Daemon wird compiliert und alle nötigen Dateien werden an die richtige Stelle im iRadio-System kopiert. Zuletzt muss nur noch der Mediaplayer-Daemon "mediaplayerd" in einer Startdatei (zum Beispiel /etc/rc.local) eingetragen werden. Nach einem Neustart des iRadios ist die Funktion aktiviert.
 
@@ -481,7 +481,7 @@ FILES=(*.mp3 *.mp4 *.aac *.wav)
 
 hinzugefügt werden. Nach einem Neuaufruf des Buildscriptes und einem Neustart wird dann auch nach den neu hinzugefügten Dateiendungen gesucht wenn ein USB-Stick eingesteckt wird. Standardmäßig gibt der mediaplayerd die Dateien in der Reihe des Auffindens wieder. Möchte man eine Zufallswiedergabe, so kann man dies in der Datei mpvlcd durch Hinzufügen der --random Aufrufoption zu vlc bewirken. 
 
-Natürlich lässt sich der Mediaplayer durch Anpassung der Quellcodedateien beliebig in der Funktion anpassen und in aufwenigere Benutzerkonpzepte, zum Beispiel bei Skalensimulation mit Umschaltung zwischen mehreren Empfangsarten (Internetradio/DAB/UKW), leicht integrieren.
+Natürlich lässt sich der Mediaplayer durch Anpassung der Quellcodedateien beliebig in der Funktion anpassen und in aufwenigere Benutzerkonpzepte, zum Beispiel bei Skalensimulation mit Umschaltung zwischen mehreren Empfangsarten (Internetradio/TV/DAB/UKW), leicht integrieren.
 
 _____________________________________________________________________________________
 Weiterer Support im Radio-Bastler-Forum unter: https://www.radio-bastler.de 

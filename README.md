@@ -467,6 +467,21 @@ Diese drei Prozesse findet man im Ordner /Transmitter/ODR des iRadios. Sie müss
 
 Zusätzlich zur Integration der DAB(+) Sendefunktion, bringt das iRadio nun Unterstützung für weitere SDR-Sendehardware mit. Es wurde Treiberunterstützung für den Adalm Pluto (https://www.analog.com/en/design-center/evaluation-hardware-and-software/evaluation-boards-kits/adalm-pluto.html) und für den preiswerten FL2K SDR-Sender (https://osmocom.org/projects/osmo-fl2k/wiki) integriert.
 
+## Update vom 10.03.2021: automatische Mediaplayerfunktion hinzugefügt 
+
+![dab3](https://github.com/BM45/iRadio/blob/master/pics4www/mediaplayer.jpg)
+
+Wird ein mit Mediendateien gefüllter USB-Stick in das iRadio eingesteckt, so wird dieser automatisch erkannt, die Internetradiowiedergabe gestopt und die Wiedergabe der Musiksammlung von USB gestartet. Zieht man den USB-Stick wieder ab, geht das iRadio danach automatisch wieder in den Internetradiobetrieb über.
+
+Um diese automatische Mediaplayerfunktion zu aktivieren, ruft man das Buildscript im Ordner mediaplayerd auf. Der Mediaplayer-Daemon wird compiliert und alle nötigen Dateien werden an die richtige Stelle im iRadio-System kopiert. Zuletzt muss nur noch der Mediaplayer-Daemon "mediaplayerd" in einer Startdatei (zum Beispiel /etc/rc.local) eingetragen werden. Nach einem Neustart des iRadios ist die Funktion aktiviert.
+
+Standardmäßig wird auf dem Root-Verzeichnis des USB-Sticks nach Mediendateien mit den Endungen mp3, aac, wav und mp4 gesucht. Weitere Dateitypen können jederzeit in der Datei mkplaylist.sh unter dem Punkt
+
+FILES=(*.mp3 *.mp4 *.aac *.wav)
+
+hinzugefügt werden. Nach einem Neuaufruf des Buildscriptes und einem Neustart wird dann auch nach den neu hinzugefügten Dateiendungen gesucht wenn ein USB-Stick eingesteckt wird. Standardmäßig gibt der mediaplayerd die Dateien in der Reihe des Auffindens wieder. Möchte man eine Zufallswiedergabe, so kann man dies in der Datei mpvlcd durch Hinzufügen der --random Aufrufoption zu vlc bewirken. 
+
+Natürlich lässt sich der Mediaplayer durch Anpassung der Quellcodedateien beliebig in der Funktion anpassen und in aufwenigere Benutzerkonpzepte, zum Beispiel bei Skalensimulation mit Umschaltung zwischen mehreren Empfangsarten (Internetradio/DAB/UKW), leicht integrieren.
 
 _____________________________________________________________________________________
 Weiterer Support im Radio-Bastler-Forum unter: https://www.radio-bastler.de 

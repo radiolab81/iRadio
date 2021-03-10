@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+sed -i 's/geteuid/getppid/' /usr/bin/vlc
+sudo mkdir -p /var/run/vlcd
+
+# Startup vlc
+volpref=$(grep "^alsa-gain" ~/.config/vlc/vlcrc)
+
+if [ -z $volpref ]; then
+   volpref="alsa-gain 0.065"
+fi
+
+/usr/bin/vlc \
+--$volpref \
+--audio-filter compressor,volnorm \
+--norm-buff-size 10 \
+--norm-max-level 80.0 \
+--norm-max-level -3 \
+--compressor-attack 50.0 \
+--compressor-release 200.0 \
+--compressor-ratio 20.0 \
+--compressor-threshold 0.0 \
+--compressor-rms-peak 0.0 \
+--compressor-knee 1.0 \
+--compressor-makeup-gain 0.0 \
+--intf dummy \
+--extraintf rc:http \
+--rc-host 0.0.0.0:9294 --rc-fake-tty \
+--http-host 0.0.0.0 --http-port 8080 --http-password raspberry \
+--no-quiet \
+--daemon \
+--pidfile /var/run/vlcd/vlcd.pid \
+medialist.m3u

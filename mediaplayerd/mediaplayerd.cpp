@@ -21,8 +21,8 @@
 
 using namespace std;
 
-bool bDevAvail = false;
-bool bMediaplayer_running = false;
+volatile bool bDevAvail = false;
+volatile bool bMediaplayer_running = false;
 
 static void *process_chkmount(void *arg) {
    char status[64];
@@ -46,7 +46,7 @@ static void *process_chkmount(void *arg) {
 	ret = NULL;
      }
     
-     usleep(5000000);
+     sleep(5);
 
    }
    return 0;
@@ -78,7 +78,7 @@ int main(int argc, char *argv[]) {
 	 system("vlcd");
        }
     }
-    usleep(5000000);
+    sleep(5);
   }
 }
 

@@ -483,6 +483,14 @@ hinzugefügt werden. Nach einem Neuaufruf des Buildscriptes und einem Neustart w
 
 Natürlich lässt sich der Mediaplayer durch Anpassung der Quellcodedateien beliebig in der Funktion anpassen und in aufwendigere Bedienkonpzepte, zum Beispiel bei Skalensimulation mit Umschaltung zwischen mehreren Empfangsarten (Internetradio/DAB/UKW), leicht integrieren.
 
+## Update vom 13.10.2021: barrierefreies iRadio - Sprachausgabe (TTS-Text to Speech) hinzugefügt
+
+![tts](https://github.com/BM45/iRadio/blob/master/pics4www/TTSiRadio.jpg)
+
+Mit dem heutigen Update ist es möglich barrierefreie Radios nach dem Vorbild eines NOXON dRadio 110 aufzubauen oder komplett auf Displayintegrationen in alte Skalen zu verzichten, da praktisch alle technischen Informationen wie Sendernamen oder die Programmliste beim Umschalten vorgelesen werden können. Auch der Aufbau von Radios, die sich im Dunklen einfacher bedienen lassen (Weckradios) ist nun leicht möglich. So könnte ein kurzer Druck auf eine Funktionstaste die Tastenfunktion gesprochen ausgeben, während ein langer Tastendruck die Funktion anschließend selbst auslöst.
+
+Die Sprachsynthese mit allen Dateien und kurzem Democode befindet sich im Ordner speakingd, die Installation und Nutzung in eigenen Steuer- oder Displaydaemonen wird in der dortigen Datei README.txt dargestellt. 
+
 _____________________________________________________________________________________
 Weiterer Support im Radio-Bastler-Forum unter: https://www.radio-bastler.de 
 Bitte beachtet auch den Blog von meinem Bastlerkollegen Franz-Josef Haffner: https://radiobasteleien.blogspot.com/search/label/iRadio

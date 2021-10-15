@@ -40,9 +40,7 @@ int main(int argc, char *argv[]) {
 
 		// wenn neuer Sendername ...
     		if ( (strcmp(title,title_old)!=0) ) {
-		    // warte kurz bis Station Sendernamen ubertragen konnte
-		    sleep(5);
-
+		  
 		    // de-DE , en-GB, en-US ... verschiedene Aussprachen
                     cmd = "pico2wave --lang=de-DE -w /tmp/pico.wav \"Sie hören ";
 		    cmd += title;
@@ -61,7 +59,7 @@ int main(int argc, char *argv[]) {
 		}
 
 
-    	 sleep(1);
+    	 sleep(5);
    	}
 }
 

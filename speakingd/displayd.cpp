@@ -9,6 +9,8 @@
 
 using namespace std;
 
+char lang[6];
+
 
 void rmSubstr(char *str, const char *toRemove)
 {
@@ -17,6 +19,18 @@ void rmSubstr(char *str, const char *toRemove)
     {
         memmove(str, str + length, 1 + strlen(str + length));
     }
+}
+
+char* whatLanguage() {
+    FILE *text;
+      text = popen("/usr/bin/whatlanguage" ,"r");
+
+    fgets(lang,6,text);
+
+    if (text != NULL)
+      pclose(text);
+
+    return lang;
 }
 
 int main(int argc, char *argv[]) {
@@ -40,9 +54,11 @@ int main(int argc, char *argv[]) {
 
 		// wenn neuer Sendername ...
     		if ( (strcmp(title,title_old)!=0) ) {
-		  
+
 		    // de-DE , en-GB, en-US ... verschiedene Aussprachen
-                    cmd = "pico2wave --lang=de-DE -w /tmp/pico.wav \"Sie hören ";
+                    cmd = "pico2wave --lang=";
+                    cmd +=whatLanguage();
+                    cmd += " -w /tmp/pico.wav \"Sie hören ";
 		    cmd += title;
 		    cmd += "\" | aplay \0";
                     cout << cmd << "\n";

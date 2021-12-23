@@ -52,7 +52,7 @@ Die Steuerung wird als Daemon/Prozess "gpiod" realisiert.
 
 - alle HDMI Displays (auch LVDS über zusätzlichen HDMI-Controller)
 - Röhrenbildschirme über FBAS Ausgang des Raspberry (auch einige andere Kleinrechner mit FBAS Ausgang)
-- ST7735
+- ST7735/7789
 - HX8340
 - HX8353
 - HX8347

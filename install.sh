@@ -24,6 +24,7 @@ cp default.m3u /etc/vlcd
 
 cd bcm2835-1*
 ./configure
+aclocal
 make
 make check
 make install

@@ -228,7 +228,7 @@ von Mediengeräten.
 
 Koppelt man sich mit dem iRadio, dann wird die Wiedergabe des Internetradios automatisch unterbrochen und das iRadio wird zum Funklautsprecher. Entkoppelt man die Bluetoothverbindung, so beginnt das iRadio mit der Wiedergabe der zuletzt eingestellten Internetradiostation.
 
-#### ACHTUNG: Der bt-speaker Dienst im iRadio ist standardmäßig für das ALSA - Soundsystem konfiguriert. Bei späteren Buster-Releases wurde auf PulseAudio umgestellt. Damit unser bt-speaker Dienst auf solchen Systemen starten kann, ist folgende Änderung zu machen. Nach der Installation öffnen Sie die Datei  /etc/bt_speaker/config.ini .
+#### ACHTUNG: Der bt-speaker Dienst im iRadio ist standardmäßig für ALSA konfiguriert. Bei späteren Buster-Releases wurde auf PulseAudio umgestellt. Damit unser bt-speaker Dienst auf solchen Systemen starten kann, ist folgende Änderung zu machen. Nach der Installation öffnen Sie die Datei  /etc/bt_speaker/config.ini .
 Im Block [alsa] setzen Sie enable auf no, also 
 
 [alsa]

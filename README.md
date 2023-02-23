@@ -16,9 +16,32 @@ Ein Softwarebaukasten für den Aufbau neuer Radios oder dem Umbau alter Radios z
 ## Unterstützte Rechner:
 
  Raspberry 1A(+), 1B(+), 2B, 3A+, 3B(+), 4 direkt mit Raspbian OS (https://downloads.raspberrypi.org/raspbian/images/). Das neue Raspberry Pi OS wird zur Zeit möglicherweise nicht vollständig out-of-box unterstützt. Das iRadio setzt eine funktionierende Audiokonfiguration auf dem Raspberry voraus!
+ 
+#### Nachtrag 23.02.2023: 
 
+Das iRadio schlummert nun schon seit einigen Jahren auf dem Codestand des "Raspbian OS". Es gibt am Markt nach wie vor kaum Raspberrys zu kaufen (wenn dann Altware von Privat zu überteuerten Preisen, z.T. für 200+x Euro). Viele Softwareprojekte für den Pi, wie zum Beispiel wiringPi, sind mit Erscheinen des 4er Pi, der Chipkrise (und damit nicht lieferbaren Raspberrys) und den ständigen Änderungen am Raspbian-Nachfolger Raspberry Pi OS eingeschlafen oder die Weiterentwicklung läuft auf Sparflamme. All das ist keine gute Grundlage für unseren iRadio-Softwarebaukasten! Wir haben uns deshalb entschieden, in dieses Projekt keine weitere Arbeit hineinzustecken und uns anderen interessanteren Plattformen und Projekten zuzuwenden.  
+Es bleibt also (bis auf Weiteres, oder auch für immer) bei oben geschriebenen:
+
+- Wir unterstützen RPi 1,2,3,z.T. auch 4 auf der alten Raspbian OS Basis (https://downloads.raspberrypi.org/raspbian/images/)!
+
+- Alles was danach kommt, wird von uns nicht mehr getestet oder codeseitig voll unterstützt! Sie können zwar ein iRadio mit dem neuen Raspberry Pi OS aufbauen, aber bereits beim Installationsscript könnten Pakete wegen Namensänderung nicht gefunden werden. Das müssen Sie selbstständig erkennen und beheben! Sollte der Support der WiringPi oder BCM2835 nicht mehr vollständig gegeben sein, müssen Sie selbst in der Lage sein das zu erkennen und Code, der auf die GPIOs zugreift (gpiod, displayd, externe Tuner) modifizieren können! Sie müssen ggf. selbstständig Code von der einen Lib auf die andere umstellen können. Da wir im Beispielcode zeigen, wie die Nutzung beider Libs erfolgt, ist das für Sie möglich, Sie müssen nur (ohne unsere weitere Unterstützung) wollen! 
+Und natürlich: Sie können jederzeit ein Internetradio mit dem alten Raspbian OS (zum Beispiel mit der iRL-Distribution) aufbauen, einem OS auf dem dieses iRadio gegründet und ausgiebig in allen Funktionen getestet wurde.
+
+Wenn Sie ein Internetradio aufbauen wollen, aber gerade nicht an einen Raspberry Pi kommen, ist vielleicht unsere Alternative iRadioMini für den günstigen und jederzeit lieferbaren ESP32 eine Alternative: https://github.com/BM45/iRadioMini
+
+Sie interessieren sich für Software-Defined-Radios? https://github.com/BM45/SDR_ESP32   Auch das kann der ESP32, bei Ihnen vielleicht sogar in Verbindung mit dem iRadioMini? ;-)
+
+Das Team vom iRadio bedankt sich für die jahrelange Unterstützung bei unzähligen Testern und natürlich Anwendern! 
+Ohne Euch wäre die Arbeit nicht zu stemmen gewesen und hätte auch keinen Spaß gemacht! Es sind bei Euch da draußen dermaßen "geile" Radios entstanden, das hätte die stocksteife Radioindustrie so nie hinbekommen!
+Immerhin hat sich dadurch dieses Projekt erfolgreich hierfür qualifiziert und wird als Zeitzeugnis uns lange überleben: https://archiveprogram.github.com/arctic-vault/ 
+
+Und bevor wir unsere Arbeit hieran nun auch komplett aufs Eis legen, das Licht ausschalten und alle im Team wieder auseinandergehen, um in der Welt da draußen neue Projekte zu beginnen, nochmals ein DANKE - DANKE - DANKE !!! 
+ 
+Tschüss und Ciao
+das iRadio-Team
+     
 ***************************************************************************************************************************************
-### Neu: iRL - iRadio on Linux, eine Linuxdistribution mit vorinstallierten und vorkonfiguriertem iRadio. Als Image für eine SD-Karte hier downloadbar: https://github.com/BM45/iRL
+### iRL - iRadio on Linux, eine Linuxdistribution mit vorinstallierten und vorkonfiguriertem iRadio. Als Image für eine SD-Karte hier downloadbar: https://github.com/BM45/iRL
 
 ***************************************************************************************************************************************
   

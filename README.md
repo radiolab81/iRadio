@@ -37,8 +37,8 @@ Immerhin hat sich dadurch dieses Projekt erfolgreich hierfür qualifiziert und w
 
 Und bevor wir unsere Arbeit hieran nun auch komplett aufs Eis legen, das Licht ausschalten und alle im Team wieder auseinandergehen, um in der Welt da draußen neue Projekte zu beginnen, nochmals ein DANKE - DANKE - DANKE !!! 
  
-Tschüss und Ciao
-das iRadio-Team
+Tschüss und Ciao,
+das iRadio-Team.
      
 ***************************************************************************************************************************************
 ### iRL - iRadio on Linux, eine Linuxdistribution mit vorinstallierten und vorkonfiguriertem iRadio. Als Image für eine SD-Karte hier downloadbar: https://github.com/BM45/iRL

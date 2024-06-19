@@ -4,14 +4,14 @@ Ein Softwarebaukasten für den Aufbau neuer Radios oder dem Umbau alter Radios z
 
 #### ITT Viola 350 wird zum Digialradio...
 
-![viola0](https://www.radio-bastler.de/forum/attachment.php?thumbnail=54713)
-![viola1](https://www.radio-bastler.de/forum/attachment.php?thumbnail=54715)
-![viola2](https://www.radio-bastler.de/forum/attachment.php?thumbnail=54563)
+![viola0](https://github.com/BM45/iRadio/blob/master/pics4www/ITT_Viola_350_1.jpeg)
+![viola1](https://github.com/BM45/iRadio/blob/master/pics4www/ITT_Viola_350_2.jpeg)
+![viola2](https://github.com/BM45/iRadio/blob/master/pics4www/ITT_Viola_350_3.jpeg)
 
 #### Ein Philips 634 "Digital" ...
 
-![oldie2](https://www.radio-bastler.de/forum/attachment.php?thumbnail=55132)
-![oldie3](https://www.radio-bastler.de/forum/attachment.php?thumbnail=55229)
+![oldie2](https://github.com/BM45/iRadio/blob/master/pics4www/Philips_634_1.jpeg)
+![oldie2](https://github.com/BM45/iRadio/blob/master/pics4www/Philips_634_2.jpeg)
 
 ## Unterstützte Rechner:
 

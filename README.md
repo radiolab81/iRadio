@@ -134,7 +134,7 @@ Die Änderung der Pinbelegung oder Erweiterung der Tastensteuerung kann durch ed
 
 Anstelle von Tastern, kann auch ein Drehimpulsgeber zur Programmumschaltung genutzt werden.
 
-![rotary](https://www.radio-bastler.de/forum/attachment.php?thumbnail=56549)
+![rotary](https://github.com/BM45/iRadio/blob/master/pics4www/Pi_Drehregler_1.jpeg)
 
 Hierzu muss ein neuer Steuerdaemon (gpiod) gebaut werden. Dies geht automatisch durch folgende Befehle.
 
@@ -204,27 +204,22 @@ Ein ganz besonderer "Displaytyp" ist der PWM-Servo. Der Code dafür ist in `/hom
 
 Das iRadio mit einem PWM-Servo ist in der Lage, bestimmte Zustände, zum Beispiel Programmspeicherplätze oder Lautstärkeeinstellungen mit einem richtigen Zeiger oder einer richtigen Skale darzustellen. 
 
-Ein von mir sehr geschätzter Radiobauer aus dem Radio-Bastler-Forum, hat mit dem iRadio einen Volksempfänger zum Internetradio umgebaut. Die alte Frequenzskale, nun angetrieben von einem Servo, zeigt den aktuell eingestellten 
+Ein von mir sehr geschätzter Radiobauer hat mit dem iRadio einen Volksempfänger zum Internetradio umgebaut. Die alte Frequenzskale, nun angetrieben von einem Servo, zeigt den aktuell eingestellten 
 Programmplatz.
-
-![servo1](https://www.radio-bastler.de/forum/attachment.php?thumbnail=60455)
-![servo2](https://www.radio-bastler.de/forum/attachment.php?thumbnail=61100)
-![servo3](https://www.radio-bastler.de/forum/attachment.php?thumbnail=61097)
 
 In Aktion: (Klick führt zu Youtube)
 
 [![servovideo](http://img.youtube.com/vi/fL3GbyHzpOE/0.jpg)](http://www.youtube.com/watch?v=fL3GbyHzpOE "")
 
-
 Mit der "Highlevel-Unterstützung" durch X11/Framebuffer sind natürlich auch andere Benutzerschnittstellen mit dem iRadio möglich, so zum Beispiel eine touch-sensitive Bedienung über eine FLTK-GUI.
 
-![fltk](https://www.radio-bastler.de/forum/attachment.php?thumbnail=55538)
+![fltk](https://github.com/BM45/iRadio/blob/master/pics4www/FLTK_GUI_1.jpeg)
 
 Ein besonderes Highlight ist die Simulation photorealistischer Nachbildungen von Senderskalen alter Radios.
 
-![sim1](https://www.radio-bastler.de/forum/attachment.php?thumbnail=58390)
-![sim2](https://www.radio-bastler.de/forum/attachment.php?thumbnail=58393)
-![sim3](https://www.radio-bastler.de/forum/attachment.php?thumbnail=58950)
+![sim1](https://github.com/BM45/iRadio/blob/master/pics4www/Skalensimulator_1.jpeg)
+![sim2](https://github.com/BM45/iRadio/blob/master/pics4www/Skalensimulator_2.jpeg)
+![sim3](https://github.com/BM45/iRadio/blob/master/pics4www/Skalensimulator_3.jpeg)
 
 Umbau eines alten Metz-Baby zum iRadio-Internetradio.
 
@@ -248,7 +243,7 @@ Zur Installation der Bluetoothfunktionalität gibt man folgendes ein:
 Nach dem Neustart des Raspberry präsentiert sich der Kleinrechner mit seinem vergebenen Hostnamen in der Bluetooth-Suche 
 von Mediengeräten.
 
-![bluetooth](https://www.radio-bastler.de/forum/attachment.php?thumbnail=59874)
+![bluetooth](https://github.com/BM45/iRadio/blob/master/pics4www/BT_Handy_1.jpeg)
 
 Koppelt man sich mit dem iRadio, dann wird die Wiedergabe des Internetradios automatisch unterbrochen und das iRadio wird zum Funklautsprecher. Entkoppelt man die Bluetoothverbindung, so beginnt das iRadio mit der Wiedergabe der zuletzt eingestellten Internetradiostation.
 
@@ -335,8 +330,8 @@ arbeiten.
 ## Update vom 04.09.2019: Unterstützung mehrerer e-Paper / e-Ink Displays
 Mit der heutigen Version wird die Unterstützung mehrer e-Ink Displays in das iRadio aufgenommen. 
 
-![eink1](https://www.radio-bastler.de/forum/attachment.php?thumbnail=66672)
-![eink1](https://www.radio-bastler.de/forum/attachment.php?thumbnail=66673)
+![eink1](https://github.com/BM45/iRadio/blob/master/pics4www/eInk_1.jpeg)
+![eink2](https://github.com/BM45/iRadio/blob/master/pics4www/eInk_2.jpeg)
 
 ## Update vom 30.04.2020: Simulation eines Abstimmgeräusches
 Mit dem Update vom 30.04.2020 ist es möglich, zwischen dem Umschalten zweier Internetradiosender ein Abstimmgeräusch einzuspielen. Damit kann das Verhalten eines echten Radios noch besser simuliert werden. Um das zu ermöglichen, wurde ein neuer Daemon/Prozess im iRadio eingeführt, der noised .
@@ -360,7 +355,7 @@ Während des Internetradiobetriebs drehen sich die animierten Cassettenspulen un
 
 ![cass2](https://github.com/BM45/iRadio/blob/master/pics4www/Cassettensimulation2.jpg)
 
-Danke Hans für diese tolle Zuarbeit zum iRadio. Sein Projekt zu diesem Radio kann man hier nachlesen: https://www.radio-bastler.de/forum/showthread.php?tid=15127
+Danke Hans für diese tolle Zuarbeit zum iRadio.
 
 Als weitere Skalensimulation haben wir eine Skale eines Lorenz C2 aufgebaut!
 
@@ -536,12 +531,3 @@ Natürlich lässt sich der Mediaplayer durch Anpassung der Quellcodedateien beli
 Mit dem heutigen Update ist es möglich barrierefreie Radios nach dem Vorbild eines NOXON dRadio 110 aufzubauen oder komplett auf Displayintegrationen in alte Skalen zu verzichten, da praktisch alle technischen Informationen wie Sendernamen oder die Programmliste beim Umschalten vorgelesen werden können. Auch der Aufbau von Radios, die sich im Dunklen einfacher bedienen lassen (Weckradios) ist nun leicht möglich. So könnte ein kurzer Druck auf eine Funktionstaste die Tastenfunktion gesprochen ausgeben, während ein langer Tastendruck die Funktion anschließend selbst auslöst.
 
 Die Sprachsynthese mit allen Dateien und kurzem Democode befindet sich im Ordner speakingd, die Installation und Nutzung in eigenen Steuer- oder Displaydaemonen wird in der dortigen Datei README.txt dargestellt. 
-
-_____________________________________________________________________________________
-Weiterer Support im Radio-Bastler-Forum unter: https://www.radio-bastler.de 
-Bitte beachtet auch den Blog von meinem Bastlerkollegen Franz-Josef Haffner: https://radiobasteleien.blogspot.com/search/label/iRadio
-Der Franz zeigt auf seinen Seiten unzählige Umbauten und Modernisierungen alter Radios, nicht nur mit dem iRadio! Er hat für 
-das iRadio auch eine sehr umfangreiche FAQ angelegt!
-Seine Werke sieht man hier: https://radiobasteleien.blogspot.com/search/label/Internetradio
-
-Bei Fragen meldet Euch einfach im Radio-Bastler-Forum an.

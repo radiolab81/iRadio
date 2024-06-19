@@ -161,7 +161,7 @@ An das iRadio kann man verschiedene Displays anschließen (siehe oben). Diese di
 der aktuell eingestellten Radiostation oder des aktuell gespielten Titels. 
 
 
-![lcd](https://www.radio-bastler.de/forum/attachment.php?thumbnail=56759)
+![lcd](https://github.com/BM45/iRadio/blob/master/pics4www/Display_1.jpeg)
 
 
 Die Ansteuerung des Displays übernimmt der Prozess displayd im iRadio. 
@@ -185,11 +185,12 @@ Weitere Displaytypen werden im iRadio direkt unterstützt, für Sie gibt es bere
 
 Hier ein SSD1306-OLED:
 
-![ssd1306](https://www.radio-bastler.de/forum/attachment.php?thumbnail=56780)
+
+![ssd1306](https://github.com/BM45/iRadio/blob/master/pics4www/Display_2.jpeg)
 
 oder ein ST7335-TFT: 
 
-![st7335](https://www.radio-bastler.de/forum/attachment.php?thumbnail=56840)
+![st7735](https://github.com/BM45/iRadio/blob/master/pics4www/Display_3.jpeg)
 
 Die passenden Installer erkennt man leicht am entsprechenden Namen. Der passende Code für diese Displaytypen bzw. für den Prozess displayd liegt in `/home/pi/iRadio/display` . Hier darf und soll(!) der Nutzer ausdrücklich seine eigenen Anpassungen vornehmen, um so zu einer individuellen Lösung zu kommen! Das iRadio soll hier nur grob den Rahmen für eigenen Konstruktionen skizzieren.
 

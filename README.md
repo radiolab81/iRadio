@@ -4,14 +4,14 @@ Ein Softwarebaukasten für den Aufbau neuer Radios oder dem Umbau alter Radios z
 
 #### ITT Viola 350 wird zum Digialradio...
 
-![viola0](https://github.com/BM45/iRadio/blob/master/pics4www/ITT_Viola_350_1.jpeg)
-![viola1](https://github.com/BM45/iRadio/blob/master/pics4www/ITT_Viola_350_2.jpeg)
-![viola2](https://github.com/BM45/iRadio/blob/master/pics4www/ITT_Viola_350_3.jpeg)
+![viola0](https://github.com/radiolab81/iRadio/blob/master/pics4www/ITT_Viola_350_1.jpeg)
+![viola1](https://github.com/radiolab81/iRadio/blob/master/pics4www/ITT_Viola_350_2.jpeg)
+![viola2](https://github.com/radiolab81/iRadio/blob/master/pics4www/ITT_Viola_350_3.jpeg)
 
 #### Ein Philips 634 "Digital" ...
 
-![oldie2](https://github.com/BM45/iRadio/blob/master/pics4www/Philips_634_1.jpeg)
-![oldie2](https://github.com/BM45/iRadio/blob/master/pics4www/Philips_634_2.jpeg)
+![oldie2](https://github.com/radiolab81/iRadio/blob/master/pics4www/Philips_634_1.jpeg)
+![oldie2](https://github.com/radiolab81/iRadio/blob/master/pics4www/Philips_634_2.jpeg)
 
 ## Unterstützte Rechner:
 
@@ -27,9 +27,9 @@ Es bleibt also (bis auf Weiteres, oder auch für immer) bei oben geschriebenen:
 - Alles was danach kommt, wird von uns nicht mehr getestet oder codeseitig voll unterstützt! Sie können zwar ein iRadio mit dem neuen Raspberry Pi OS aufbauen, aber bereits beim Installationsscript könnten Pakete wegen Namensänderung nicht gefunden werden. Das müssen Sie selbstständig erkennen und beheben! Sollte der Support der WiringPi oder BCM2835 nicht mehr vollständig gegeben sein, müssen Sie selbst in der Lage sein das zu erkennen und Code, der auf die GPIOs zugreift (gpiod, displayd, externe Tuner) modifizieren können! Sie müssen ggf. selbstständig Code von der einen Lib auf die andere umstellen können. Da wir im Beispielcode zeigen, wie die Nutzung beider Libs erfolgt, ist das für Sie möglich, Sie müssen nur (ohne unsere weitere Unterstützung) wollen! 
 Und natürlich: Sie können jederzeit ein Internetradio mit dem alten Raspbian OS (zum Beispiel mit der iRL-Distribution) aufbauen, einem OS auf dem dieses iRadio gegründet und ausgiebig in allen Funktionen getestet wurde.
 
-Wenn Sie ein Internetradio aufbauen wollen, aber gerade nicht an einen Raspberry Pi kommen, ist vielleicht unsere Alternative iRadioMini für den günstigen und jederzeit lieferbaren ESP32 eine Alternative: https://github.com/BM45/iRadioMini
+Wenn Sie ein Internetradio aufbauen wollen, aber gerade nicht an einen Raspberry Pi kommen, ist vielleicht unsere Alternative iRadioMini für den günstigen und jederzeit lieferbaren ESP32 eine Alternative: https://github.com/radiolab81/iRadioMini
 
-Sie interessieren sich für Software-Defined-Radios? https://github.com/BM45/SDR_ESP32   Auch das kann der ESP32, bei Ihnen vielleicht sogar in Verbindung mit dem iRadioMini? ;-)
+Sie interessieren sich für Software-Defined-Radios? https://github.com/radiolab81/SDR_ESP32   Auch das kann der ESP32, bei Ihnen vielleicht sogar in Verbindung mit dem iRadioMini? ;-)
 
 Das Team vom iRadio bedankt sich für die jahrelange Unterstützung bei unzähligen Testern und natürlich Anwendern! 
 Ohne Euch wäre die Arbeit nicht zu stemmen gewesen und hätte auch keinen Spaß gemacht! Es sind bei Euch da draußen dermaßen "geile" Radios entstanden, das hätte die stocksteife Radioindustrie so nie hinbekommen!
@@ -41,7 +41,7 @@ Tschüss und Ciao,
 das iRadio-Team.
      
 ***************************************************************************************************************************************
-### iRL - iRadio on Linux, eine Linuxdistribution mit vorinstallierten und vorkonfiguriertem iRadio. Als Image für eine SD-Karte hier downloadbar: https://github.com/BM45/iRL
+### iRL - iRadio on Linux, eine Linuxdistribution mit vorinstallierten und vorkonfiguriertem iRadio. Als Image für eine SD-Karte hier downloadbar: https://github.com/radiolab81/iRL
 
 ***************************************************************************************************************************************
   
@@ -112,7 +112,7 @@ In /home/pi wird das Repository geklont.
 
 `cd /home/pi/`
 
-`git clone https://github.com/BM45/iRadio`
+`git clone https://github.com/radiolab81/iRadio`
 
 Wird das Repository als zip-Datei heruntergeladen, dann wird das heruntergeladene zip-Archiv mit `unzip` in /home/pi entpackt, so dass es in /home/pi/iRadio zu liegen kommt.
 
@@ -134,7 +134,7 @@ Die Änderung der Pinbelegung oder Erweiterung der Tastensteuerung kann durch ed
 
 Anstelle von Tastern, kann auch ein Drehimpulsgeber zur Programmumschaltung genutzt werden.
 
-![rotary](https://github.com/BM45/iRadio/blob/master/pics4www/Pi_Drehregler_1.jpeg)
+![rotary](https://github.com/radiolab81/iRadio/blob/master/pics4www/Pi_Drehregler_1.jpeg)
 
 Hierzu muss ein neuer Steuerdaemon (gpiod) gebaut werden. Dies geht automatisch durch folgende Befehle.
 
@@ -161,7 +161,7 @@ An das iRadio kann man verschiedene Displays anschließen (siehe oben). Diese di
 der aktuell eingestellten Radiostation oder des aktuell gespielten Titels. 
 
 
-![lcd](https://github.com/BM45/iRadio/blob/master/pics4www/Display_1.jpeg)
+![lcd](https://github.com/radiolab81/iRadio/blob/master/pics4www/Display_1.jpeg)
 
 
 Die Ansteuerung des Displays übernimmt der Prozess displayd im iRadio. 
@@ -186,11 +186,11 @@ Weitere Displaytypen werden im iRadio direkt unterstützt, für Sie gibt es bere
 Hier ein SSD1306-OLED:
 
 
-![ssd1306](https://github.com/BM45/iRadio/blob/master/pics4www/Display_2.jpeg)
+![ssd1306](https://github.com/radiolab81/iRadio/blob/master/pics4www/Display_2.jpeg)
 
 oder ein ST7335-TFT: 
 
-![st7735](https://github.com/BM45/iRadio/blob/master/pics4www/Display_3.jpeg)
+![st7735](https://github.com/radiolab81/iRadio/blob/master/pics4www/Display_3.jpeg)
 
 Die passenden Installer erkennt man leicht am entsprechenden Namen. Der passende Code für diese Displaytypen bzw. für den Prozess displayd liegt in `/home/pi/iRadio/display` . Hier darf und soll(!) der Nutzer ausdrücklich seine eigenen Anpassungen vornehmen, um so zu einer individuellen Lösung zu kommen! Das iRadio soll hier nur grob den Rahmen für eigenen Konstruktionen skizzieren.
 
@@ -213,13 +213,13 @@ In Aktion: (Klick führt zu Youtube)
 
 Mit der "Highlevel-Unterstützung" durch X11/Framebuffer sind natürlich auch andere Benutzerschnittstellen mit dem iRadio möglich, so zum Beispiel eine touch-sensitive Bedienung über eine FLTK-GUI.
 
-![fltk](https://github.com/BM45/iRadio/blob/master/pics4www/FLTK_GUI_1.jpeg)
+![fltk](https://github.com/radiolab81/iRadio/blob/master/pics4www/FLTK_GUI_1.jpeg)
 
 Ein besonderes Highlight ist die Simulation photorealistischer Nachbildungen von Senderskalen alter Radios.
 
-![sim1](https://github.com/BM45/iRadio/blob/master/pics4www/Skalensimulator_1.jpeg)
-![sim2](https://github.com/BM45/iRadio/blob/master/pics4www/Skalensimulator_2.jpeg)
-![sim3](https://github.com/BM45/iRadio/blob/master/pics4www/Skalensimulator_3.jpeg)
+![sim1](https://github.com/radiolab81/iRadio/blob/master/pics4www/Skalensimulator_1.jpeg)
+![sim2](https://github.com/radiolab81/iRadio/blob/master/pics4www/Skalensimulator_2.jpeg)
+![sim3](https://github.com/radiolab81/iRadio/blob/master/pics4www/Skalensimulator_3.jpeg)
 
 Umbau eines alten Metz-Baby zum iRadio-Internetradio.
 
@@ -243,7 +243,7 @@ Zur Installation der Bluetoothfunktionalität gibt man folgendes ein:
 Nach dem Neustart des Raspberry präsentiert sich der Kleinrechner mit seinem vergebenen Hostnamen in der Bluetooth-Suche 
 von Mediengeräten.
 
-![bluetooth](https://github.com/BM45/iRadio/blob/master/pics4www/BT_Handy_1.jpeg)
+![bluetooth](https://github.com/radiolab81/iRadio/blob/master/pics4www/BT_Handy_1.jpeg)
 
 Koppelt man sich mit dem iRadio, dann wird die Wiedergabe des Internetradios automatisch unterbrochen und das iRadio wird zum Funklautsprecher. Entkoppelt man die Bluetoothverbindung, so beginnt das iRadio mit der Wiedergabe der zuletzt eingestellten Internetradiostation.
 
@@ -330,8 +330,8 @@ arbeiten.
 ## Update vom 04.09.2019: Unterstützung mehrerer e-Paper / e-Ink Displays
 Mit der heutigen Version wird die Unterstützung mehrer e-Ink Displays in das iRadio aufgenommen. 
 
-![eink1](https://github.com/BM45/iRadio/blob/master/pics4www/eInk_1.jpeg)
-![eink2](https://github.com/BM45/iRadio/blob/master/pics4www/eInk_2.jpeg)
+![eink1](https://github.com/radiolab81/iRadio/blob/master/pics4www/eInk_1.jpeg)
+![eink2](https://github.com/radiolab81/iRadio/blob/master/pics4www/eInk_2.jpeg)
 
 ## Update vom 30.04.2020: Simulation eines Abstimmgeräusches
 Mit dem Update vom 30.04.2020 ist es möglich, zwischen dem Umschalten zweier Internetradiosender ein Abstimmgeräusch einzuspielen. Damit kann das Verhalten eines echten Radios noch besser simuliert werden. Um das zu ermöglichen, wurde ein neuer Daemon/Prozess im iRadio eingeführt, der noised .
@@ -349,29 +349,29 @@ Die Verwendung des noised ist nicht(!) an eine Skalensimulation gebunden, eignet
 
 Hier wird ein alter Kassettenrecoder zu einem Internetradio. In das Kassettenfach wurde ein Display eingebaut, auf dem diesmal eine besondere Skalensimulation läuft, nämlich eine in Form einer alten Musikkassette.
 
-![cass1](https://github.com/BM45/iRadio/blob/master/pics4www/Cassettensimulation.jpg)
+![cass1](https://github.com/radiolab81/iRadio/blob/master/pics4www/Cassettensimulation.jpg)
 
 Während des Internetradiobetriebs drehen sich die animierten Cassettenspulen und der Sendername und Interpret werden in das Namensfeld der Kassette eingetragen.
 
-![cass2](https://github.com/BM45/iRadio/blob/master/pics4www/Cassettensimulation2.jpg)
+![cass2](https://github.com/radiolab81/iRadio/blob/master/pics4www/Cassettensimulation2.jpg)
 
 Danke Hans für diese tolle Zuarbeit zum iRadio.
 
 Als weitere Skalensimulation haben wir eine Skale eines Lorenz C2 aufgebaut!
 
-![lorenz1](https://github.com/BM45/iRadio/blob/master/pics4www/lorenzc2_3.jpg)
+![lorenz1](https://github.com/radiolab81/iRadio/blob/master/pics4www/lorenzc2_3.jpg)
 
 Im Internetradiobetrieb wird beim Umschalten ganz normal die Frequenznadel entsprechend der eingelesenen Senderliste bewegt, zusätzlich wird der Stationsname eingeblendet.
 
-![lorenz2](https://github.com/BM45/iRadio/blob/master/pics4www/lorenzc2_1.jpg)
+![lorenz2](https://github.com/radiolab81/iRadio/blob/master/pics4www/lorenzc2_1.jpg)
 
 Wird das Radio aber in den Standbymodus versetzt, so zeigt die Frequenznadel die aktuelle Uhrzeit an. Zusätzlich lässt sich eine Weckzeit programmieren (roter Zeiger) an dem das Radio automatisch in den Internetradiobetrieb geht! Natürlich lassen sich auch andere Nachtdesigns implementieren, denn wie immer ist das iRadio nur eine Ideensammlung und ein Rahmen für Euer eigenes Internetradio. 
 
-![lorenz3](https://github.com/BM45/iRadio/blob/master/pics4www/lorenzc2_2.jpg)
+![lorenz3](https://github.com/radiolab81/iRadio/blob/master/pics4www/lorenzc2_2.jpg)
 
 ## Update vom 31.08.2020: Bedienung des iRadios mittels Gestenerkennung mit dem PAJ7620U2-Sensor
 
-![geste1](https://github.com/BM45/iRadio/blob/master/pics4www/Gestenerkennung.jpeg)
+![geste1](https://github.com/radiolab81/iRadio/blob/master/pics4www/Gestenerkennung.jpeg)
 
 Neben der iRadio-Bedienung über Tasten/Drehencoder (gpiod) ist nun auch die berührungslose Bedienung mittels Gestensensor möglich!
 Mit dem PAJ7620U2-Sensor versteht das iRadio 9 verschiedene Gesten und kann darauf mit bestimmten Aktionen (Programmumschaltung, Lautstärkeänderung, An/Aus, ...) reagieren. Mit dem PAJ7620U2 werden folgende Gesten erkannt:
@@ -396,7 +396,7 @@ Der Sensor kann neben der herkömmlichen Bedienung über Tasten, Drehencoder ode
 
 ## Update vom 09.09.2020: Das bisherige Projekt "WorldRadio" wurde ins iRadio integriert.
 
-![rtlsdr](https://github.com/BM45/iRadio/blob/master/pics4www/iRadio_rtlsdr.jpg)
+![rtlsdr](https://github.com/radiolab81/iRadio/blob/master/pics4www/iRadio_rtlsdr.jpg)
 
 Mit diesem Funktionsupdate wollen wir unserem Internetradio neue Empfangswege beibringen. Ein mit iRadio umgebautes/neu aufgebautes Internetradio kann ab sofort auch ohne Internetanschluß Rundfunk empfangen. Zunächst können RTLSDR USB-Sticks aus dem Osmocom rtl-sdr Projekt (https://osmocom.org/projects/rtl-sdr/wiki/Rtl-sdr) genutzt werden, um zum Beispiel UKW-Rundfunk, Flugfunk, (SSB-) Amateurfunk und vieles mehr zu empfangen. Der experimentelle Beispielcode für eine FLTK-Benutzeroberfläche, die Internetradio und UKW-Radio/AM-Flugfunk unter einen Hut bringt, liegt in iRadio/Tuner/rtlsdr. Dieser Beispielcode kann und soll wie beim iRadio üblich, eine Vorlage, Schablone oder Denkanstoß für eigene Umsetzungen sein. Die Installation der rtlsdr-Unterstützung kann über das Installerscript install.sh in iRadio/Tuner/rtlsdr/ erfolgen. 
 
@@ -406,13 +406,13 @@ Die FLTK-GUI wird mit dem Script build_gui.sh compiliert. Die übersetzte GUI is
 
 Mit diesem Funktionsupdate wird es möglich neben Internetradio auch UKW-Radio über den IC RDA5807 anzubieten. Der RDA5807 ist ein ungefähr 3x3mm großer Chip in dem ein komplettes Software-Defined-Radio (SDR) für 50-108 MHz steckt. Er kann somit das europäische/amerikanische UKW-Band genauso abdecken wie das japanische oder russische Frequenzband. 
 
-![RDA5807a](https://github.com/BM45/iRadio/blob/master/pics4www/RDA5807_System.JPG)
+![RDA5807a](https://github.com/radiolab81/iRadio/blob/master/pics4www/RDA5807_System.JPG)
 
 Zusätzlich zu diesem breiten Frequenzband ist auch die Möglichkeit des RDS-Empfang gegeben. Die komplette MPX-Dekodierung wird rein in Software auf dem im Chip integrierten Basisband-Signalprozessor erledigt.
 
 Den RDA5807 gibt es im deutschen Handel in der Regel in Form eines Breakoutboards, die Pinbelegung ist nachfolgend zu sehen:
 
-![RDA5807b](https://github.com/BM45/iRadio/blob/master/pics4www/Pinout.jpg)
+![RDA5807b](https://github.com/radiolab81/iRadio/blob/master/pics4www/Pinout.jpg)
 
 Im iRadio gibt es zwei Möglichkeiten der Installation der RDA5807-Unterstützung.
 
@@ -420,11 +420,11 @@ Im iRadio gibt es zwei Möglichkeiten der Installation der RDA5807-Unterstützun
 
 Die Steuerung des RDA5807-Chips erfolgt dann direkt über diesen Daemon:
 
-![RDA5807c](https://github.com/BM45/iRadio/blob/master/pics4www/rda5807daemon.jpg)
+![RDA5807c](https://github.com/radiolab81/iRadio/blob/master/pics4www/rda5807daemon.jpg)
 
 2. Über das Installscript build_rda5807_st7735demo.sh wird neben dem Steuerdaemon für den RDA5807 auch eine Demoskale (displayd) für ST7735-Displays und ein passender gpiod für einen Rotaryencoder compiliert und installiert.
 
-![RDA5807d](https://github.com/BM45/iRadio/blob/master/pics4www/RDA5807_Menues.JPG)
+![RDA5807d](https://github.com/radiolab81/iRadio/blob/master/pics4www/RDA5807_Menues.JPG)
 
 In dieser Demonstration ist der Betrieb von Internetradio und UKW-Radio über einen(!) Drehregler mit Drucktaster möglich. Die Umschaltung des Empfangsmodus erfolgt durch kurzen Druck, Wechsel von und in den Standbybetrieb ist durch einen langen Druck auf den Taster möglich. Der Quellcode für RDA5807-Steuerdaemon, sowie Demo-displayd und gpiod liegt im Ordner Tuner/RDA5807 des iRadio-Basisordners. Dieser Beispielcode kann und soll wie beim iRadio üblich, eine Vorlage, Schablone oder Denkanstoß für eigene Umsetzungen sein und natürlich sind die dort gezeigten Ansteuerungswege auch auf andere Displays und Bedienkonzepte übertragbar.
 
@@ -433,18 +433,18 @@ In dieser Demonstration ist der Betrieb von Internetradio und UKW-Radio über ei
 ## Update vom 13.01.2021: Simulation von Anzeigeröhren (magische Augen, Bänder)
 
 ### Demoanwendung - Internetradio mit Skalensimulation und Anzeigenröhre über zwei HDMI-Displays
-![magicEye1](https://github.com/BM45/iRadio/blob/master/pics4www/simmagiceyes.jpg)
+![magicEye1](https://github.com/radiolab81/iRadio/blob/master/pics4www/simmagiceyes.jpg)
 
 Auf Basis von SDL2/X11 können nun Anzeigeröhren simuliert werden. Im Ordner "magicEye" gibt es dazu zwei generische Simulationen vom Typ EM34 und EM84, die zur Anzeige der WLAN-Signalstärke dienen. Der eigentliche Simulationscode der Anzeigenröhre ist in der Datei tube.cxx enthalten, die Ermittlung der WLAN-Signalstärke wird in der Datei signal.cxx umgesetzt. Die PNG-Dateien enthalten Fotografien richtiger Röhren und dienen als Ebenen der fotorealistischen Darstellung der Simulation. Durch Codeänderungen können durch die Anzeigenröhren auch andere numerische Werte repräsentiert werden, das iRadio soll hier wie immer nur einen Rahmen vorgeben und zu eigenen Umsetzungen anregen! Die Simulation der Anzeigenröhre auf Basis von SDL2 orientieren sich stark an der Skalensimulation, entsprechend ähnlich ist die Installation vorzunehmen. Zunächst wird durch das build-Script build.sh die Simulation der Anzeigenröhre gebaut, wodurch ein neuer Daemon namens magicEyed entsteht. Für den Autostart ist dieser Deamon wie bei den Skalensimulationen in /etc/rc.local aufzunehmen. Das darstellende Display für diese Simulationen kann ein HDMI oder GPIO-Display sein. Mischbetrieb ist zulässig, ebenso Dual-Displaybetrieb zur Anzeige von Senderinfo/Skalensimulation und(!) Simulation der Anzeigenröhre und beschränkt sich nicht nur auf die beiden HDMI-Ausgänge eines Raspberry PI 4. Wie bei fotorealistischen Simulationen im iRadio üblich, sollten wenn immer möglich beschleunigte Grafiktreiber eingesetzt werden.
 
 ## Update vom 02.02.2021: Das iRadio erhält vollumfängliche DAB+ Unterstützung (RPi3/4+)
 
 Mit dem Funktionsupdate vom 02.02.2021 wird das iRadio zu einem modularen Softwarebaukasten für den Neuaufbau von Digitalradios (früher nur Internetradio) oder zum Umbau alter Radios in ein Internet- und/oder DAB+ Radio. 
-![dab1](https://github.com/BM45/iRadio/blob/master/pics4www/iRadioDAB.jpg)
+![dab1](https://github.com/radiolab81/iRadio/blob/master/pics4www/iRadioDAB.jpg)
 
 Als Empfänger für DAB+ kann beim iRadio eine Vielzahl verschiedener Hardware dienen. Angefangen vom einfachen RTLSDR-USB-Stick für 10 Euro, über Mittelklasse-SDRs wie dem AIRSpy (R2/mini) oder HackRF One, bis zu hochwertige RFspace-SDRs. Die Empfangshardware kann dabei zentral am Raspberry, also im Radiogehäuse untergebracht sein, als auch über eine TCP/IP Verbindung dezentral angeschlossen werden. Ein solcher dezentraler SDR-Empfänger kann an empfangsgünstigen Orten (Dachboden, Radioshack, Tower) untergebracht sein und mehrere iRadio-Instanzen mit DAB+ Empfang versorgen.
 
-![dab1](https://github.com/BM45/iRadio/blob/master/pics4www/iRadioDABHardware.jpg)
+![dab1](https://github.com/radiolab81/iRadio/blob/master/pics4www/iRadioDABHardware.jpg)
 
 Zur Installation der DAB+ Unterstützung gibt man folgendes ein:
 
@@ -481,7 +481,7 @@ prev	 - wechselt zum vorherigen Programm in den Senderlisten
 
 Da zur Audiowiedergabe von DAB+ Stationen, dass bereits im Internetradiomodus bekannte vlc genutzt wird, können Rückinformationen wie Programmtitel weiterhin über UDP/9294 empfangen werden. Somit sind die bereits vorhandenen Displaydaemonen (displayd) schnell und meist ohne komplexe Codeänderungen bereit für den DAB+ Empfang. Nachfolgend ein Bild einer im iRadio als Demo vorhanden Skalensimulation beim DAB+ Empfang.
 
-![dab1](https://github.com/BM45/iRadio/blob/master/pics4www/iRadioDABSkalensim.jpg)
+![dab1](https://github.com/radiolab81/iRadio/blob/master/pics4www/iRadioDABSkalensim.jpg)
 
 Da sowohl Skalensimulation, wie auch SDR/DAB+ Empfang rechenintensive Prozesse sind, sollten solche Neu-/Umbauen modernen Raspberry Pi 4 (oder wenigstens späteren 3er Modellen) vorbehalten sein um gute Systemantwortzeiten zu erreichen, wobei 1/2 GB RAM-Systeme vollkommend ausreichend sind.
 
@@ -489,20 +489,20 @@ Ebenso ist es möglich, wie auch schon beim Internetradio, die empfangene DAB+ S
 
 ## Update vom 08.02.2021: X11-Benutzeroberfläche für moderne Internet-/DAB+ -Radios hinzugefügt
 
-![dab2](https://github.com/BM45/iRadio/blob/master/pics4www/DABGui.jpg)
+![dab2](https://github.com/radiolab81/iRadio/blob/master/pics4www/DABGui.jpg)
 
 Mit dem Update vom 08.02.2021 wird Democode (displayd und gpiod) für eine Benutzeroberfläche für moderne Multinormradios (Internet/DAB+) hinzugefügt. Der Code befindet sich in display/x11/DABgui, die beiden nötigen Daemonen werden über das Buildscript compiliert. Die Installation der GUI erfolgt dann analog einer fotorealistischen Skalensimulation. Weitere Infos dazu findet man in der im DABgui-Ordner befindlichen README.txt . Der SDL2-Democode kann und soll beliebig für eigene Radios und Displays angepasst werden, wie immer soll das iRadio hier nur ein Rahmenwerk für eigene Umsetzungen sein. Der gpiod nutzt hier einen Drehencoder/Taster zur Ansteuerung des displayd. Für reine Touchbedienung stellt die SDL2-Bibliothek auch eine entsprechende Eventbehandlung bereit, auch das Hinzufügen einer dritten Empfangsart wie UKW ist durch die bereits im iRadio integrierte Unterstützung (zum Beispiel aus der Integration des WorldRadio-Projekts vom 09.09.2020) einfach möglich.
 
 
 ## Update vom 13.02.2021: iRadio als DAB(+) Sender, Wiederaussenden einer Internetradiostation im DAB(+) Format 
 
-![dab3](https://github.com/BM45/iRadio/blob/master/pics4www/iRadioDABTx.jpg)
+![dab3](https://github.com/radiolab81/iRadio/blob/master/pics4www/iRadioDABTx.jpg)
 
 Mit dem Funktionsupdate vom 13.02.2021 ist es möglich, eine aus dem Internet empfangenen Radiostation über einen eigenen DAB oder DAB+ Sender áuszusenden. Von dieser Funktion profitieren vor allem alte Digitalradios, die nur über DAB verfügen und somit praktisch wertlos sind. Mit dem iRadio können diese Radios nun ohne Eingriff zu einem Internetradio umgerüstet werden. Zusätzlich ist es möglich mit dem iRadio das bereits bestehende DAB+ Senderangebot um Internetradiostationen zu erweitern.
 
 Zur Generierung eines DAB(+)-konformen Signals, werden im iRadio drei Prozesse benötigt: ein Audioencoder, ein Multiplexer und ein Modulator. 
 
-![dab4](https://github.com/BM45/iRadio/blob/master/pics4www/iRadioDABTx2.jpg)
+![dab4](https://github.com/radiolab81/iRadio/blob/master/pics4www/iRadioDABTx2.jpg)
 
 Diese drei Prozesse findet man im Ordner /Transmitter/ODR des iRadios. Sie müssen nacheinander aus den Quellen compiliert werden. Informationen zum Compilieren dieser Programme findet man in den Dateien README.md und INSTALL.md in den jeweiligen Unterordnern. In der Datei mmbtools.pdf wird der Aufbau der DAB(+) Sendekette und das Zusammenspiel aller drei Prozesse detailiert beschrieben. Eine Muster-vlcd kann entsprechend der gewählten Interprozesskommunikation aufgebaut  und nach /usr/bin kopiert werden. Dadurch kann das iRadio fallweise (mittels DAB.txt Datei auf USB-Stick) in den DAB(+) Sendemodus versetzt werden, analog der bereits bestehenden UKW-Sendefunktion.
 
@@ -510,7 +510,7 @@ Zusätzlich zur Integration der DAB(+) Sendefunktion, bringt das iRadio nun Unte
 
 ## Update vom 10.03.2021: automatische Mediaplayerfunktion hinzugefügt 
 
-![dab3](https://github.com/BM45/iRadio/blob/master/pics4www/mediaplayer.jpg)
+![dab3](https://github.com/radiolab81/iRadio/blob/master/pics4www/mediaplayer.jpg)
 
 Wird ein mit Mediendateien gefüllter USB-Stick in das iRadio eingesteckt, so wird dieser automatisch erkannt, die Internetradio- oder Internetfernsehwiedergabe gestopt und die Wiedergabe der Musik-/Filmsammlung von USB gestartet. Zieht man den USB-Stick wieder ab, geht das iRadio danach automatisch wieder in den Internetradio- bzw. Internetfernsehbetrieb über.
 
@@ -526,7 +526,7 @@ Natürlich lässt sich der Mediaplayer durch Anpassung der Quellcodedateien beli
 
 ## Update vom 13.10.2021: barrierefreies iRadio - Sprachausgabe (TTS-Text to Speech) hinzugefügt
 
-![tts](https://github.com/BM45/iRadio/blob/master/pics4www/TTSiRadio.jpg)
+![tts](https://github.com/radiolab81/iRadio/blob/master/pics4www/TTSiRadio.jpg)
 
 Mit dem heutigen Update ist es möglich barrierefreie Radios nach dem Vorbild eines NOXON dRadio 110 aufzubauen oder komplett auf Displayintegrationen in alte Skalen zu verzichten, da praktisch alle technischen Informationen wie Sendernamen oder die Programmliste beim Umschalten vorgelesen werden können. Auch der Aufbau von Radios, die sich im Dunklen einfacher bedienen lassen (Weckradios) ist nun leicht möglich. So könnte ein kurzer Druck auf eine Funktionstaste die Tastenfunktion gesprochen ausgeben, während ein langer Tastendruck die Funktion anschließend selbst auslöst.
 
